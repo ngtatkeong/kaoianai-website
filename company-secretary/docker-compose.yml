@@ -33,8 +33,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    # Production on the KaoinAI VPS: attach to the existing traefik network
-    # instead of publishing ports — uncomment and `docker compose up -d`.
+    # Production on the KaoinAI VPS: comment out the `ports:` block above,
+    # uncomment everything below (after pointing DNS secretary.kaoinai.com at
+    # the VPS), then `docker compose up -d`.
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.cs-app.rule=Host(`secretary.kaoinai.com`)"
+    #   - "traefik.http.routers.cs-app.entrypoints=websecure"
+    #   - "traefik.http.routers.cs-app.tls.certresolver=letsencrypt"
+    #   - "traefik.http.services.cs-app.loadbalancer.server.port=8080"
     # networks:
     #   - deploy_default
     #
