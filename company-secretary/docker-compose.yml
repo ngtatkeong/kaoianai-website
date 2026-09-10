@@ -1,0 +1,46 @@
+# KaoinAI Company Secretary Register — Postgres + API/wizard
+# Local:   docker compose up -d --build   → http://localhost:8080
+# Data:    named volume cs_postgres_data
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: cs_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-company_secretary}
+      POSTGRES_USER: ${POSTGRES_USER:-cs_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_.env}
+    volumes:
+      - cs_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cs_admin} -d ${POSTGRES_DB:-company_secretary}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: cs_app
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-cs_admin}:${POSTGRES_PASSWORD:-change_me_in_.env}@db:5432/${POSTGRES_DB:-company_secretary}
+      PORT: 8080
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    # Production on the KaoinAI VPS: attach to the existing traefik network
+    # instead of publishing ports — uncomment and `docker compose up -d`.
+    # networks:
+    #   - deploy_default
+    #
+    # networks:
+    #   deploy_default:
+    #     external: true
+
+volumes:
+  cs_postgres_data:

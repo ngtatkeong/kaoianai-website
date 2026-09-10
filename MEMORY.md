@@ -107,3 +107,14 @@ All 11 HTML files adhere to identical, synchronized structure:
 * **Production Deployment Cycle**:
   1. Local push: `git push origin main`
   2. VPS pull: `cd /opt/kaionai-site && git pull origin main && chown -R www-data:www-data /opt/kaionai-site && systemctl reload nginx`
+
+---
+
+## 6. Company Secretary Register (`company-secretary/`)
+
+* **Purpose**: Internal corporate secretarial tool. PostgreSQL-backed register keyed by **UEN** with a 6-step wizard (Particulars → Directors → Secretary → Shareholders → Filings → Review).
+* **Identity Persistence Rule**: Company name, UEN and registered address are entered ONCE in Step 1, then (a) mirrored in a sticky identity bar on every step, (b) rendered as a locked chip inside every subsequent form, (c) kept in `localStorage` (`cs_identity`), (d) autosaved to the `wizard_drafts` Postgres table. This is a hard UX invariant — do not regress.
+* **Stack**: `docker compose` = `postgres:16-alpine` (volume `cs_postgres_data`, schema auto-applied from `server/schema.sql`) + Node/Express API (`server/`) that also serves the wizard (`public/`) same-origin. Tables: `companies`, `officers`, `shareholders`, `filings`, `wizard_drafts`; children cascade-delete.
+* **API**: Upsert-by-UEN `POST /api/companies`; section-replace `PUT /api/companies/:uen/{officers,shareholders,filings}`; drafts `GET/PUT /api/drafts/:uen`. SG UEN format validated on both client and server.
+* **Regression Test**: `scratch/cs-wizard-test/test-wizard.js` (jsdom, 35 checks — identity persistence, section saves, Postgres read-back, reload/draft resume). Run with the stack up: `cd scratch/cs-wizard-test && node test-wizard.js`.
+* **Not part of the static site**: excluded from the 13-page marketing inventory; served separately on port 8080 (traefik attach block commented in compose for VPS deployment).
