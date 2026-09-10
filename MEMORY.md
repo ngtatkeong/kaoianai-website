@@ -105,8 +105,9 @@ All 11 HTML files adhere to identical, synchronized structure:
 * **Inbound Inquiries & Telemetry**:
   * Floating widget (`telemetry.js`) and all page footers route "Request Information" and "Feedback" directly to `tk.ng@kaoinai.com` with Formspree fallback and direct mailto handlers.
 * **Production Deployment Cycle**:
-  1. Local push: `git push origin main`
-  2. VPS pull: `cd /opt/kaionai-site && git pull origin main && chown -R www-data:www-data /opt/kaionai-site && systemctl reload nginx`
+  * ⚠️ **LEGACY — DO NOT USE** (confirmed by owner, Sep 2026): `/opt/kaoinai-site` on the VPS and this repo's static-site files are OLD. The live kaoinai.com is a React/Vite SPA built from a different source. Never `git pull` into `/opt/kaionai-site` — it would overwrite the live homepage.
+  * VPS access: `ssh -p 51322 root@187.77.154.93`.
+  * Live services on the VPS: kaoinai.com (React SPA, source outside this repo) · sec.kaoinai.com (secretary app, repo `ngtatkeong/secretary`, deploy via `bash deploy/deploy.sh`, systemd `secretary`) · sec.kaoinai.com/register/ (Company Secretary Register, §6 below, at `/opt/company-secretary`, port 4011).
 
 ---
 
