@@ -107,7 +107,10 @@ function mountChips() {
 
 /* ------------------------------------------------------------ api io --- */
 async function api(path, opts = {}) {
-  const res = await fetch(path, {
+  // Relative fetch so the app works at the site root and under a subpath
+  // (e.g. https://sec.kaoinai.com/register/) behind a reverse proxy.
+  const url = path.replace(/^\//, '');
+  const res = await fetch(url, {
     headers: { 'Content-Type': 'application/json' },
     ...opts,
     body: opts.body ? JSON.stringify(opts.body) : undefined,

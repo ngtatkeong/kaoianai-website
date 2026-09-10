@@ -29,7 +29,7 @@ services:
       DATABASE_URL: postgres://${POSTGRES_USER:-cs_admin}:${POSTGRES_PASSWORD:-change_me_in_.env}@db:5432/${POSTGRES_DB:-company_secretary}
       PORT: 8080
     ports:
-      - "${APP_PORT:-8080}:8080"
+      - "127.0.0.1:${APP_PORT:-8080}:8080"
     depends_on:
       db:
         condition: service_healthy

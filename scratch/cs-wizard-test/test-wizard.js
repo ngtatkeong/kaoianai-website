@@ -33,7 +33,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function bootApp(seedLocalStorage = {}) {
   const dom = new JSDOM(HTML, { url: BASE + '/', runScripts: 'outside-only', pretendToBeVisual: true });
   const { window } = dom;
-  window.fetch = (url, opts) => fetch(String(url).startsWith('http') ? String(url) : BASE + String(url), opts);
+  window.fetch = (url, opts) => fetch(String(url).startsWith('http') ? String(url) : BASE + '/' + String(url), opts);
   window.alert = m => console.log('  [alert]', m);
   window.confirm = () => true;
   window.scrollTo = () => {};
