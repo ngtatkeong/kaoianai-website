@@ -107,7 +107,7 @@ All 11 HTML files adhere to identical, synchronized structure:
 * **Production Deployment Cycle**:
   * ⚠️ **LEGACY — DO NOT USE** (confirmed by owner, Sep 2026): `/opt/kaoinai-site` on the VPS and this repo's static-site files are OLD. The live kaoinai.com is a React/Vite SPA built from a different source. Never `git pull` into `/opt/kaionai-site` — it would overwrite the live homepage.
   * VPS access: `ssh -p 51322 root@187.77.154.93`.
-  * Live services on the VPS: kaoinai.com (React SPA, source outside this repo) · sec.kaoinai.com (secretary app, repo `ngtatkeong/secretary`, deploy via `bash deploy/deploy.sh`, systemd `secretary`) · sec.kaoinai.com/register/ (Company Secretary Register, §6 below, at `/opt/company-secretary`, port 4011).
+  * Live services on the VPS: kaoinai.com (React SPA, source outside this repo) · sec.kaoinai.com (secretary app, repo `ngtatkeong/secretary`, deploy via `bash deploy/deploy.sh`, systemd `secretary`; **all state in PostgreSQL** — db `secretary` in the `cs_postgres` container, reached by the host app via `127.0.0.1:5434`; legacy JSON files in `server/data/` remain as backup) · sec.kaoinai.com/register/ (Company Secretary Register, §6 below, at `/opt/company-secretary`, port 4011).
 
 ---
 
