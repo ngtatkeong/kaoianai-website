@@ -7,6 +7,10 @@ services:
     image: postgres:16-alpine
     container_name: cs_postgres
     restart: unless-stopped
+    # Host-run apps (the secretary server) connect via localhost:5434.
+    # (5433 is already taken by a Postgres installed on the VPS host itself.)
+    ports:
+      - "127.0.0.1:5434:5432"
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-company_secretary}
       POSTGRES_USER: ${POSTGRES_USER:-cs_admin}
