@@ -97,10 +97,10 @@ export default function CaseStudies() {
             <span>Proven Customer Results</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Real SME Outcomes. Measurable Business ROI.
+            Enterprise Deployments. Measurable Architectural ROI.
           </h2>
           <p className="text-base sm:text-lg text-slate-600">
-            See how fast-growing companies replace weeks of manual data firefighting with autonomous AI governance and plain-English intelligence.
+            See how regulated enterprises and agile engineering teams eliminate compliance drift and automate governance with KaoinAI.
           </p>
         </div>
 

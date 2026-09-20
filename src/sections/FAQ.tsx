@@ -63,10 +63,10 @@ export default function FAQ() {
             <span>Frequently Asked Questions</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Got Questions? We Have Answers.
+            Frequently Asked Questions
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about implementing enterprise-grade data intelligence at your SME.
+            Everything you need to know about architecture, deployment, and autonomous governance with KaoinAI.
           </p>
         </div>
 

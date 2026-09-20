@@ -288,7 +288,7 @@ export default function InteractiveDemo() {
             See KaoinAI in Action — Before Touching Your Database
           </h2>
           <p className="text-base sm:text-lg text-slate-300">
-            Select a common SME scenario below. Watch how KaoinAI autonomously understands natural language, synthesizes enterprise SQL, and traces lineage in sub-second time.
+            Select an enterprise scenario below. Watch how KaoinAI autonomously understands natural language, synthesizes dialect SQL, and traces table-bound lineage in sub-second time.
           </p>
         </div>
 

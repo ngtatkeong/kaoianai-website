@@ -85,83 +85,98 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 sm:p-6 lg:p-8">
-              <div className="flex items-center justify-between mb-4 sm:mb-6 pb-3 border-b border-gray-100">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-400" />
-                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-400" />
-                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400" />
-                </div>
-                <div className="text-[11px] sm:text-xs font-semibold text-purple-900 bg-purple-50 px-2.5 py-1 rounded-md">
-                  KaoinAI Live Monitor
-                </div>
-              </div>
+            {/* Obsidian Live Telemetry Console */}
+            <div className="relative bg-slate-950 text-white rounded-3xl shadow-2xl border border-slate-800/90 p-5 sm:p-7 overflow-hidden backdrop-blur-xl">
+              {/* Subtle ambient glow behind console */}
+              <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
-              <div className="space-y-3 sm:space-y-4">
-                <div className="bg-gradient-to-r from-purple-50 to-red-50 rounded-xl p-3 sm:p-4 border border-purple-100">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-[#5b2d6e]">Automated Data Quality Score</span>
-                    <span className="text-xl sm:text-2xl font-extrabold text-[#5b2d6e]">94.2%</span>
+              <div className="relative z-10">
+                {/* Console Window Header */}
+                <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-slate-800/80">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                    <span className="ml-2 font-mono text-[11px] text-slate-400">kaoinai-telemetry // prod_sg</span>
                   </div>
-                  <div className="w-full bg-white rounded-full h-2 sm:h-2.5 overflow-hidden">
-                    <div className="bg-gradient-brand h-full rounded-full" style={{ width: '94.2%' }} />
-                  </div>
-                  <p className="text-[10px] sm:text-[11px] text-gray-500 mt-2 flex items-center gap-1">
-                    <CheckCircle2 size={12} className="text-green-600 shrink-0" /> 18 automated rules passing across ERP tables
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                  <div className="bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-100">
-                    <div className="text-[11px] sm:text-xs text-gray-500 mb-1">Table-Bound DPIA & PII</div>
-                    <div className="text-lg sm:text-xl font-bold text-gray-900 truncate">14 Tables</div>
-                    <div className="text-[9px] sm:text-[10px] text-emerald-600 font-medium mt-1 truncate">100% Schema Linked</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-100">
-                    <div className="text-[11px] sm:text-xs text-gray-500 mb-1">Living RoPA Inventory</div>
-                    <div className="text-lg sm:text-xl font-bold text-[#5b2d6e] truncate">PDPA / GDPR</div>
-                    <div className="text-[9px] sm:text-[10px] text-gray-500 mt-1 truncate">Zero spreadsheets</div>
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    LIVE ENGINE
                   </div>
                 </div>
 
-                <div className="bg-purple-50/50 rounded-xl p-4 border border-purple-100">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Sparkles size={14} className="text-[#5b2d6e]" />
-                    <span className="text-xs font-bold text-[#5b2d6e]">AI Governance Recommendation</span>
+                <div className="space-y-3.5">
+                  {/* Automated Quality Score */}
+                  <div className="bg-slate-900/80 rounded-2xl p-4 border border-slate-800">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-medium text-slate-300">Automated Data Quality Health</span>
+                      <span className="text-xl font-bold font-mono text-emerald-400">99.4%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                      <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 h-full rounded-full" style={{ width: '99.4%' }} />
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-2 flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" /> 
+                      <span>24 validation rules continuously enforced across PostgreSQL &amp; Snowflake</span>
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    "Identified 42 duplicate Customer IDs between NetSuite and PostgreSQL. Golden record created with 98.4% match confidence."
-                  </p>
-                </div>
 
-                <div className="flex items-center justify-between text-xs text-gray-400 pt-2 border-t border-gray-100">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    Continuous monitoring active
-                  </span>
-                  <span>Latency: 48ms</span>
+                  {/* 2-column Telemetry Grid */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-slate-900/80 rounded-2xl p-3.5 border border-slate-800">
+                      <div className="text-[11px] text-slate-400 mb-1">Table-Bound DPIA &amp; PII</div>
+                      <div className="text-base sm:text-lg font-bold font-mono text-white truncate">14 Tables</div>
+                      <div className="text-[10px] text-emerald-400 font-medium mt-1 flex items-center gap-1 truncate">
+                        <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                        100% Schema Linked
+                      </div>
+                    </div>
+                    <div className="bg-slate-900/80 rounded-2xl p-3.5 border border-slate-800">
+                      <div className="text-[11px] text-slate-400 mb-1">Living RoPA Inventory</div>
+                      <div className="text-base sm:text-lg font-bold font-mono text-purple-300 truncate">PDPA &amp; GDPR</div>
+                      <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1 truncate">
+                        <span className="w-1 h-1 rounded-full bg-purple-400" />
+                        Zero spreadsheets
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* AI Governance Synthesis Alert */}
+                  <div className="bg-purple-950/30 rounded-2xl p-4 border border-purple-800/40">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <Sparkles size={14} className="text-purple-300" />
+                        <span className="text-xs font-bold text-purple-200">Autonomous Reclassification &amp; Lineage</span>
+                      </div>
+                      <span className="text-[10px] font-mono text-slate-400">18ms</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed font-mono">
+                      Detected schema migration on <code className="text-purple-300 bg-purple-900/40 px-1 py-0.5 rounded">users_v2</code>: Auto-classified NRIC &amp; Phone, bound to DPIA-2026-08, applied SHA-256 masking rule.
+                    </p>
+                  </div>
+
+                  {/* Telemetry Status Bar */}
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-800/80 font-mono">
+                    <span className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      Continuous Schema Sync Active
+                    </span>
+                    <span>Latency: 28ms</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Floating badges */}
-            <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg border border-gray-100 p-3 hidden sm:flex items-center gap-2 animate-bounce" style={{ animationDuration: '4s' }}>
-              <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
-                <Shield size={16} className="text-emerald-700" />
+            {/* Static Professional Badges (No childish bounce) */}
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-600">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
+                <Shield size={13} className="text-slate-900" />
+                <span>Zero Raw Data Retention</span>
               </div>
-              <div>
-                <div className="text-xs font-semibold text-gray-800">Table-Bound DPIA & RoPA</div>
-                <div className="text-[10px] text-gray-500">Live DB table binding</div>
-              </div>
-            </div>
-
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg border border-gray-100 p-3 hidden sm:flex items-center gap-2 animate-bounce" style={{ animationDuration: '5s' }}>
-              <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <Brain size={16} className="text-[#5b2d6e]" />
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-gray-800">Natural Language SQL</div>
-                <div className="text-[10px] text-gray-400">Plain English querying</div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
+                <Brain size={13} className="text-slate-900" />
+                <span>Air-Gapped &amp; Sovereign Ready</span>
               </div>
             </div>
           </div>

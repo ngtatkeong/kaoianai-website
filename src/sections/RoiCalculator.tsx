@@ -35,10 +35,10 @@ export default function RoiCalculator() {
             <span>Interactive ROI & Risk Estimator</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Calculate Your SME's Data Savings
+            Calculate Your Data Team Savings &amp; ROI
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            See how much time and budget KaoinAI saves your team compared to manual validation scripts or enterprise consultants.
+            See how much engineering time and compliance budget KaoinAI saves your organization compared to manual validation scripts or legacy enterprise consulting.
           </p>
         </div>
 
