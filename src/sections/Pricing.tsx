@@ -8,8 +8,7 @@ import {
   Wrench, 
   Zap, 
   Cloud, 
-  Server,
-  Lock
+  Server
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { trackEvent } from '@/lib/analytics'
@@ -36,14 +35,14 @@ const plans: PricingPlan[] = [
   {
     name: 'Starter',
     badge: 'Essential Governance',
-    cloudMonthly: 490,
-    cloudAnnual: 390,
+    cloudMonthly: 590,
+    cloudAnnual: 490,
     cloudSetup: 990,
-    onpremMonthly: 790,
-    onpremAnnual: 650,
-    onpremSetup: 1990,
-    descriptionCloud: 'Autonomous PII detection and automated data health in our managed Singapore cloud.',
-    descriptionOnPrem: 'Self-hosted Docker container inside your private AWS/GCP VPC or local server.',
+    onpremMonthly: 390,
+    onpremAnnual: 320,
+    onpremSetup: 990,
+    descriptionCloud: 'Includes KaoinAI-managed AWS Singapore cluster, automated updates, daily backups, and bundled query compute.',
+    descriptionOnPrem: 'Leaner software license for Docker in your private AWS/GCP VPC or local server. Customer provides compute.',
     highlight: false,
     featuresCloud: [
       'Up to 3 Connected Data Sources (Postgres, Snowflake, RDS)',
@@ -68,14 +67,14 @@ const plans: PricingPlan[] = [
   {
     name: 'Growth',
     badge: 'Enterprise Standard • Most Selected',
-    cloudMonthly: 990,
-    cloudAnnual: 790,
+    cloudMonthly: 1290,
+    cloudAnnual: 990,
     cloudSetup: 1990,
-    onpremMonthly: 1490,
-    onpremAnnual: 1190,
-    onpremSetup: 2990,
-    descriptionCloud: 'Complete autonomous catalog, column lineage, and MDM in managed cloud.',
-    descriptionOnPrem: 'High-security Kubernetes / VPC cluster for regulated fintech, health, and commerce.',
+    onpremMonthly: 890,
+    onpremAnnual: 690,
+    onpremSetup: 1990,
+    descriptionCloud: 'Complete autonomous catalog, column lineage, and MDM with full KaoinAI-managed AWS hosting and LLM compute included.',
+    descriptionOnPrem: 'High-security Kubernetes / VPC cluster for regulated fintech, health, and commerce. Customer provides compute.',
     highlight: true,
     featuresCloud: [
       'Up to 10 Connected Data Sources (DBs, CRMs, ERPs, APIs)',
@@ -104,14 +103,14 @@ const plans: PricingPlan[] = [
   {
     name: 'Enterprise',
     badge: 'Custom Scale & Air-Gapped',
-    cloudMonthly: 2490,
-    cloudAnnual: 1990,
+    cloudMonthly: 3490,
+    cloudAnnual: 2790,
     cloudSetup: 3990,
-    onpremMonthly: 3990,
-    onpremAnnual: 3290,
-    onpremSetup: 5990,
-    descriptionCloud: 'Dedicated multi-tenant isolated cluster with custom RBAC and strict SLAs.',
-    descriptionOnPrem: 'Full air-gapped sovereign deployment with customer KMS/HSM and multi-region clusters.',
+    onpremMonthly: 2490,
+    onpremAnnual: 1990,
+    onpremSetup: 3990,
+    descriptionCloud: 'Dedicated isolated cloud cluster with custom RBAC, private VPC peering, 99.9% SLA, and all hosting compute included.',
+    descriptionOnPrem: 'Full air-gapped sovereign deployment inside your private VPC/HSM. Zero data egress, customer provides hardware.',
     highlight: false,
     featuresCloud: [
       'Unlimited Connected Data Sources & Warehouses',
@@ -229,16 +228,16 @@ export default function Pricing() {
           </div>
 
           {/* Dynamic Sub-banner explaining selected deployment mode */}
-          <div className="mt-4 text-xs font-medium text-slate-500 max-w-xl mx-auto">
+          <div className="mt-4 text-xs font-medium text-slate-500 max-w-2xl mx-auto">
             {isOnPrem ? (
-              <span className="inline-flex items-center gap-1.5 text-amber-900 bg-amber-50 px-3 py-1 rounded-lg border border-amber-200">
-                <Lock size={13} className="text-amber-700" />
-                <span><strong>On-Premises Mode:</strong> Deployed in your private VPC/Kubernetes. Zero external egress, complete data sovereignty.</span>
+              <span className="inline-flex items-center gap-1.5 text-slate-800 bg-slate-100 px-3.5 py-1.5 rounded-lg border border-slate-200">
+                <Server size={13} className="text-slate-700" />
+                <span><strong>Self-Hosted Software License:</strong> Lower pricing because you provide your own AWS/VPC compute. Zero external data egress.</span>
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-slate-700 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">
+              <span className="inline-flex items-center gap-1.5 text-purple-900 bg-purple-50 px-3.5 py-1.5 rounded-lg border border-purple-200">
                 <Cloud size={13} className="text-purple-700" />
-                <span><strong>Managed Cloud Mode:</strong> Zero infrastructure maintenance. Automated updates, daily backups in Singapore AWS region.</span>
+                <span><strong>Fully Managed Cloud:</strong> Zero infrastructure setup. Includes KaoinAI-managed AWS Singapore compute, backups, and 99.9% SLA.</span>
               </span>
             )}
           </div>

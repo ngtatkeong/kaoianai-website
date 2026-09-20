@@ -41,7 +41,7 @@ const comparisonData: ComparisonRow[] = [
     feature: 'Annual Total Cost of Ownership',
     description: 'Licensing, infrastructure, and required consulting hours',
     kaoinai: {
-      highlight: '$4,680 – $9,480 / yr ($390–$790/mo) • Setup fee waived on annual',
+      highlight: '$3,840 – $11,880 / yr ($320–$990/mo) • Setup fee waived on annual',
       positive: true
     },
     legacy: {
