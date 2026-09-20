@@ -67,7 +67,7 @@ const plans: PricingPlan[] = [
   },
   {
     name: 'Growth',
-    badge: 'Most Popular • 80%+ Less than Atlan',
+    badge: 'Enterprise Standard • Most Selected',
     cloudMonthly: 990,
     cloudAnnual: 790,
     cloudSetup: 1990,
@@ -244,51 +244,6 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Design Partner Program Executive Callout */}
-        <div className="max-w-5xl mx-auto mb-12 p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 relative z-10">
-            <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0 shadow-inner">
-              <Sparkles size={28} className="text-purple-300" />
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-200 text-xs font-semibold uppercase tracking-wider mb-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Founding Design Partner Program</span>
-                <span>•</span>
-                <span>3 Enterprise Cohort Openings</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                6 Months Platform Licensing & Architecture Setup Waived
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl leading-relaxed">
-                Partner with KaoinAI engineering to shape autonomous governance for your stack. Selected teams receive complimentary white-glove deployment ({isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}) and 6 months of the complete Growth tier (up to {isOnPrem ? '$10,430' : '$7,930'} in waived fees).
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto relative z-10">
-            <Button
-              size="lg"
-              className="bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs sm:text-sm px-6 py-4 rounded-xl shadow transition-colors"
-              onClick={() => {
-                trackEvent('click_cta', { location: 'pricing', label: `Apply Design Partner Program (${deploymentMode})` })
-                document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Apply for Cohort
-              <ArrowRight size={14} className="ml-1.5" />
-            </Button>
-            <a
-              href={getWhatsAppUrl(`Hi KaoinAI, I would like to inquire about the Enterprise Design Partner Program for our team (${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}).`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
-            >
-              <span>Speak with Engineering</span>
-            </a>
-          </div>
-        </div>
-
         {/* Pricing Cards Grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-14">
           {plans.map((plan, i) => {
@@ -443,7 +398,50 @@ export default function Pricing() {
           </div>
 
           <div className="mt-5 pt-4 border-t border-gray-100 text-center text-xs text-purple-900 font-semibold">
-            ✨ Pro-tip: Choose Annual Billing or apply as one of our First 3 Launch Customers to get the entire Setup & Deployment package 100% Waived.
+            ✨ Enterprise Advantage: Select Annual Billing to receive the complete Architecture Onboarding &amp; Hardening Package 100% waived.
+          </div>
+        </div>
+
+        {/* Executive Design Partner Program */}
+        <div className="max-w-4xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 relative z-10">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/10 text-white flex items-center justify-center shrink-0">
+              <Sparkles size={24} className="text-purple-300" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-200 text-xs font-semibold uppercase tracking-wider mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Enterprise Design Partner Cohort</span>
+              </div>
+              <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                Co-Architect Custom Connectors with Core Engineering
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1.5 max-w-xl leading-relaxed">
+                We accept a limited cohort of 3 regulated enterprise teams in Singapore &amp; ASEAN. Selected partners receive dedicated solutions architecture, custom pipeline prioritization, and waived deployment fees.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2.5 shrink-0 w-full md:w-auto relative z-10">
+            <Button
+              size="lg"
+              className="bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow transition-colors"
+              onClick={() => {
+                trackEvent('click_cta', { location: 'pricing', label: `Apply Design Partner Cohort (${deploymentMode})` })
+                document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Apply for Cohort
+              <ArrowRight size={14} className="ml-1.5" />
+            </Button>
+            <a
+              href={getWhatsAppUrl(`Hi KaoinAI, I would like to inquire about the Enterprise Design Partner Program for our team (${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}).`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+            >
+              <span>Schedule Briefing</span>
+            </a>
           </div>
         </div>
       </div>

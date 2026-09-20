@@ -197,7 +197,7 @@ export default function Navigation() {
                 className="bg-gradient-brand text-white hover:opacity-95 text-xs font-semibold px-4 sm:px-5 py-2 shadow-sm rounded-lg"
                 onClick={handleStartTrial}
               >
-                Start Free Trial
+                Deploy 14-Day Pilot
                 <ArrowRight size={13} className="ml-1.5" />
               </Button>
             </div>
@@ -339,14 +339,14 @@ export default function Navigation() {
               className="w-full bg-gradient-brand text-white text-sm font-semibold py-3.5 rounded-xl shadow-md active:scale-[0.98] transition-all"
               onClick={handleStartTrial}
             >
-              Start 14-Day Free Trial
+              Deploy 14-Day Pilot
               <ArrowRight size={15} className="ml-1.5" />
             </Button>
           </div>
 
           {/* Footer note inside mobile menu */}
           <div className="text-center pt-2 text-xs text-gray-400">
-            <span>Enterprise AI Data Governance for SMEs</span>
+            <span>Autonomous Data Governance &amp; Living Compliance</span>
           </div>
         </nav>
       </div>

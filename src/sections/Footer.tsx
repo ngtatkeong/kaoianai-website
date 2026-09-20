@@ -41,7 +41,7 @@ export default function Footer() {
               <img src="/logo.png" alt="KaoinAI Enterprise AI Data" width="160" height="36" className="h-9 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed max-w-sm text-gray-400">
-              Empowering SMEs with AI-native Data Governance, Quality monitoring, Master Data Management, and automated PII Detection.
+              Autonomous Data Governance, Table-Bound DPIA &amp; RoPA, Column Lineage, and Master Data Management for regulated enterprises and agile engineering teams.
             </p>
             <div className="space-y-2.5 pt-2">
               {/* WhatsApp direct contact channel */}

@@ -55,14 +55,14 @@ export default function CTA() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-200 text-xs font-semibold mb-6">
           <Sparkles size={14} className="text-purple-300" />
-          <span>Founding Partner Cohort: Complimentary Architecture Onboarding</span>
+          <span>Enterprise Security • Singapore PDPA &amp; MAS TRM Compliant</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight">
-          Ready to Take Control of Your SME Data?
+          Ready to Automate Your Data Governance?
         </h2>
-        <p className="text-sm sm:text-lg text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-          Join SMEs that use KaoinAI to automate data quality checks, eliminate PII risk, and synchronize master records — with zero complex coding.
+        <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+          Join engineering and compliance leaders who trust KaoinAI to automate table-bound DPIAs, detect schema drift, and eliminate PII exposure in under 48 hours.
         </p>
 
         {submitted ? (
@@ -107,9 +107,9 @@ export default function CTA() {
                 type="submit"
                 disabled={loading}
                 size="lg"
-                className="bg-gradient-brand text-white hover:opacity-90 transition-opacity px-8 py-5 sm:py-6 text-sm font-semibold whitespace-nowrap group w-full sm:w-auto rounded-xl shadow-lg"
+                className="bg-white text-slate-950 hover:bg-slate-100 transition-colors px-8 py-5 sm:py-6 text-sm font-semibold whitespace-nowrap group w-full sm:w-auto rounded-xl shadow-lg"
               >
-                {loading ? 'Starting...' : 'Start Free Trial'}
+                {loading ? 'Initiating...' : 'Deploy 14-Day Pilot'}
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </form>
@@ -119,10 +119,10 @@ export default function CTA() {
                 <CheckCircle2 size={14} className="text-green-400" /> No credit card required
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-green-400" /> 5-minute setup
+                <CheckCircle2 size={14} className="text-green-400" /> Zero raw data stored
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-green-400" /> Cancel anytime
+                <CheckCircle2 size={14} className="text-green-400" /> VPC or Cloud in 48 Hours
               </span>
             </div>
 

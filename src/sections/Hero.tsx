@@ -15,48 +15,46 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:py-32 lg:py-40">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-xs sm:text-sm font-medium">
-                <Sparkles size={15} />
-                <span>AI-Powered Data Intelligence for SMEs</span>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
+                <Sparkles size={14} className="text-[#7c3aed]" />
+                <span>Autonomous Data Intelligence</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/80 border border-slate-200/80 text-slate-700 text-xs sm:text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                <span className="text-slate-600 font-medium">Design Partner Program:</span>
-                <span className="text-[#5b2d6e] font-semibold">Complimentary Onboarding</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span className="text-slate-300">Singapore PDPA &amp; MAS TRM</span>
+                <span className="text-purple-300 font-semibold">• Live Schema Binding</span>
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900">
-              Enterprise Data Tools,
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-950">
+              Autonomous Data Governance
               <br />
-              <span className="text-gradient">Now Accessible for SMEs</span>
+              <span className="text-gradient">&amp; Living Compliance</span>
             </h1>
 
-            <p className="text-sm sm:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Data Governance, Table-Bound DPIA & Data Inventories, Quality monitoring, and Master Data Management (MDM) — 
-              capabilities that once required millions and armies of consultants, now delivered in an 
-              affordable AI platform.
+            <p className="text-sm sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              Connect PostgreSQL, Snowflake, RDS, and ERPs in minutes. Automate physical table-level DPIAs, living RoPA registers, column-level lineage, and master data quality — with zero multi-month consulting overhead.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-gradient-brand text-white hover:opacity-90 transition-opacity px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-md"
+                className="w-full sm:w-auto bg-slate-950 text-white hover:bg-slate-800 transition-colors px-7 py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-lg"
                 onClick={() => {
-                  trackEvent('click_cta', { location: 'hero', label: 'Hero Start Free Trial' })
+                  trackEvent('click_cta', { location: 'hero', label: 'Deploy 14-Day Pilot' })
                   document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                Start 14-Day Free Trial
+                Deploy 14-Day Pilot
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-purple-200 text-[#5b2d6e] hover:bg-purple-50 px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-xl"
+                className="w-full sm:w-auto border-slate-200 text-slate-800 hover:bg-slate-50 px-7 py-6 text-sm sm:text-base font-semibold rounded-xl"
                 onClick={() => {
-                  trackEvent('click_cta', { location: 'hero', label: 'Hero Try Interactive Demo' })
+                  trackEvent('click_cta', { location: 'hero', label: 'Hero Launch Interactive Demo' })
                   const el = document.getElementById('demo')
                   if (el) {
                     const yOffset = -76
@@ -66,7 +64,7 @@ export default function Hero() {
                 }}
               >
                 <Terminal size={17} className="mr-2 text-purple-600" />
-                Try Interactive Demo
+                Launch Interactive Demo
               </Button>
             </div>
 
