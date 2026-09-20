@@ -20,9 +20,10 @@ export default function Hero() {
                 <Sparkles size={15} />
                 <span>AI-Powered Data Intelligence for SMEs</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm font-bold">
-                <span>🔥 Launch Offer:</span>
-                <span className="text-[#5b2d6e] font-extrabold">$0 for First 3 Customers</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/80 border border-slate-200/80 text-slate-700 text-xs sm:text-sm font-medium">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                <span className="text-slate-600 font-medium">Design Partner Program:</span>
+                <span className="text-[#5b2d6e] font-semibold">Complimentary Onboarding</span>
               </div>
             </div>
 

@@ -53,9 +53,9 @@ export default function CTA() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-200 text-xs font-semibold mb-6">
-          <Sparkles size={14} className="text-amber-300" />
-          <span>🔥 Limited Launch Promo: $0 for First 3 Customers (2 Slots Left)</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-200 text-xs font-semibold mb-6">
+          <Sparkles size={14} className="text-purple-300" />
+          <span>Founding Partner Cohort: Complimentary Architecture Onboarding</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight">

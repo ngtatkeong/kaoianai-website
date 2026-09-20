@@ -4,7 +4,7 @@ import {
   CheckCircle2, 
   ArrowRight, 
   ShieldCheck, 
-  Gift, 
+  Sparkles, 
   Wrench, 
   Zap, 
   Cloud, 
@@ -99,7 +99,7 @@ const plans: PricingPlan[] = [
       'White-Glove On-Premise Installation & Hardening Call',
       'Dedicated Slack Connect & WhatsApp Senior Architect'
     ],
-    cta: 'Claim $0 Launch Slot'
+    cta: 'Apply for Growth Pilot'
   },
   {
     name: 'Enterprise',
@@ -244,45 +244,47 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* High-Impact Launch Special: $0 for First 3 Customers */}
-        <div className="max-w-5xl mx-auto mb-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-amber-500/10 border-2 border-amber-300 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-amber-400 text-amber-950 flex items-center justify-center shrink-0 shadow-md">
-              <Gift size={32} />
+        {/* Design Partner Program Executive Callout */}
+        <div className="max-w-5xl mx-auto mb-12 p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 relative z-10">
+            <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0 shadow-inner">
+              <Sparkles size={28} className="text-purple-300" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-200 text-amber-900 text-xs font-extrabold uppercase tracking-wider mb-2">
-                <span>🔥 Limited Time Launch Offer</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-200 text-xs font-semibold uppercase tracking-wider mb-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Founding Design Partner Program</span>
                 <span>•</span>
-                <span>Only 2 Slots Left</span>
+                <span>3 Enterprise Cohort Openings</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                $0 for First 3 Customers ({isOnPrem ? '$10,430 Value' : '$7,930 Value'})
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                6 Months Platform Licensing & Architecture Setup Waived
               </h3>
-              <p className="text-xs sm:text-sm text-slate-700 mt-1.5 max-w-xl leading-relaxed">
-                Be an early design partner: Get 6 months of our complete <strong>Growth Tier</strong> ({isOnPrem ? 'On-Premises / Private VPC' : 'Managed Cloud'} 100% Free) plus the <strong>Architecture Deployment & PDPA Audit Package completely waived</strong>.
+              <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl leading-relaxed">
+                Partner with KaoinAI engineering to shape autonomous governance for your stack. Selected teams receive complimentary white-glove deployment ({isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}) and 6 months of the complete Growth tier (up to {isOnPrem ? '$10,430' : '$7,930'} in waived fees).
               </p>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-2.5 shrink-0 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto relative z-10">
             <Button
               size="lg"
-              className="bg-gradient-brand text-white font-bold text-xs sm:text-sm px-6 py-4 rounded-xl shadow-md hover:opacity-90 transition-opacity"
+              className="bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs sm:text-sm px-6 py-4 rounded-xl shadow transition-colors"
               onClick={() => {
-                trackEvent('click_cta', { location: 'pricing', label: `Claim $0 Launch Special (${deploymentMode})` })
+                trackEvent('click_cta', { location: 'pricing', label: `Apply Design Partner Program (${deploymentMode})` })
                 document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
               }}
             >
-              Claim $0 Launch Slot
+              Apply for Cohort
               <ArrowRight size={14} className="ml-1.5" />
             </Button>
             <a
-              href={getWhatsAppUrl(`Hi KaoinAI, I would like to claim the $0 launch offer for the first 3 customers in ${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'} mode.`)}
+              href={getWhatsAppUrl(`Hi KaoinAI, I would like to inquire about the Enterprise Design Partner Program for our team (${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}).`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs shadow-sm transition-all"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
             >
-              <span>WhatsApp Us</span>
+              <span>Speak with Engineering</span>
             </a>
           </div>
         </div>
@@ -387,7 +389,7 @@ export default function Pricing() {
                     <ArrowRight size={15} className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                   <p className="text-[11px] text-center text-gray-400 mt-2">
-                    {plan.highlight ? 'First 3 customers get $0 + Waived Setup' : '14-day risk-free pilot'}
+                    {plan.highlight ? 'Design Partner Cohort: Setup Waived' : '14-day risk-free pilot'}
                   </p>
                 </div>
               </div>
