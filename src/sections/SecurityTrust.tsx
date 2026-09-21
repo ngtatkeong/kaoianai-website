@@ -45,14 +45,19 @@ const securityPillars = [
 
 const complianceItems = [
   {
-    name: 'Singapore PDPA & RoPA',
-    description: 'Living Data Inventory (RoPA) & statutory DPIAs bound directly to database tables containing PII.',
+    name: 'Singapore PDPA & MAS TRM',
+    description: 'Living Data Inventory (RoPA) & statutory DPIAs bound directly to physical database tables containing PII.',
     standard: 'Singapore Regulated'
   },
   {
-    name: 'Malaysia & Indonesia PDP',
-    description: 'Statutory compliance registers for Malaysia PDPA 2010 (2024 amendments) and Indonesia UU PDP No. 27/2022.',
-    standard: 'Regional ASEAN'
+    name: 'Malaysia PDPA (2024 Amendments)',
+    description: 'Data Inventory & Register of Processing Activities (Daftar Pemprosesan Data Peribadi) mandated under JPDP.',
+    standard: 'Malaysia JPDP'
+  },
+  {
+    name: 'Indonesia UU PDP (No. 27/2022)',
+    description: 'Inventaris Data Pribadi & Catatan Kegiatan Pemrosesan Data (Article 31 compliance) across local databases.',
+    standard: 'Indonesia Sovereign'
   },
   {
     name: 'MAS TRM Guidelines',

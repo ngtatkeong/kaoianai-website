@@ -31,7 +31,7 @@ export default function AnnouncementBar({ onDismiss }: AnnouncementBarProps) {
             <span>Architecture Release</span>
           </span>
           <span className="text-slate-700 text-xs sm:text-sm">
-            Table-Bound DPIA &amp; Living Data Inventory (RoPA) Engine now available for Singapore PDPA &amp; MAS TRM.
+            Table-Bound Living Data Inventory (RoPA) Engine now supports Singapore PDPA, Malaysia PDPA (2024), &amp; Indonesia UU PDP.
           </span>
           <button
             onClick={handleCtaClick}

@@ -80,35 +80,35 @@ const heroMessages: HeroMessage[] = [
   },
   {
     id: 'pii-compliance',
-    tabLabel: 'Table-Bound PII & DPIA',
-    badgeCategory: 'Living Compliance & Privacy Engineering',
-    badgeSecondary: 'Singapore PDPA & MAS TRM',
-    badgeSecondaryHighlight: '• Live Schema Binding',
-    headingMain: 'Table-Bound DPIA & RoPA',
-    headingGradient: 'Directly Anchored to Physical Schemas',
-    description: 'Stop managing statutory compliance in static spreadsheets that drift out of date. KaoinAI binds Data Protection Impact Assessments (DPIA) and Living RoPA inventories directly to your physical database tables and columns containing PII.',
+    tabLabel: 'Living Data Inventory (RoPA)',
+    badgeCategory: 'Living Data Inventory & Privacy Engineering',
+    badgeSecondary: 'Singapore PDPA • Malaysia PDPA • Indonesia UU PDP',
+    badgeSecondaryHighlight: '• Real-Time Schema Binding',
+    headingMain: 'Living Data Inventory (RoPA)',
+    headingGradient: 'Directly Anchored to Physical Schemas (SG, MY, ID)',
+    description: 'Stop managing statutory compliance in static spreadsheets that drift out of date. KaoinAI binds Living Data Inventories and DPIAs directly to your physical database tables and columns containing PII—natively mapped to Singapore PDPA (RoPA), Malaysia PDPA (Daftar Pemprosesan), and Indonesia UU PDP (Inventaris Data Pribadi).',
     trustBadges: [
-      { icon: Shield, label: 'Table-Bound DPIA & Living RoPA' },
-      { icon: Lock, label: 'Automated PII Discovery & Drift Alerts' },
-      { icon: Activity, label: 'Audit-Ready PDPA & MAS TRM Reports' }
+      { icon: Shield, label: 'Living Data Inventory (RoPA)' },
+      { icon: Lock, label: 'SG PDPA, MY PDPA & ID UU PDP Mapped' },
+      { icon: Activity, label: '1-Click Audit-Ready Statutory Exports' }
     ],
     telemetry: {
-      systemTag: 'kaoinai-telemetry // dpia_prod_sg',
-      statusBadge: 'COMPLIANCE ACTIVE',
-      healthTitle: 'Living RoPA & DPIA Schema Coverage',
+      systemTag: 'kaoinai-telemetry // data_inventory_mesh',
+      statusBadge: 'DATA INVENTORY SYNCED',
+      healthTitle: 'Living Data Inventory & Schema Coverage',
       healthScore: '100%',
       healthBarGradient: 'from-emerald-500 via-teal-500 to-indigo-500',
-      healthDesc: '14 physical production tables containing PII bound directly to active DPIA-2026-08',
+      healthDesc: '14 physical production tables containing PII bound directly to active Data Inventory',
       stat1Title: 'Table-Bound DPIA & PII',
       stat1Value: '14 Tables',
       stat1Status: '100% Schema Linked',
-      stat2Title: 'Living RoPA Inventory',
-      stat2Value: 'PDPA & GDPR',
-      stat2Status: 'Zero spreadsheets',
+      stat2Title: 'Regional Data Inventories',
+      stat2Value: 'SG, MY, ID & EU',
+      stat2Status: 'Multi-jurisdiction',
       alertTitle: 'Schema Migration & Drift Auto-Binding',
       alertLatency: '18ms',
       alertCode: 'users_v2',
-      alertMessage: 'Detected migration on users_v2: Auto-classified NRIC & Phone, bound to statutory DPIA-2026-08, applied dynamic column masking rule.'
+      alertMessage: 'Detected migration on users_v2: Auto-classified NRIC & Phone, bound to statutory Data Inventory, generated localized SG/MY/ID audit registers.'
     }
   },
   {
