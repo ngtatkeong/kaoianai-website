@@ -11,12 +11,14 @@ import CaseStudies from './sections/CaseStudies'
 import Comparison from './sections/Comparison'
 import HowItWorks from './sections/HowItWorks'
 import RoiCalculator from './sections/RoiCalculator'
+import MaturityRiskAudit from './sections/MaturityRiskAudit'
 import Pricing from './sections/Pricing'
 import KnowledgeCenter from './sections/KnowledgeCenter'
 import FAQ from './sections/FAQ'
 import CTA from './sections/CTA'
 import Footer from './sections/Footer'
 import Contact from './pages/Contact'
+import AuditPage from './pages/Audit'
 import WhatsAppButton from './components/WhatsAppButton'
 
 function ScrollToHash() {
@@ -54,6 +56,7 @@ function Home() {
       <CaseStudies />
       <Comparison />
       <HowItWorks />
+      <MaturityRiskAudit />
       <RoiCalculator />
       <Pricing />
       <KnowledgeCenter />
@@ -71,6 +74,8 @@ function App() {
       <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/audit" element={<AuditPage />} />
+          <Route path="/audit.html" element={<AuditPage />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

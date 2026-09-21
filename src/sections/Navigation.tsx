@@ -10,7 +10,8 @@ import {
   Lock,
   Users,
   Scale,
-  GraduationCap
+  GraduationCap,
+  ShieldAlert
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { trackEvent } from '@/lib/analytics'
@@ -20,6 +21,7 @@ import AnnouncementBar from '@/components/AnnouncementBar'
 const navLinks = [
   { label: 'Live Demo', href: '#demo', icon: Terminal },
   { label: 'Features', href: '#features', icon: Sparkles },
+  { label: 'Maturity Audit', href: '#audit', icon: ShieldAlert },
   { label: 'Security', href: '#security', icon: Lock },
   { label: 'Case Studies', href: '#case-studies', icon: Users },
   { label: 'Compare', href: '#compare', icon: Scale },

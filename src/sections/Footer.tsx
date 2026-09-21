@@ -13,6 +13,7 @@ const footerLinks = {
     { label: 'Ask Data in Plain English', href: '/#features' },
   ],
   Solutions: [
+    { label: 'Data Governance Maturity Audit', href: '/#audit' },
     { label: 'For Growing Startups & SMEs', href: '/#features' },
     { label: 'GDPR & PDPA Compliance', href: '/#faq' },
     { label: 'ERP Data Migration & Sync', href: '/#how-it-works' },

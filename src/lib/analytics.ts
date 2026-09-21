@@ -75,6 +75,14 @@ export type EventPayloads = {
   click_comparison_cta: {
     location: string;
   };
+  audit_select_option: {
+    question_id: number;
+    points: number;
+  };
+  audit_completed: {
+    final_score: number;
+  };
+  audit_restart: Record<string, never>;
 };
 
 export function trackEvent<K extends keyof EventPayloads>(
