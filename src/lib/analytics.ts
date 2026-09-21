@@ -83,6 +83,10 @@ export type EventPayloads = {
     final_score: number;
   };
   audit_restart: Record<string, never>;
+  select_hero_tab: {
+    tab: string;
+    label: string;
+  };
 };
 
 export function trackEvent<K extends keyof EventPayloads>(
