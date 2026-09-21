@@ -474,7 +474,7 @@ export default function Contact() {
                     <option value="Automated PII Detection">Automated PII Scanning & Masking</option>
                     <option value="Data Quality & MDM">Data Quality Monitoring & Golden Records</option>
                     <option value="ERP & Warehouse Connectors">ERP / Database Connectors & Setup</option>
-                    <option value="Pricing & Enterprise Pilot">Pricing & 14-Day Free Pilot</option>
+                    <option value="Pricing & Enterprise Pilot">Pricing &amp; $0 Founding Customer Cohort (First 3 Only)</option>
                     <option value="Other">Other / General Question</option>
                   </select>
                 </div>

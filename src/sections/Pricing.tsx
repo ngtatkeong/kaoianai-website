@@ -6,7 +6,6 @@ import {
   ShieldCheck, 
   Sparkles, 
   Wrench, 
-  Zap, 
   Cloud, 
   Server
 } from 'lucide-react'
@@ -62,7 +61,7 @@ const plans: PricingPlan[] = [
       'Assisted VPC Peering & Docker Compose Kickoff',
       'Standard Technical Support'
     ],
-    cta: 'Start 14-Day Free Pilot'
+    cta: 'Claim $0 Slot (Starter)'
   },
   {
     name: 'Growth',
@@ -98,7 +97,7 @@ const plans: PricingPlan[] = [
       'White-Glove On-Premise Installation & Hardening Call',
       'Dedicated Slack Connect & WhatsApp Senior Architect'
     ],
-    cta: 'Apply for Growth Pilot'
+    cta: 'Claim $0 Slot (Growth)'
   },
   {
     name: 'Enterprise',
@@ -131,7 +130,7 @@ const plans: PricingPlan[] = [
       '99.99% Architecture SLA with 1-Hour Severity-1 Response',
       'Dedicated Named Principal Architect on Call'
     ],
-    cta: 'Contact Sales / On-Prem VPC'
+    cta: 'Claim $0 Slot (Enterprise)'
   }
 ]
 
@@ -146,16 +145,25 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-xs sm:text-sm font-semibold mb-4 shadow-2xs">
-            <Zap size={15} />
-            <span>80%+ Less Expensive Than Legacy Giants (Atlan, Alation, Collibra)</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-50 via-purple-50 to-emerald-50 border border-emerald-300 text-emerald-900 text-xs sm:text-sm font-bold mb-4 shadow-xs">
+            <Sparkles size={15} className="text-emerald-600" />
+            <span>FOUNDING ENTERPRISE COHORT: $0 FOR FIRST 3 CUSTOMERS ONLY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Transparent Pricing: Cloud vs. On-Premises
+            Pricing: $0 for First 3 Customers Only
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Choose between our managed, secure cloud or a self-hosted private VPC deployment inside your firewall. No six-figure vendor lock-ins or mandatory multi-year commitments.
+            To establish our flagship reference architectures in Singapore &amp; ASEAN, <strong>pricing is $0 for our first 3 customers only</strong>. Full enterprise platform license, zero data egress deployment, and architecture onboarding are completely complimentary in exchange for collaboration &amp; product feedback.
           </p>
+
+          {/* Cohort Status Counter */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-emerald-200 shadow-xs text-xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-bold text-slate-800">Cohort Quota:</span>
+              <span className="text-emerald-700 font-semibold">1 Claimed (Fintech, SG) • 2 Slots Remaining at $0</span>
+            </div>
+          </div>
 
           {/* Controls: Deployment Mode & Billing Toggle */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 mt-10">
@@ -285,14 +293,24 @@ export default function Pricing() {
                   <p className="text-xs text-gray-500 mt-2 min-h-[32px]">{description}</p>
 
                   <div className="mt-6 mb-4">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-gray-900">
-                        ${price.toLocaleString()}
-                      </span>
-                      <span className="text-sm font-medium text-gray-500">/month</span>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold mb-2 shadow-2xs">
+                      <Sparkles size={11} className="text-emerald-600" />
+                      <span>First 3 Customers: $0 / mo</span>
                     </div>
-                    <div className="text-[11px] text-gray-500 mt-1">
-                      {isAnnual ? `Billed annually ($${(price * 12).toLocaleString()}/year)` : 'Billed monthly'}
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl sm:text-5xl font-extrabold text-[#5b2d6e]">
+                        $0
+                      </span>
+                      <span className="text-sm font-semibold text-gray-600">/month</span>
+                      <span className="text-sm font-medium text-gray-400 line-through">
+                        ${price.toLocaleString()}/mo
+                      </span>
+                    </div>
+                    <div className="text-[11px] text-emerald-700 font-bold mt-1.5">
+                      100% free for first 3 customers only • Standard ${price.toLocaleString()}/mo after
+                    </div>
+                    <div className="text-[10px] text-gray-500 mt-0.5">
+                      {isAnnual ? `Annual equivalent value: $${(price * 12).toLocaleString()}/year` : 'Monthly equivalent value'}
                     </div>
                   </div>
 
@@ -302,14 +320,10 @@ export default function Pricing() {
                       <span className="text-slate-600 font-medium">
                         {isOnPrem ? 'VPC Setup & Deployment:' : 'Architecture Onboarding:'}
                       </span>
-                      {isAnnual ? (
-                        <div className="flex items-center gap-1 font-bold text-emerald-700">
-                          <span className="line-through text-slate-400 font-normal">${setupFee.toLocaleString()}</span>
-                          <span>FREE (Waived)</span>
-                        </div>
-                      ) : (
-                        <span className="font-bold text-slate-900">${setupFee.toLocaleString()} One-Time</span>
-                      )}
+                      <div className="flex items-center gap-1.5 font-bold text-emerald-700">
+                        <span className="line-through text-slate-400 font-normal">${setupFee.toLocaleString()}</span>
+                        <span className="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded text-[11px] font-bold">$0 (Waived for First 3)</span>
+                      </div>
                     </div>
                   </div>
 
@@ -342,8 +356,8 @@ export default function Pricing() {
                     {plan.cta}
                     <ArrowRight size={15} className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <p className="text-[11px] text-center text-gray-400 mt-2">
-                    {plan.highlight ? 'Design Partner Cohort: Setup Waived' : '14-day risk-free pilot'}
+                  <p className="text-[11px] text-center text-emerald-700 font-semibold mt-2">
+                    🎯 First 3 Customers: $0 / mo (100% Free Lifetime Pilot)
                   </p>
                 </div>
               </div>
@@ -397,49 +411,49 @@ export default function Pricing() {
           </div>
 
           <div className="mt-5 pt-4 border-t border-gray-100 text-center text-xs text-purple-900 font-semibold">
-            ✨ Enterprise Advantage: Select Annual Billing to receive the complete Architecture Onboarding &amp; Hardening Package 100% waived.
+            ✨ Founding Cohort Guarantee: First 3 enterprise customers receive the complete Architecture Onboarding &amp; Software License 100% waived ($0).
           </div>
         </div>
 
-        {/* Executive Design Partner Program */}
+        {/* Founding Cohort ($0 for First 3 Customers) */}
         <div className="max-w-4xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-purple-500/30 shadow-2xl shadow-purple-950/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 relative z-10">
             <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0 shadow-sm">
-              <Sparkles size={24} className="text-purple-300" />
+              <Sparkles size={24} className="text-emerald-400" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-200 text-xs font-semibold uppercase tracking-wider mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Enterprise Design Partner Cohort</span>
+                <span>Founding Cohort • First 3 Customers Only</span>
               </div>
               <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                Co-Architect Custom Connectors with Core Engineering
+                Get Enterprise KaoinAI at $0 (100% Free for First 3 Customers)
               </h4>
               <p className="text-xs sm:text-sm text-slate-300 mt-1.5 max-w-xl leading-relaxed">
-                We accept a limited cohort of 3 regulated enterprise teams in Singapore &amp; ASEAN. Selected partners receive dedicated solutions architecture, custom pipeline prioritization, and waived deployment fees.
+                We are admitting our initial cohort of 3 regulated enterprise teams in Singapore &amp; ASEAN at <strong>$0 platform pricing</strong>. Selected partners receive dedicated solutions architecture, custom connector prioritization, and zero software licensing costs in exchange for product feedback and collaboration.
               </p>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-2.5 shrink-0 w-full md:w-auto relative z-10">
             <Button
               size="lg"
-              className="bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow transition-colors"
+              className="bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow transition-colors"
               onClick={() => {
-                trackEvent('click_cta', { location: 'pricing', label: `Apply Design Partner Cohort (${deploymentMode})` })
+                trackEvent('click_cta', { location: 'pricing', label: `Apply $0 Cohort (${deploymentMode})` })
                 document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
               }}
             >
-              Apply for Cohort
+              Claim $0 Slot
               <ArrowRight size={14} className="ml-1.5" />
             </Button>
             <a
-              href={getWhatsAppUrl(`Hi KaoinAI, I would like to inquire about the Enterprise Design Partner Program for our team (${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}).`)}
+              href={getWhatsAppUrl(`Hi KaoinAI, I would like to inquire about claiming one of the $0 founding customer slots for our team (${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}).`)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
             >
-              <span>Schedule Briefing</span>
+              <span>WhatsApp Inquiries</span>
             </a>
           </div>
         </div>
