@@ -75,3 +75,71 @@
     @apply backdrop-blur-xl bg-slate-950/80 border border-slate-800/80;
   }
 }
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate3d(35px, -45px, 0px) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-30px, 25px, 0px) scale(0.94);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate3d(-40px, 35px, 0px) scale(1.06);
+  }
+  66% {
+    transform: translate3d(30px, -35px, 0px) scale(0.95);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 36px 36px;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animated-grid-bg {
+  background-image: radial-gradient(rgba(124, 58, 237, 0.12) 1.2px, transparent 1.2px);
+  background-size: 36px 36px;
+  animation: gridDrift 35s linear infinite;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 40%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 40%, transparent 95%);
+}
+

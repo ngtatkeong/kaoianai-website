@@ -20,6 +20,7 @@ import Footer from './sections/Footer'
 import Contact from './pages/Contact'
 import AuditPage from './pages/Audit'
 import WhatsAppButton from './components/WhatsAppButton'
+import AnimatedBackground from './components/AnimatedBackground'
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation()
@@ -68,10 +69,11 @@ function Home() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-white selection:bg-purple-100 selection:text-[#5b2d6e] flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-[#faf9fe] selection:bg-purple-100 selection:text-[#5b2d6e] flex flex-col justify-between overflow-x-hidden relative">
+      <AnimatedBackground />
       <ScrollToHash />
       <Navigation />
-      <div className="flex-grow">
+      <div className="flex-grow relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/audit" element={<AuditPage />} />
@@ -79,7 +81,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
       <WhatsAppButton />
     </div>
   )

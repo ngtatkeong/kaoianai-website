@@ -202,15 +202,15 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-purple-50"
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50/60 via-transparent to-purple-50/40"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Ambient background decorations */}
+      {/* Ambient animated background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-red-200/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-100/40 to-red-100/30 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-10 w-80 h-80 bg-purple-300/25 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl animate-float-reverse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-r from-purple-200/30 via-indigo-100/20 to-teal-100/20 rounded-full blur-3xl animate-pulse-glow" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-36">
