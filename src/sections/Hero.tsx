@@ -18,7 +18,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
                 <Sparkles size={14} className="text-[#7c3aed]" />
-                <span>Autonomous Data Intelligence</span>
+                <span>Autonomous Data Governance for Enterprise AI</span>
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
@@ -30,11 +30,11 @@ export default function Hero() {
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-950">
               Autonomous Data Governance
               <br />
-              <span className="text-gradient">&amp; Living Compliance</span>
+              <span className="text-gradient">For Safe, Trustworthy AI</span>
             </h1>
 
             <p className="text-sm sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Connect PostgreSQL, Snowflake, RDS, and ERPs in minutes. Automate physical table-level DPIAs, living RoPA registers, column-level lineage, and master data quality — with zero multi-month consulting overhead.
+              AI is only as reliable as the data feeding it. Connect PostgreSQL, Snowflake, RDS, and ERPs in minutes. Eliminate LLM hallucinations, sanitize PII before prompt ingestion, and automate table-bound DPIAs and column-level lineage — with zero multi-month consulting overhead.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
@@ -70,16 +70,16 @@ export default function Hero() {
 
             <div className="flex flex-wrap items-center gap-5 pt-2 text-xs sm:text-sm text-gray-500">
               <div className="flex items-center gap-1.5">
+                <Brain size={16} className="text-[#5b2d6e]" />
+                <span>AI Governance &amp; Hallucination Guard</span>
+              </div>
+              <div className="flex items-center gap-1.5">
                 <Shield size={16} className="text-[#5b2d6e]" />
-                <span>Table-Bound DPIA & RoPA</span>
+                <span>Table-Bound DPIA &amp; RoPA</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Database size={16} className="text-[#5b2d6e]" />
-                <span>ERP & Cloud Agnostic</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Brain size={16} className="text-[#5b2d6e]" />
-                <span>AI-Native (Zero SQL Req.)</span>
+                <span>Zero SQL Required for AI Queries</span>
               </div>
             </div>
           </div>
@@ -147,12 +147,12 @@ export default function Hero() {
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
                         <Sparkles size={14} className="text-purple-300" />
-                        <span className="text-xs font-bold text-purple-200">Autonomous Reclassification &amp; Lineage</span>
+                        <span className="text-xs font-bold text-purple-200">AI Safety &amp; Lineage Guard Active</span>
                       </div>
                       <span className="text-[10px] font-mono text-slate-400">18ms</span>
                     </div>
                     <p className="text-xs text-slate-300 leading-relaxed font-mono">
-                      Detected schema migration on <code className="text-purple-300 bg-purple-900/40 px-1 py-0.5 rounded">users_v2</code>: Auto-classified NRIC &amp; Phone, bound to DPIA-2026-08, applied SHA-256 masking rule.
+                      Detected schema migration on <code className="text-purple-300 bg-purple-900/40 px-1 py-0.5 rounded">users_v2</code>: Auto-classified NRIC &amp; Phone, bound to DPIA-2026-08, blocked raw PII from LLM prompt ingestion.
                     </p>
                   </div>
 

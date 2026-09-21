@@ -25,7 +25,7 @@ const comparisonData: ComparisonRow[] = [
     feature: 'Time to Value & Setup',
     description: 'How long before you see your first data health scan and lineage map?',
     kaoinai: {
-      highlight: '< 15 Minutes (Instant schema discovery)',
+      highlight: '< 1 Day (Automated schema discovery & lineage mapping)',
       positive: true
     },
     legacy: {
@@ -254,7 +254,7 @@ export default function Comparison() {
                 Try KaoinAI risk-free for 14 days on your actual schema
               </h4>
               <p className="text-xs text-slate-600">
-                No credit card required • Zero raw data stored • Fully verified in 15 minutes
+                No credit card required • Zero raw data stored • First health scan delivered in under 1 day
               </p>
             </div>
           </div>

@@ -178,7 +178,7 @@ export default function CaseStudies() {
               Ready to achieve similar results for your company?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Get an automated data health audit on your database schema in under 15 minutes during your free 14-day pilot.
+              Get an automated data health audit and lineage map on your database schema in under 1 day during your free 14-day pilot.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
