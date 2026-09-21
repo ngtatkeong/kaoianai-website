@@ -1,24 +1,46 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
-import { ArrowRight, Menu, X } from 'lucide-react'
+import { ArrowRight, Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { trackEvent } from '@/lib/analytics'
 import { getWhatsAppUrl, WHATSAPP_NUMBER, WHATSAPP_DISPLAY } from '@/lib/whatsapp'
 import AnnouncementBar from '@/components/AnnouncementBar'
 
-// Unified navigation links - identical across desktop and mobile
-const navLinks = [
+// Primary links directly displayed on the desktop horizontal navbar
+const primaryNavLinks = [
   { label: 'Live Demo', href: '#demo' },
   { label: 'Features', href: '#features' },
   { label: 'Maturity Audit', href: '#audit' },
-  { label: 'Compare', href: '#compare' },
+  { label: 'Knowledge Center', href: '#knowledge-center' },
   { label: 'Pricing', href: '#pricing' },
+]
+
+// Secondary links neatly organized under the "More ▾" dropdown on desktop
+const moreLinks = [
+  { label: 'Security & Trust', href: '#security', description: 'Zero-egress, MAS TRM & PDPA blueprints' },
+  { label: 'Case Studies', href: '#case-studies', description: 'Enterprise reference architectures' },
+  { label: 'Compare vs Legacy', href: '#compare', description: 'KaoinAI vs Atlan, Alation, Collibra' },
+  { label: 'FAQ', href: '#faq', description: 'Frequently asked technical questions' },
+]
+
+// Complete directory for mobile screens
+const allMobileNavLinks = [
+  { label: 'Live Demo', href: '#demo' },
+  { label: 'Features', href: '#features' },
+  { label: 'Maturity Audit', href: '#audit' },
+  { label: 'Knowledge Center', href: '#knowledge-center' },
+  { label: 'Security & Trust', href: '#security' },
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Compare vs Legacy', href: '#compare' },
+  { label: 'Pricing ($0 First 3)', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '/contact' },
 ]
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
   const [hasAnnouncement, setHasAnnouncement] = useState(true)
   const location = useLocation()
   const navigate = useNavigate()
@@ -106,15 +128,15 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Horizontal Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {navLinks.map((link) => {
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+              {primaryNavLinks.map((link) => {
                 const isActive = link.href.startsWith('/') && location.pathname === link.href
                 return (
                   <a
                     key={link.href}
                     href={isContactPage && link.href.startsWith('#') ? '/' + link.href : link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
+                    className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer whitespace-nowrap ${
                       isActive
                         ? 'text-[#5b2d6e] font-bold underline underline-offset-8'
                         : 'text-gray-600 hover:text-[#5b2d6e]'
@@ -124,6 +146,60 @@ export default function Navigation() {
                   </a>
                 )
               })}
+
+              {/* Desktop "More" Dropdown Menu */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setMoreOpen(true)}
+                onMouseLeave={() => setMoreOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setMoreOpen(!moreOpen)}
+                  className="flex items-center gap-1 text-sm font-semibold tracking-wide text-gray-600 hover:text-[#5b2d6e] transition-colors cursor-pointer py-1"
+                  aria-expanded={moreOpen}
+                >
+                  <span>More</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {moreOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="bg-white/98 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-100 p-2 space-y-1">
+                      {moreLinks.map((item) => (
+                        <a
+                          key={item.href}
+                          href={isContactPage && item.href.startsWith('#') ? '/' + item.href : item.href}
+                          onClick={(e) => {
+                            setMoreOpen(false)
+                            handleNavClick(e, item.href)
+                          }}
+                          className="block p-2.5 rounded-xl hover:bg-purple-50 transition-colors group cursor-pointer"
+                        >
+                          <div className="text-xs font-bold text-gray-900 group-hover:text-[#5b2d6e]">
+                            {item.label}
+                          </div>
+                          <div className="text-[11px] text-gray-500 line-clamp-1">
+                            {item.description}
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Contact Link */}
+              <Link
+                to="/contact"
+                className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
+                  isContactPage
+                    ? 'text-[#5b2d6e] font-bold underline underline-offset-8'
+                    : 'text-gray-600 hover:text-[#5b2d6e]'
+                }`}
+              >
+                Contact
+              </Link>
             </nav>
 
             {/* Desktop Action Buttons */}
@@ -185,10 +261,10 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Dropdown (Identical items to horizontal menu) */}
+        {/* Mobile Dropdown (Complete all-section directory) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 bg-white/98 backdrop-blur-xl px-4 py-4 space-y-2 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
-            {navLinks.map((link) => (
+          <div className="lg:hidden border-t border-gray-100 bg-white/98 backdrop-blur-xl px-4 py-4 space-y-1.5 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+            {allMobileNavLinks.map((link) => (
               <a
                 key={link.href}
                 href={isContactPage && link.href.startsWith('#') ? '/' + link.href : link.href}
