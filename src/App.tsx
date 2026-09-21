@@ -69,7 +69,7 @@ function Home() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#faf9fe] selection:bg-purple-100 selection:text-[#5b2d6e] flex flex-col justify-between overflow-x-hidden relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#fcfbfe] via-[#f8f3fe]/80 to-[#fcfbfe] selection:bg-purple-100 selection:text-[#5b2d6e] flex flex-col justify-between overflow-x-hidden relative">
       <AnimatedBackground />
       <ScrollToHash />
       <Navigation />

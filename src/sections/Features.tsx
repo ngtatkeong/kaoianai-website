@@ -118,7 +118,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 sm:py-32 bg-gray-50 scroll-mt-20">
+    <section id="features" className="py-24 sm:py-32 bg-slate-50/50 backdrop-blur-[2px] scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-sm font-semibold mb-4 shadow-2xs">

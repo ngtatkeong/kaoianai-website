@@ -87,6 +87,14 @@ export type EventPayloads = {
     tab: string;
     label: string;
   };
+  book_calendar_slot: {
+    name: string;
+    email: string;
+    duration: number;
+    date: string;
+    time: string;
+    ref: string;
+  };
 };
 
 export function trackEvent<K extends keyof EventPayloads>(

@@ -202,7 +202,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50/60 via-transparent to-purple-50/40"
+      className="relative min-h-screen flex items-center overflow-hidden bg-transparent"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
