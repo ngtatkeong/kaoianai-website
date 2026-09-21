@@ -10,7 +10,9 @@ import {
   Lock,
   Layers,
   Activity,
-  ChevronRight
+  ChevronRight,
+  Menu,
+  X
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { trackEvent } from '@/lib/analytics'
@@ -184,6 +186,7 @@ export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [animating, setAnimating] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   // Auto-alternate every 7 seconds unless hovered/paused
   useEffect(() => {
@@ -225,28 +228,78 @@ export default function Hero() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:py-32 lg:py-36">
-        {/* Interactive Alternating Category Tabs */}
-        <div className="mb-8 flex flex-wrap items-center justify-center lg:justify-start gap-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mr-1 hidden sm:inline-block">
-            Key Pillars:
-          </span>
-          {heroMessages.map((msg, idx) => {
-            const isActive = idx === activeIndex
-            return (
-              <button
-                key={msg.id}
-                onClick={() => handleSelectMessage(idx)}
-                className={`text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${
-                  isActive
-                    ? 'bg-slate-900 text-white shadow-md shadow-slate-900/10 scale-102 border border-slate-700'
-                    : 'bg-white/80 hover:bg-slate-100 text-slate-600 border border-slate-200/80 hover:text-slate-900'
-                }`}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-purple-400 animate-pulse' : 'bg-slate-300'}`} />
-                {msg.tabLabel}
-              </button>
-            )
-          })}
+        {/* Vertical Pillar Navigation & Hamburger Menu */}
+        <div className="mb-8 relative z-20">
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            {/* Hamburger / Quick-Selector Trigger Button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/90 hover:bg-white text-slate-800 border border-purple-200/80 shadow-md shadow-purple-950/5 text-xs sm:text-sm font-semibold transition-all cursor-pointer backdrop-blur-md"
+              aria-expanded={menuOpen}
+            >
+              <div className="w-5 h-5 rounded-lg bg-purple-100 text-[#5b2d6e] flex items-center justify-center shrink-0">
+                {menuOpen ? <X size={13} /> : <Menu size={13} />}
+              </div>
+              <span className="text-slate-500 font-normal">Pillar:</span>
+              <span className="font-bold text-slate-900">{current.tabLabel}</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200 ml-1">
+                {activeIndex + 1} of {heroMessages.length}
+              </span>
+            </button>
+
+            <span className="text-xs text-slate-600 hidden sm:inline-flex items-center gap-1.5 font-medium">
+              <span className="w-2 h-2 rounded-full bg-purple-500 animate-ping" />
+              <span>Auto-rotates every 7s • Click pillar or toggle menu to lock</span>
+            </span>
+          </div>
+
+          {/* Vertical Dropdown / Drawer Menu */}
+          {menuOpen && (
+            <div className="absolute top-full left-0 mt-2 w-full sm:w-96 bg-white/95 rounded-2xl border border-purple-200/80 shadow-2xl shadow-purple-950/15 p-2 backdrop-blur-2xl z-30 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 flex items-center justify-between">
+                <span>Select Architecture Focus:</span>
+                <span className="text-[10px] text-purple-600 lowercase font-mono">4 core pillars</span>
+              </div>
+              <div className="space-y-1 mt-1">
+                {heroMessages.map((msg, idx) => {
+                  const isActive = idx === activeIndex
+                  return (
+                    <button
+                      key={msg.id}
+                      onClick={() => {
+                        handleSelectMessage(idx)
+                        setMenuOpen(false)
+                      }}
+                      className={`w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 cursor-pointer ${
+                        isActive
+                          ? 'bg-purple-50 text-[#5b2d6e] font-bold border border-purple-200 shadow-xs'
+                          : 'hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-transparent'
+                      }`}
+                    >
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
+                        isActive ? 'bg-[#5b2d6e] text-white' : 'bg-slate-100 text-slate-500'
+                      }`}>
+                        <span className="text-xs font-mono font-bold">{idx + 1}</span>
+                      </div>
+                      <div className="flex-grow min-w-0">
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm font-semibold truncate">{msg.tabLabel}</div>
+                          {isActive && (
+                            <span className="text-[10px] font-mono font-bold text-purple-700 bg-purple-100 px-2 py-0.2 rounded-full">
+                              ACTIVE
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-xs text-slate-500 font-normal line-clamp-1 mt-0.5">
+                          {msg.headingGradient}
+                        </div>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
