@@ -323,46 +323,46 @@ export default function InteractiveDemo() {
         </div>
 
         {/* Main Terminal Window */}
-        <div className="bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden mb-12">
+        <div className="bg-gradient-to-b from-slate-900/95 via-slate-950/95 to-[#0b0816]/95 rounded-2xl border border-purple-500/25 shadow-2xl shadow-purple-950/30 overflow-hidden mb-12 backdrop-blur-2xl">
           {/* Terminal Window Header */}
-          <div className="bg-slate-900/90 border-b border-slate-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex flex-wrap items-center justify-between gap-3 backdrop-blur-md">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="ml-2 font-mono text-xs text-slate-400 flex items-center gap-1.5">
-                <Terminal size={13} /> kaoinai-agent // live_engine
+              <div className="w-3 h-3 rounded-full bg-red-400/80" />
+              <div className="w-3 h-3 rounded-full bg-amber-400/80" />
+              <div className="w-3 h-3 rounded-full bg-emerald-400/80" />
+              <span className="ml-2 font-mono text-xs text-slate-300 flex items-center gap-1.5">
+                <Terminal size={13} className="text-purple-400" /> kaoinai-agent // live_engine
               </span>
             </div>
 
             {/* Performance metrics pill */}
             <div className="flex items-center gap-3 text-xs font-mono">
-              <span className="inline-flex items-center gap-1 text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-800/60">
+              <span className="inline-flex items-center gap-1 text-emerald-300 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-400/30">
                 <Clock size={12} /> {activeScenario.executionTime}
               </span>
-              <span className="inline-flex items-center gap-1 text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded border border-purple-800/60">
+              <span className="inline-flex items-center gap-1 text-purple-200 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-400/30">
                 <CheckCircle2 size={12} /> {activeScenario.confidenceScore} match
               </span>
             </div>
           </div>
 
           {/* Prompt Bar */}
-          <div className="p-4 sm:p-5 bg-slate-900/50 border-b border-slate-800/80 flex items-start gap-3">
-            <div className="w-7 h-7 rounded-lg bg-purple-600/30 text-purple-300 flex items-center justify-center shrink-0 mt-0.5">
+          <div className="p-4 sm:p-5 bg-white/[0.03] border-b border-white/10 flex items-start gap-3 backdrop-blur-md">
+            <div className="w-7 h-7 rounded-lg bg-purple-600/30 text-purple-300 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
               <Play size={14} className="fill-purple-300" />
             </div>
             <div className="flex-grow">
-              <div className="text-xs font-mono uppercase tracking-wider text-purple-400 font-semibold mb-1">
+              <div className="text-xs font-mono uppercase tracking-wider text-purple-300 font-semibold mb-1">
                 Natural Language Query Input:
               </div>
-              <div className="text-sm sm:text-base font-medium text-slate-100">
+              <div className="text-sm sm:text-base font-medium text-white">
                 &ldquo;{activeScenario.prompt}&rdquo;
               </div>
             </div>
           </div>
 
           {/* View Mode Tabs */}
-          <div className="bg-slate-900/40 border-b border-slate-800 px-4 sm:px-6 flex gap-2">
+          <div className="bg-white/[0.02] border-b border-white/10 px-4 sm:px-6 flex gap-2">
             <button
               onClick={() => setActiveTab('insights')}
               className={`py-3 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all flex items-center gap-2 ${
@@ -413,8 +413,8 @@ export default function InteractiveDemo() {
                   </span>
                   <div className="grid gap-2.5">
                     {activeScenario.insights.map((insight, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-                        <span className="w-5 h-5 rounded-full bg-slate-800 text-purple-400 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
+                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 bg-white/5 p-3.5 rounded-xl border border-white/10 backdrop-blur-md">
+                        <span className="w-5 h-5 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-300 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
                           {idx + 1}
                         </span>
                         <span>{insight}</span>
@@ -428,10 +428,10 @@ export default function InteractiveDemo() {
             {activeTab === 'sql' && (
               <div className="relative animate-in fade-in duration-300">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-slate-400">PostgreSQL / Snowflake Compliant Dialect</span>
+                  <span className="text-xs font-mono text-slate-300">PostgreSQL / Snowflake Compliant Dialect</span>
                   <button
                     onClick={handleCopy}
-                    className="inline-flex items-center gap-1 text-xs text-slate-300 hover:text-white bg-slate-800 px-2.5 py-1 rounded border border-slate-700 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs text-slate-200 hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg border border-white/10 transition-colors cursor-pointer"
                   >
                     {copied ? (
                       <>
@@ -444,7 +444,7 @@ export default function InteractiveDemo() {
                     )}
                   </button>
                 </div>
-                <pre className="p-4 rounded-xl bg-slate-900 text-purple-200 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed border border-slate-800">
+                <pre className="p-4 rounded-xl bg-slate-950/70 text-purple-200 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed border border-purple-500/20 shadow-inner">
                   <code>{activeScenario.sql}</code>
                 </pre>
               </div>
@@ -452,21 +452,21 @@ export default function InteractiveDemo() {
 
             {activeTab === 'lineage' && (
               <div className="space-y-6 py-2 animate-in fade-in duration-300">
-                <div className="text-xs font-mono text-slate-400">
+                <div className="text-xs font-mono text-slate-300">
                   Automated End-to-End Lineage Path (Zero manual YAML configuration required):
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
                   {/* Step 1: Ingestion Sources */}
-                  <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between backdrop-blur-md">
                     <div>
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-300 mb-2">
                         <span>1. Raw Systems</span>
-                        <span className="text-emerald-400">Connected</span>
+                        <span className="text-emerald-300 font-mono">Connected</span>
                       </div>
                       <div className="space-y-1.5">
                         {activeScenario.lineage.sources.map((src, i) => (
-                          <div key={i} className="flex items-center gap-2 text-xs font-mono text-white bg-slate-950 px-2.5 py-1.5 rounded border border-slate-800">
+                          <div key={i} className="flex items-center gap-2 text-xs font-mono text-white bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
                             <Database size={13} className="text-purple-400" /> {src}
                           </div>
                         ))}
@@ -475,13 +475,13 @@ export default function InteractiveDemo() {
                   </div>
 
                   {/* Step 2: KaoinAI Engine */}
-                  <div className="p-4 rounded-xl bg-purple-950/40 border border-purple-700/50 flex flex-col justify-between shadow-lg shadow-purple-950/50">
+                  <div className="p-4 rounded-xl bg-purple-950/40 border border-purple-500/40 flex flex-col justify-between shadow-lg shadow-purple-950/40 backdrop-blur-md">
                     <div>
-                      <div className="flex items-center justify-between text-xs font-semibold text-purple-300 mb-2">
+                      <div className="flex items-center justify-between text-xs font-semibold text-purple-200 mb-2">
                         <span>2. KaoinAI Neural Layer</span>
                         <span className="text-purple-300 font-mono">{activeScenario.lineage.latency}</span>
                       </div>
-                      <div className="p-2.5 rounded bg-purple-900/40 text-xs font-medium text-purple-100 border border-purple-700/40">
+                      <div className="p-2.5 rounded-lg bg-purple-900/40 text-xs font-medium text-purple-100 border border-purple-500/30">
                         {activeScenario.lineage.transformation}
                       </div>
                     </div>
@@ -491,13 +491,13 @@ export default function InteractiveDemo() {
                   </div>
 
                   {/* Step 3: Destination */}
-                  <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between backdrop-blur-md">
                     <div>
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-300 mb-2">
                         <span>3. Target Destination</span>
-                        <span className="text-emerald-400">Synchronized</span>
+                        <span className="text-emerald-300 font-mono">Synchronized</span>
                       </div>
-                      <div className="p-2.5 rounded bg-slate-950 text-xs font-mono text-emerald-300 border border-slate-800">
+                      <div className="p-2.5 rounded-lg bg-emerald-950/40 text-xs font-mono text-emerald-300 border border-emerald-500/30">
                         {activeScenario.lineage.destination}
                       </div>
                     </div>

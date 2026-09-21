@@ -17,7 +17,7 @@ const integrations = [
 
 export default function Integrations() {
   return (
-    <section className="py-12 sm:py-16 bg-white border-y border-gray-100">
+    <section className="py-12 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-wider text-purple-700">

@@ -172,8 +172,9 @@ export default function CaseStudies() {
         </div>
 
         {/* Bottom CTA Banner */}
-        <div className="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-          <div>
+        <div className="bg-gradient-to-r from-slate-950 via-purple-950/90 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-purple-950/30 border border-purple-500/25 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10">
             <h3 className="text-xl sm:text-2xl font-bold mb-2">
               Ready to achieve similar results for your company?
             </h3>

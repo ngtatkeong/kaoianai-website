@@ -248,31 +248,31 @@ export default function MaturityRiskAudit() {
   const IconComponent = currentQ.icon
 
   return (
-    <section id="audit" className="py-20 sm:py-28 bg-slate-950 text-white relative overflow-hidden scroll-mt-20 border-b border-slate-900">
+    <section id="audit" className="py-20 sm:py-28 bg-gradient-to-b from-[#090b14] via-[#0e0c1f] to-[#090b14] text-white relative overflow-hidden scroll-mt-20 border-b border-purple-500/10">
       {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-gradient-to-r from-purple-600/15 via-indigo-600/10 to-pink-600/15 rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-purple-300 text-xs font-semibold mb-4">
-            <Sliders size={14} className="text-purple-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-purple-500/30 text-purple-200 text-xs font-semibold mb-4 backdrop-blur-md shadow-xs">
+            <Sliders size={14} className="text-purple-300" />
             <span>Interactive Diagnostic • DAMA &amp; ISO/IEC 38505 Aligned</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
             Data Governance Maturity &amp; Risk Assessment
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
             Evaluate your organization's data maturity across 5 operational dimensions. Calculate your composite maturity level and associated risk profile in under 2 minutes.
           </p>
         </div>
 
         {!isCompleted ? (
           /* Assessment Card */
-          <div className="bg-slate-900/90 rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-10 backdrop-blur-xl">
+          <div className="bg-gradient-to-b from-white/[0.07] to-white/[0.02] rounded-3xl border border-purple-500/20 shadow-2xl shadow-purple-950/40 p-6 sm:p-10 backdrop-blur-2xl">
             {/* Progress indicator */}
             <div className="mb-8">
               <div className="flex justify-between items-center text-xs font-mono text-slate-400 mb-2">
@@ -316,12 +316,12 @@ export default function MaturityRiskAudit() {
                     onClick={() => handleSelect(currentQ.id, opt.points)}
                     className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-start gap-4 ${
                       isSelected
-                        ? 'bg-purple-950/40 border-purple-500 ring-2 ring-purple-500/30 shadow-lg'
-                        : 'bg-slate-800/60 border-slate-700/60 hover:bg-slate-800 hover:border-slate-600'
+                        ? 'bg-purple-900/30 border-purple-400 ring-2 ring-purple-500/30 shadow-lg backdrop-blur-md'
+                        : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md'
                     }`}
                   >
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
-                      isSelected ? 'border-purple-400 bg-purple-600' : 'border-slate-500'
+                      isSelected ? 'border-purple-400 bg-purple-600' : 'border-slate-400/60'
                     }`}>
                       {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
                     </div>
@@ -331,14 +331,14 @@ export default function MaturityRiskAudit() {
                           {opt.text}
                         </span>
                         <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase shrink-0 w-fit ${
-                          opt.risk === 'Low' ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-800/60' :
-                          opt.risk === 'Moderate' ? 'bg-amber-950/80 text-amber-300 border border-amber-800/60' :
-                          'bg-rose-950/80 text-rose-300 border border-rose-800/60'
+                          opt.risk === 'Low' ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-400/30' :
+                          opt.risk === 'Moderate' ? 'bg-amber-500/10 text-amber-300 border border-amber-400/30' :
+                          'bg-rose-500/10 text-rose-300 border border-rose-400/30'
                         }`}>
                           {opt.risk} Risk (+{opt.points} pts)
                         </span>
                       </div>
-                      <p className="text-xs text-slate-400">
+                      <p className="text-xs text-slate-300/80">
                         {opt.detail}
                       </p>
                     </div>
@@ -348,12 +348,12 @@ export default function MaturityRiskAudit() {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-slate-800">
+            <div className="flex items-center justify-between pt-4 border-t border-white/10">
               {currentStep > 1 ? (
                 <Button
                   variant="outline"
                   onClick={handlePrev}
-                  className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                  className="border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
                 >
                   <ArrowLeft size={16} className="mr-2" />
                   Previous
@@ -371,15 +371,15 @@ export default function MaturityRiskAudit() {
           </div>
         ) : (
           /* Results Container */
-          <div className="bg-slate-900/90 rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-10 backdrop-blur-xl animate-fade-in">
+          <div className="bg-gradient-to-b from-white/[0.08] to-white/[0.02] rounded-3xl border border-purple-500/25 shadow-2xl shadow-purple-950/40 p-6 sm:p-10 backdrop-blur-2xl animate-fade-in">
             <div className="text-center max-w-xl mx-auto mb-10">
               {/* Score Badge */}
-              <div className="inline-flex items-center justify-center w-28 h-28 rounded-3xl bg-slate-950 border border-slate-800 shadow-inner mb-4 relative">
+              <div className="inline-flex items-center justify-center w-28 h-28 rounded-3xl bg-white/5 border border-purple-500/30 shadow-inner mb-4 relative backdrop-blur-md">
                 <div className="text-center">
                   <span className="block text-4xl font-extrabold font-mono text-white">
                     {totalScore}
                   </span>
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-purple-300">
                     out of 100
                   </span>
                 </div>
@@ -405,18 +405,18 @@ export default function MaturityRiskAudit() {
                 const isPassing = pts >= 20
                 const isPartial = pts === 10
                 return (
-                  <div key={q.id} className="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
+                  <div key={q.id} className="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-md">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-xs font-semibold text-slate-300 truncate">{q.dimension}</span>
+                      <span className="text-xs font-semibold text-slate-200 truncate">{q.dimension}</span>
                       <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
-                        isPassing ? 'bg-emerald-950/80 text-emerald-400' :
-                        isPartial ? 'bg-amber-950/80 text-amber-400' :
-                        'bg-rose-950/80 text-rose-400'
+                        isPassing ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-400/30' :
+                        isPartial ? 'bg-amber-500/10 text-amber-300 border border-amber-400/30' :
+                        'bg-rose-500/10 text-rose-300 border border-rose-400/30'
                       }`}>
                         {pts}/20 pts
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-400 line-clamp-2">
+                    <p className="text-[11px] text-slate-300/70 line-clamp-2">
                       {isPassing ? 'Optimized: Fully automated control' :
                        isPartial ? 'Moderate: Manual process debt' :
                        'Vulnerable: Critical exposure point'}
@@ -424,19 +424,19 @@ export default function MaturityRiskAudit() {
                   </div>
                 )
               })}
-              <div className="bg-purple-950/30 p-4 rounded-2xl border border-purple-800/40 sm:col-span-2 lg:col-span-1 flex flex-col justify-center">
+              <div className="bg-purple-900/20 p-4 rounded-2xl border border-purple-500/30 sm:col-span-2 lg:col-span-1 flex flex-col justify-center backdrop-blur-md">
                 <span className="text-xs font-bold text-purple-200 mb-1">Estimated Annual Risk Exposure</span>
                 <span className="text-xl font-bold font-mono text-purple-300">
                   {totalScore >= 80 ? '$0 (Fully Mitigated)' : totalScore >= 50 ? '$42,500/yr' : '$125,000+/yr'}
                 </span>
-                <p className="text-[10px] text-slate-400 mt-0.5">
+                <p className="text-[10px] text-slate-300/70 mt-0.5">
                   Based on developer debugging hours &amp; statutory compliance audits
                 </p>
               </div>
             </div>
 
             {/* Executive Recommendations Box */}
-            <div className="bg-slate-950/90 rounded-2xl p-5 sm:p-6 border border-slate-800 mb-8 text-left">
+            <div className="bg-white/5 rounded-2xl p-5 sm:p-6 border border-white/10 mb-8 text-left backdrop-blur-md">
               <h4 className="text-sm font-bold uppercase tracking-wider text-purple-300 mb-3 flex items-center gap-2">
                 <Sparkles size={16} />
                 <span>Immediate Remediation Recommendations</span>

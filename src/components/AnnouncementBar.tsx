@@ -23,7 +23,7 @@ export default function AnnouncementBar({ onDismiss }: AnnouncementBarProps) {
   }
 
   return (
-    <aside aria-label="Announcement" className="bg-slate-900 text-slate-300 text-xs sm:text-sm py-2 px-3 sm:px-4 relative z-50 border-b border-slate-800 shadow-xs">
+    <aside aria-label="Announcement" className="bg-gradient-to-r from-slate-950 via-purple-950/90 to-slate-950 text-slate-300 text-xs sm:text-sm py-2.5 px-3 sm:px-4 relative z-50 border-b border-purple-500/20 shadow-sm backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 flex-grow justify-center text-center flex-wrap">
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-900/60 border border-purple-700/50 text-purple-300 text-[11px] font-semibold">

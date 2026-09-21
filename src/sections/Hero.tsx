@@ -317,23 +317,23 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Synchronized Obsidian Live Telemetry Console */}
+          {/* Right Column: Synchronized Luminous Telemetry Console */}
           <div className="relative">
-            <div className="relative bg-slate-950 text-white rounded-3xl shadow-2xl border border-slate-800/90 p-5 sm:p-7 overflow-hidden backdrop-blur-xl">
-              {/* Ambient glow */}
-              <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative bg-gradient-to-b from-slate-900/95 via-slate-950/95 to-[#0b0816]/95 text-white rounded-3xl shadow-2xl shadow-purple-950/30 border border-purple-500/20 p-5 sm:p-7 overflow-hidden backdrop-blur-2xl">
+              {/* Dynamic ambient color glows */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-500/15 to-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-purple-500/15 to-pink-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative z-10">
                 {/* Console Window Header */}
-                <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-slate-800/80">
+                <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-white/10">
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                    <span className="ml-2 font-mono text-[11px] text-slate-400">{current.telemetry.systemTag}</span>
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                    <span className="ml-2 font-mono text-[11px] text-slate-300/80">{current.telemetry.systemTag}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-medium">
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-[10px] font-mono font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     {current.telemetry.statusBadge}
                   </div>
@@ -341,15 +341,15 @@ export default function Hero() {
 
                 <div className={`space-y-3.5 transition-opacity duration-200 ${animating ? 'opacity-0' : 'opacity-100'}`}>
                   {/* Automated Quality Score */}
-                  <div className="bg-slate-900/80 rounded-2xl p-4 border border-slate-800">
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/10 backdrop-blur-md">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-medium text-slate-300">{current.telemetry.healthTitle}</span>
-                      <span className="text-xl font-bold font-mono text-emerald-400">{current.telemetry.healthScore}</span>
+                      <span className="text-xs font-medium text-slate-200">{current.telemetry.healthTitle}</span>
+                      <span className="text-xl font-bold font-mono text-emerald-300">{current.telemetry.healthScore}</span>
                     </div>
-                    <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                       <div className={`bg-gradient-to-r ${current.telemetry.healthBarGradient} h-full rounded-full transition-all duration-700`} style={{ width: current.telemetry.healthScore }} />
                     </div>
-                    <p className="text-[11px] text-slate-400 mt-2 flex items-center gap-1.5">
+                    <p className="text-[11px] text-slate-300/80 mt-2 flex items-center gap-1.5">
                       <CheckCircle2 size={13} className="text-emerald-400 shrink-0" /> 
                       <span>{current.telemetry.healthDesc}</span>
                     </p>
@@ -357,18 +357,18 @@ export default function Hero() {
 
                   {/* 2-column Telemetry Grid */}
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-slate-900/80 rounded-2xl p-3.5 border border-slate-800">
+                    <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10 backdrop-blur-md">
                       <div className="text-[11px] text-slate-400 mb-1">{current.telemetry.stat1Title}</div>
                       <div className="text-base sm:text-lg font-bold font-mono text-white truncate">{current.telemetry.stat1Value}</div>
-                      <div className="text-[10px] text-emerald-400 font-medium mt-1 flex items-center gap-1 truncate">
+                      <div className="text-[10px] text-emerald-300 font-medium mt-1 flex items-center gap-1 truncate">
                         <span className="w-1 h-1 rounded-full bg-emerald-400" />
                         {current.telemetry.stat1Status}
                       </div>
                     </div>
-                    <div className="bg-slate-900/80 rounded-2xl p-3.5 border border-slate-800">
+                    <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10 backdrop-blur-md">
                       <div className="text-[11px] text-slate-400 mb-1">{current.telemetry.stat2Title}</div>
-                      <div className="text-base sm:text-lg font-bold font-mono text-purple-300 truncate">{current.telemetry.stat2Value}</div>
-                      <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1 truncate">
+                      <div className="text-base sm:text-lg font-bold font-mono text-purple-200 truncate">{current.telemetry.stat2Value}</div>
+                      <div className="text-[10px] text-purple-300/90 mt-1 flex items-center gap-1 truncate">
                         <span className="w-1 h-1 rounded-full bg-purple-400" />
                         {current.telemetry.stat2Status}
                       </div>
@@ -376,28 +376,28 @@ export default function Hero() {
                   </div>
 
                   {/* Dynamic Alert Box */}
-                  <div className="bg-purple-950/30 rounded-2xl p-4 border border-purple-800/40">
+                  <div className="bg-purple-900/20 rounded-2xl p-4 border border-purple-500/30 backdrop-blur-md">
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
                         <Sparkles size={14} className="text-purple-300" />
                         <span className="text-xs font-bold text-purple-200">{current.telemetry.alertTitle}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-slate-400">{current.telemetry.alertLatency}</span>
+                      <span className="text-[10px] font-mono text-purple-300/70">{current.telemetry.alertLatency}</span>
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed font-mono">
+                    <p className="text-xs text-slate-200/90 leading-relaxed font-mono">
                       {current.telemetry.alertMessage}
                     </p>
                   </div>
 
                   {/* Telemetry Status Bar */}
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-800/80 font-mono">
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-white/10 font-mono">
                     <span className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                       Continuous Schema Sync Active
                     </span>
                     <button 
                       onClick={() => handleSelectMessage((activeIndex + 1) % heroMessages.length)}
-                      className="text-purple-400 hover:text-purple-300 flex items-center gap-1 text-[10px] transition-colors cursor-pointer"
+                      className="text-purple-300 hover:text-white flex items-center gap-1 text-[10px] transition-colors cursor-pointer"
                     >
                       <span>Next telemetry stream</span>
                       <ChevronRight size={11} />

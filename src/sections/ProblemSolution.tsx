@@ -18,7 +18,7 @@ const solutions = [
 
 export default function ProblemSolution() {
   return (
-    <section className="py-20 sm:py-28 bg-white border-b border-slate-100">
+    <section className="py-20 sm:py-28 bg-gradient-to-b from-white via-slate-50/40 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -33,15 +33,17 @@ export default function ProblemSolution() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-          <div className="bg-slate-50/80 rounded-3xl p-7 sm:p-10 border border-slate-200/80 shadow-xs flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3.5 mb-8 pb-5 border-b border-slate-200/60">
-                <div className="w-11 h-11 rounded-2xl bg-red-100/80 text-red-600 flex items-center justify-center shrink-0">
+          {/* Legacy Card */}
+          <div className="rounded-3xl p-7 sm:p-10 bg-gradient-to-b from-rose-50/40 via-white to-slate-50/60 border border-rose-200/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-rose-200/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-3.5 mb-8 pb-5 border-b border-rose-100">
+                <div className="w-12 h-12 rounded-2xl bg-rose-100/80 text-rose-600 flex items-center justify-center shrink-0 shadow-xs">
                   <AlertTriangle size={22} />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 tracking-tight">Legacy Governance &amp; Manual Silos</h3>
-                  <p className="text-xs text-slate-500">Consultant-heavy, fragile, and decoupled from production databases</p>
+                  <p className="text-xs text-rose-700/80 font-medium">Consultant-heavy, fragile, and decoupled from production databases</p>
                 </div>
               </div>
               <ul className="space-y-4 sm:space-y-5">
@@ -49,7 +51,9 @@ export default function ProblemSolution() {
                   const [title, ...desc] = item.split(': ')
                   return (
                     <li key={i} className="flex items-start gap-3.5">
-                      <XCircle size={18} className="text-red-500 mt-1 shrink-0" />
+                      <div className="w-5 h-5 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center shrink-0 mt-0.5">
+                        <XCircle size={14} />
+                      </div>
                       <div className="text-sm leading-relaxed">
                         <strong className="text-slate-900 block font-semibold">{title}</strong>
                         <span className="text-slate-600">{desc.join(': ')}</span>
@@ -61,16 +65,22 @@ export default function ProblemSolution() {
             </div>
           </div>
 
-          <div className="bg-slate-900 text-white rounded-3xl p-7 sm:p-10 border border-slate-800 shadow-xl flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+          {/* KaoinAI Modern Solution Card */}
+          <div className="rounded-3xl p-7 sm:p-10 bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 text-white border border-purple-500/25 shadow-xl shadow-purple-950/20 flex flex-col justify-between relative overflow-hidden group">
+            {/* Luminous ambient gradient glows */}
+            <div className="absolute -top-10 -right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+            
             <div className="relative z-10">
-              <div className="flex items-center gap-3.5 mb-8 pb-5 border-b border-slate-800">
-                <div className="w-11 h-11 rounded-2xl bg-purple-900/80 border border-purple-500/30 text-purple-300 flex items-center justify-center shrink-0">
+              <div className="flex items-center gap-3.5 mb-8 pb-5 border-b border-purple-800/40">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-purple-900/40">
                   <CheckCircle size={22} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white tracking-tight">KaoinAI Autonomous Governance</h3>
-                  <p className="text-xs text-purple-300">Continuous, schema-bound, and operational in under 48 hours</p>
+                  <h3 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                    <span>KaoinAI Autonomous Governance</span>
+                  </h3>
+                  <p className="text-xs text-purple-300 font-medium">Continuous, schema-bound, and operational in under 1 day</p>
                 </div>
               </div>
               <ul className="space-y-4 sm:space-y-5">
@@ -78,7 +88,9 @@ export default function ProblemSolution() {
                   const [title, ...desc] = item.split(': ')
                   return (
                     <li key={i} className="flex items-start gap-3.5">
-                      <CheckCircle size={18} className="text-emerald-400 mt-1 shrink-0" />
+                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                        <CheckCircle size={13} />
+                      </div>
                       <div className="text-sm leading-relaxed">
                         <strong className="text-white block font-semibold">{title}</strong>
                         <span className="text-slate-300">{desc.join(': ')}</span>

@@ -402,10 +402,10 @@ export default function Pricing() {
         </div>
 
         {/* Executive Design Partner Program */}
-        <div className="max-w-4xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-4xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-purple-500/30 shadow-2xl shadow-purple-950/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/10 text-white flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0 shadow-sm">
               <Sparkles size={24} className="text-purple-300" />
             </div>
             <div>
