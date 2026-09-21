@@ -163,69 +163,69 @@ export default function Comparison() {
   }
 
   return (
-    <section id="compare" className="py-16 sm:py-24 bg-gradient-to-b from-white via-slate-50/70 to-slate-50 scroll-mt-20">
+    <section id="compare" className="py-24 sm:py-32 bg-gradient-to-b from-white via-slate-50/70 to-slate-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-xs font-semibold mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-xs font-semibold mb-4 shadow-2xs">
             <Sparkles size={14} />
             <span>Honest Evaluation</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
             Why Growing Businesses Choose KaoinAI
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
             Enterprise governance capability without the six-figure price tag, six-month consulting engagements, or fragile spreadsheet chaos.
           </p>
         </div>
 
         {/* Comparison Table Container */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden mb-10">
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden mb-12">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50/80">
-                  <th className="p-4 sm:p-6 text-sm font-bold text-slate-700 w-1/4">
+                  <th className="p-5 sm:p-7 text-sm font-bold text-slate-700 w-1/4">
                     Capability / Dimension
                   </th>
-                  <th className="p-4 sm:p-6 text-sm font-extrabold text-[#5b2d6e] bg-purple-50/60 w-1/3 border-x border-purple-200/60">
+                  <th className="p-5 sm:p-7 text-sm font-extrabold text-[#5b2d6e] bg-purple-50/60 w-1/3 border-x border-purple-200/60">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#5b2d6e]" />
                       <span>KaoinAI</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider bg-[#5b2d6e] text-white px-2 py-0.5 rounded-full ml-auto">
+                      <span className="text-[10px] font-bold uppercase tracking-wider bg-[#5b2d6e] text-white px-2.5 py-0.5 rounded-full ml-auto">
                         Recommended
                       </span>
                     </div>
                   </th>
-                  <th className="p-4 sm:p-6 text-sm font-bold text-slate-700 w-1/4">
-                    Atlan, Alation & Collibra <span className="block text-xs font-normal text-slate-400">($30k–$100k+/yr enterprise commit)</span>
+                  <th className="p-5 sm:p-7 text-sm font-bold text-slate-700 w-1/4">
+                    Atlan, Alation & Collibra <span className="block text-xs font-normal text-slate-400 mt-0.5">($30k–$100k+/yr enterprise commit)</span>
                   </th>
-                  <th className="p-4 sm:p-6 text-sm font-bold text-slate-700 w-1/4">
-                    Manual Spreadsheets <span className="block text-xs font-normal text-slate-400">(& In-house Python scripts)</span>
+                  <th className="p-5 sm:p-7 text-sm font-bold text-slate-700 w-1/4">
+                    Manual Spreadsheets <span className="block text-xs font-normal text-slate-400 mt-0.5">(& In-house Python scripts)</span>
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-xs sm:text-sm">
                 {comparisonData.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-6 font-medium text-slate-900">
-                      <div className="font-bold text-slate-900 text-sm mb-1">{row.feature}</div>
-                      <div className="text-xs text-slate-500">{row.description}</div>
+                    <td className="p-5 sm:p-7 font-medium text-slate-900">
+                      <div className="font-bold text-slate-900 text-sm sm:text-base mb-1">{row.feature}</div>
+                      <div className="text-xs text-slate-500 leading-relaxed">{row.description}</div>
                     </td>
 
                     {/* KaoinAI column */}
-                    <td className="p-4 sm:p-6 bg-purple-50/30 border-x border-purple-200/40 font-semibold text-slate-900">
-                      <div className="flex items-start gap-2 text-purple-950">
+                    <td className="p-5 sm:p-7 bg-purple-50/30 border-x border-purple-200/40 font-semibold text-slate-900">
+                      <div className="flex items-start gap-2.5 text-purple-950">
                         <Check size={18} className="text-[#5b2d6e] shrink-0 mt-0.5" />
-                        <span>{row.kaoinai.highlight}</span>
+                        <span className="leading-relaxed">{row.kaoinai.highlight}</span>
                       </div>
                     </td>
 
                     {/* Legacy column */}
-                    <td className="p-4 sm:p-6 text-slate-600">
-                      <div className="flex items-start gap-2">
+                    <td className="p-5 sm:p-7 text-slate-600">
+                      <div className="flex items-start gap-2.5">
                         <X size={16} className="text-red-400 shrink-0 mt-0.5" />
-                        <span>{row.legacy.text}</span>
+                        <span className="leading-relaxed">{row.legacy.text}</span>
                       </div>
                     </td>
 

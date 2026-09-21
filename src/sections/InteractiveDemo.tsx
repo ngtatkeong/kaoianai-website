@@ -270,7 +270,7 @@ export default function InteractiveDemo() {
   }
 
   return (
-    <section id="demo" className="py-16 sm:py-24 bg-slate-900 text-white relative overflow-hidden scroll-mt-20">
+    <section id="demo" className="py-24 sm:py-32 bg-slate-900 text-white relative overflow-hidden scroll-mt-20">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 left-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl" />
@@ -279,21 +279,21 @@ export default function InteractiveDemo() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold mb-4 shadow-xs">
             <Sparkles size={14} />
             <span>Interactive Live Demo</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
             See KaoinAI in Action — Before Touching Your Database
           </h2>
-          <p className="text-base sm:text-lg text-slate-300">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
             Select an enterprise scenario below. Watch how KaoinAI autonomously understands natural language, synthesizes dialect SQL, and traces table-bound lineage in sub-second time.
           </p>
         </div>
 
-        {/* Scenario Selectors */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+        {/* Scenario Selectors - Generously Spaced */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 mb-10">
           {scenarios.map((scenario) => {
             const IconComponent = scenario.icon
             const isSelected = activeScenario.id === scenario.id
@@ -301,29 +301,31 @@ export default function InteractiveDemo() {
               <button
                 key={scenario.id}
                 onClick={() => handleScenarioChange(scenario)}
-                className={`flex flex-col text-left p-3.5 sm:p-4 rounded-xl transition-all border ${
+                className={`flex flex-col justify-between text-left p-4 sm:p-5 rounded-2xl transition-all border cursor-pointer ${
                   isSelected
-                    ? 'bg-purple-900/40 border-purple-400 ring-2 ring-purple-500/30 shadow-lg shadow-purple-950/40'
+                    ? 'bg-purple-900/40 border-purple-400 ring-2 ring-purple-500/30 shadow-xl shadow-purple-950/40'
                     : 'bg-slate-800/60 border-slate-700/60 hover:bg-slate-800 hover:border-slate-600'
                 }`}
               >
-                <div className="flex items-center justify-between w-full mb-2">
-                  <div className={`p-2 rounded-lg ${isSelected ? 'bg-purple-600 text-white' : 'bg-slate-700 text-slate-300'}`}>
-                    <IconComponent size={18} />
+                <div>
+                  <div className="flex items-center justify-between w-full mb-3">
+                    <div className={`p-2.5 rounded-xl ${isSelected ? 'bg-purple-600 text-white' : 'bg-slate-700 text-slate-300'}`}>
+                      <IconComponent size={18} />
+                    </div>
+                    <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${scenario.badgeColor}`}>
+                      {scenario.category}
+                    </span>
                   </div>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${scenario.badgeColor}`}>
-                    {scenario.category}
-                  </span>
+                  <h3 className="font-bold text-sm sm:text-base text-white mb-1.5 leading-snug">{scenario.title}</h3>
+                  <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">{scenario.prompt}</p>
                 </div>
-                <h3 className="font-bold text-sm text-white mb-1 leading-snug">{scenario.title}</h3>
-                <p className="text-xs text-slate-400 line-clamp-2">{scenario.prompt}</p>
               </button>
             )
           })}
         </div>
 
         {/* Main Terminal Window */}
-        <div className="bg-gradient-to-b from-slate-900/95 via-slate-950/95 to-[#0b0816]/95 rounded-2xl border border-purple-500/25 shadow-2xl shadow-purple-950/30 overflow-hidden mb-12 backdrop-blur-2xl">
+        <div className="bg-gradient-to-b from-slate-900/95 via-slate-950/95 to-[#0b0816]/95 rounded-3xl border border-purple-500/25 shadow-2xl shadow-purple-950/30 overflow-hidden mb-16 backdrop-blur-2xl">
           {/* Terminal Window Header */}
           <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex flex-wrap items-center justify-between gap-3 backdrop-blur-md">
             <div className="flex items-center gap-2">

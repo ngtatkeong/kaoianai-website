@@ -118,39 +118,41 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-16 sm:py-24 bg-gray-50 scroll-mt-20">
+    <section id="features" className="py-24 sm:py-32 bg-gray-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-sm font-medium mb-4">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-sm font-semibold mb-4 shadow-2xs">
             <Zap size={16} />
             <span>All-in-One Platform</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
             Everything You Need for Data Excellence
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             From governance to analytics, KaoinAI covers every aspect of modern data management. 
             No more piecing together expensive point solutions.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, i) => (
             <div
               key={i}
-              className="group bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 hover:border-purple-200 hover:shadow-xl transition-all duration-300"
+              className="group bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 hover:border-purple-200 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
-              <div className={`w-12 h-12 rounded-xl ${feature.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <feature.icon size={24} className={`text-transparent bg-clip-text bg-gradient-to-br ${feature.color}`} style={{ color: 'inherit' }} />
+              <div>
+                <div className={`w-14 h-14 rounded-2xl ${feature.bgColor} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
+                  <feature.icon size={26} className={`text-transparent bg-clip-text bg-gradient-to-br ${feature.color}`} style={{ color: 'inherit' }} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2.5">{feature.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
 
         {/* Table-Bound DPIA & Data Inventory Spotlight Banner */}
-        <div className="mt-12 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-purple-100 shadow-sm relative overflow-hidden">
+        <div className="mt-16 sm:mt-20 bg-white rounded-3xl p-8 sm:p-12 border border-purple-100 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-purple-50 rounded-full blur-3xl -z-0 pointer-events-none" />
           <div className="relative z-10">
             <div className="flex flex-wrap items-center gap-2 mb-3">

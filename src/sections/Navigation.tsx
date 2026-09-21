@@ -31,10 +31,19 @@ const navLinks = [
   { label: 'Contact', href: '/contact', icon: MessageSquare },
 ]
 
+// 5 core primary links to keep the top navbar spacious and uncramped
+const primaryNavLinks = [
+  { label: 'Features', href: '#features' },
+  { label: 'Maturity Audit', href: '#audit' },
+  { label: 'Live Demo', href: '#demo' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Security', href: '#security' },
+]
+
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
-  // Open by default as requested: "features/maturing audit as hamburger menu open by default can be closed after"
-  const [drawerOpen, setDrawerOpen] = useState(true)
+  // Closed by default to keep landing page spacious and uncluttered
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const [hasAnnouncement, setHasAnnouncement] = useState(true)
   const location = useLocation()
   const navigate = useNavigate()
@@ -124,7 +133,7 @@ export default function Navigation() {
         {hasAnnouncement && (
           <AnnouncementBar onDismiss={() => setHasAnnouncement(false)} />
         )}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link 
@@ -133,7 +142,7 @@ export default function Navigation() {
                 setDrawerOpen(false)
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg"
+              className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg shrink-0 mr-4"
               aria-label="KaoinAI Home"
             >
               <img 
@@ -141,23 +150,23 @@ export default function Navigation() {
                 alt="KaoinAI Enterprise AI Data" 
                 width="160" 
                 height="36" 
-                className="h-7 sm:h-9 w-auto object-contain" 
+                className="h-8 sm:h-9 w-auto object-contain" 
               />
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
-              {navLinks.map((link) => {
+            {/* Desktop Primary Navigation Links - Airy & Spacious */}
+            <nav className="hidden lg:flex items-center gap-7 xl:gap-9">
+              {primaryNavLinks.map((link) => {
                 const isActive = link.href.startsWith('/') && location.pathname === link.href
                 return (
                   <a
                     key={link.href}
                     href={isContactPage && link.href.startsWith('#') ? '/' + link.href : link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`text-sm font-medium transition-colors cursor-pointer ${
+                    className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
                       isActive
-                        ? 'text-[#5b2d6e] font-bold underline underline-offset-4'
-                        : 'text-gray-700 hover:text-[#5b2d6e]'
+                        ? 'text-[#5b2d6e] font-bold underline underline-offset-8'
+                        : 'text-gray-600 hover:text-[#5b2d6e]'
                     }`}
                   >
                     {link.label}

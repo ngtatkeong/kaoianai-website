@@ -213,57 +213,12 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-100/40 to-red-100/30 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:py-32 lg:py-36">
-        {/* Automated Pillar Cycling Progress Header */}
-        <div className="mb-8 relative z-20">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-2xl mb-3">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100/90 text-[#5b2d6e] text-xs font-bold border border-purple-200/80 shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Live Architecture Focus
-              </span>
-              <span className="text-xs font-mono font-semibold text-slate-600">
-                Pillar {activeIndex + 1} of {heroMessages.length}
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-ping" />
-              <span>Auto-cycling core enterprise domains</span>
-            </div>
-          </div>
-
-          {/* 4-Segment Automated Progress Track */}
-          <div className="grid grid-cols-4 gap-2 sm:gap-3 max-w-2xl">
-            {heroMessages.map((msg, idx) => {
-              const isActive = idx === activeIndex
-              return (
-                <div key={msg.id} className="flex flex-col gap-1.5">
-                  <div className="h-1.5 w-full bg-slate-200/80 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full rounded-full transition-all duration-500 ${
-                        isActive 
-                          ? 'bg-gradient-to-r from-purple-600 to-indigo-600 w-full shadow-xs' 
-                          : idx < activeIndex
-                            ? 'bg-purple-300 w-full'
-                            : 'w-0'
-                      }`}
-                    />
-                  </div>
-                  <span className={`text-[11px] font-semibold truncate transition-colors duration-200 ${
-                    isActive ? 'text-[#5b2d6e]' : 'text-slate-500'
-                  }`}>
-                    {msg.tabLabel}
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-36">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column: Alternating Hero Copy */}
-          <div className={`space-y-6 sm:space-y-8 text-center lg:text-left transition-opacity duration-200 ${animating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}>
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+          <div className={`space-y-6 sm:space-y-7 text-center lg:text-left transition-opacity duration-200 ${animating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}>
+            {/* Architectural Badges + Clean Live Pillar Indicator */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
                 <Sparkles size={14} className="text-[#7c3aed]" />
                 <span>{current.badgeCategory}</span>
@@ -273,18 +228,22 @@ export default function Hero() {
                 <span className="text-slate-300">{current.badgeSecondary}</span>
                 <span className="text-purple-300 font-semibold">{current.badgeSecondaryHighlight}</span>
               </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-mono font-medium border border-slate-200/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-ping" />
+                <span>Pillar {activeIndex + 1}/{heroMessages.length}</span>
+              </div>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-950 min-h-[120px] sm:min-h-[140px] flex flex-col justify-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-slate-950 flex flex-col justify-center">
               <span>{current.headingMain}</span>
-              <span className="text-gradient">{current.headingGradient}</span>
+              <span className="text-gradient mt-1">{current.headingGradient}</span>
             </h1>
 
-            <p className="text-sm sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal min-h-[80px]">
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
               {current.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-1">
               <Button
                 size="lg"
                 className="w-full sm:w-auto bg-slate-950 text-white hover:bg-slate-800 transition-colors px-7 py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-lg"
@@ -315,7 +274,7 @@ export default function Hero() {
               </Button>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs sm:text-sm text-gray-500">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5 pt-3 text-xs sm:text-sm text-gray-500">
               {current.trustBadges.map((badge, bIdx) => {
                 const BadgeIcon = badge.icon
                 return (
@@ -416,13 +375,13 @@ export default function Hero() {
             </div>
 
             {/* Static Bottom Trust Badges */}
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-600">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
-                <Shield size={13} className="text-slate-900" />
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/80 border border-slate-200/80 text-slate-700 shadow-2xs">
+                <Shield size={14} className="text-[#5b2d6e]" />
                 <span>Zero Raw Data Retention</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
-                <Brain size={13} className="text-slate-900" />
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/80 border border-slate-200/80 text-slate-700 shadow-2xs">
+                <Brain size={14} className="text-[#5b2d6e]" />
                 <span>Air-Gapped &amp; Sovereign Ready</span>
               </div>
             </div>

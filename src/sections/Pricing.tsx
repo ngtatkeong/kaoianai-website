@@ -142,23 +142,23 @@ export default function Pricing() {
   const isOnPrem = deploymentMode === 'onprem'
 
   return (
-    <section id="pricing" className="py-16 sm:py-24 bg-gray-50 scroll-mt-20">
+    <section id="pricing" className="py-24 sm:py-32 bg-gray-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-xs sm:text-sm font-semibold mb-4">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-xs sm:text-sm font-semibold mb-4 shadow-2xs">
             <Zap size={15} />
             <span>80%+ Less Expensive Than Legacy Giants (Atlan, Alation, Collibra)</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
             Transparent Pricing: Cloud vs. On-Premises
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Choose between our managed, secure cloud or a self-hosted private VPC deployment inside your firewall. No six-figure vendor lock-ins or mandatory multi-year commitments.
           </p>
 
           {/* Controls: Deployment Mode & Billing Toggle */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 mt-10">
             {/* Deployment Switcher */}
             <div className="inline-flex p-1.5 rounded-2xl bg-white border border-gray-200 shadow-sm">
               <button
