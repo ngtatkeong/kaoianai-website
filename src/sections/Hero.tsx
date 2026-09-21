@@ -216,14 +216,14 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-36">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column: Alternating Hero Copy */}
-          <div className={`space-y-6 sm:space-y-7 text-center lg:text-left transition-opacity duration-200 ${animating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}>
+          <div className={`min-w-0 space-y-6 sm:space-y-7 text-center lg:text-left transition-opacity duration-200 ${animating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}>
             {/* Architectural Badges + Clean Live Pillar Indicator */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
                 <Sparkles size={14} className="text-[#7c3aed]" />
                 <span>{current.badgeCategory}</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs">
+              <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs max-w-full">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 <span className="text-slate-300">{current.badgeSecondary}</span>
                 <span className="text-purple-300 font-semibold">{current.badgeSecondaryHighlight}</span>
@@ -234,7 +234,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-slate-950 flex flex-col justify-center">
+            <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-slate-950 flex flex-col justify-center break-words">
               <span>{current.headingMain}</span>
               <span className="text-gradient mt-1">{current.headingGradient}</span>
             </h1>
@@ -288,7 +288,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Synchronized Luminous Telemetry Console */}
-          <div className="relative">
+          <div className="relative min-w-0">
             <div className="relative bg-gradient-to-b from-slate-900/95 via-slate-950/95 to-[#0b0816]/95 text-white rounded-3xl shadow-2xl shadow-purple-950/30 border border-purple-500/20 p-5 sm:p-7 overflow-hidden backdrop-blur-2xl">
               {/* Dynamic ambient color glows */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-500/15 to-purple-600/10 rounded-full blur-3xl pointer-events-none" />

@@ -7,7 +7,7 @@
     <!-- Primary Meta Tags -->
     <title>KaoinAI — Autonomous Data Governance &amp; Living Compliance</title>
     <meta name="title" content="KaoinAI — Autonomous Data Governance &amp; Living Compliance" />
-    <meta name="description" content="Autonomous Data Governance and Living Compliance platform. Connect PostgreSQL, Snowflake, RDS, and ERPs in minutes. Real-time table-bound DPIA, Singapore PDPA &amp; MAS TRM compliance, column lineage, and master data management." />
+    <meta name="description" content="Autonomous Data Governance &amp; Living Compliance. Connect PostgreSQL, Snowflake &amp; ERPs in minutes — table-bound DPIA, PDPA &amp; MAS TRM compliance, column lineage &amp; MDM." />
     <meta name="keywords" content="Data Governance, Table-Bound DPIA, RoPA Automation, Singapore PDPA Compliance, MAS TRM, Data Quality Software, PII Detection, Column Lineage, Master Data Management, MDM, dbt AI, Schema Drift" />
     <meta name="author" content="KaoinAI" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -20,7 +20,7 @@
     <meta property="og:site_name" content="KaoinAI" />
     <meta property="og:title" content="KaoinAI — Autonomous Data Governance &amp; Living Compliance" />
     <meta property="og:description" content="Autonomous Data Governance and Living Compliance platform. Real-time table-bound DPIA, Singapore PDPA &amp; MAS TRM compliance, column lineage, and master data management." />
-    <meta property="og:image" content="https://kaoinai.com/logo.png" />
+    <meta property="og:image" content="https://kaoinai.com/og-cover.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="KaoinAI Enterprise AI Data Platform" />
@@ -29,9 +29,9 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://kaoinai.com/" />
-    <meta name="twitter:title" content="KaoinAI — AI Data Governance, Data Quality & PII Detection for SMEs" />
+    <meta name="twitter:title" content="KaoinAI — Autonomous Data Governance &amp; Living Compliance" />
     <meta name="twitter:description" content="AI-native Data Governance, Quality, MDM, and PII scanning built for modern data-driven SMEs." />
-    <meta name="twitter:image" content="https://kaoinai.com/logo.png" />
+    <meta name="twitter:image" content="https://kaoinai.com/og-cover.png" />
     <meta name="twitter:image:alt" content="KaoinAI Enterprise AI Data Platform" />
 
     <!-- Favicon & Fonts -->
@@ -62,7 +62,12 @@
             "@type": "ContactPoint",
             "contactType": "customer support",
             "email": "hello@kaoinai.com"
-          }
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/kaoinai-pte-ltd",
+            "https://twitter.com/kaoinai",
+            "https://github.com/kaoinai"
+          ]
         },
         {
           "@type": "WebSite",
@@ -132,6 +137,14 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "KaoinAI scans column names and sample data distributions using AI classification models to detect sensitive attributes (names, IC/NRIC, passport numbers, emails, payment data, health records). It flags compliance violations across GDPR, PDPA, HIPAA, and CCPA, and recommends automated masking rules."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does KaoinAI tie DPIA and Data Inventory (RoPA) directly to database tables?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Unlike legacy privacy tools that store compliance records in disconnected spreadsheets, KaoinAI anchors DPIA risk assessments and statutory Data Inventories directly to the physical database tables, schemas, and columns where PII resides. If an engineer migrates a schema or adds a new sensitive column in Postgres, MySQL, or Snowflake, KaoinAI automatically flags DPIA drift and updates your Singapore PDPA & GDPR Article 30 Data Inventory in real time."
               }
             },
             {

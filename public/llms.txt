@@ -1,0 +1,34 @@
+# KaoinAI — Autonomous Data Governance & Living Compliance
+> AI-native data governance and living compliance platform. Connect PostgreSQL, Snowflake, and ERPs in minutes — real-time table-bound DPIA, PDPA & MAS TRM compliance, column lineage, and master data management. DG within AI: making enterprise data fit for purpose for AI agents, LLMs, and analytics.
+
+## What is KaoinAI? (Primary Entity Definition)
+**KaoinAI** is an **autonomous data governance and living compliance platform**. Unlike legacy governance tools (Collibra, Informatica, Alation) that cost $100k–$1M+ and take months of consultants, KaoinAI connects directly to your databases in minutes and anchors compliance to the data itself:
+
+- **Table-Bound DPIA & Data Inventory (RoPA)**: DPIA risk assessments and statutory Data Inventories are anchored to the physical database tables, schemas, and columns where PII resides. Schema changes automatically flag DPIA drift and update the Singapore PDPA & GDPR Article 30 Data Inventory in real time.
+- **Autonomous Data Quality**: AI-suggested validation rules, anomaly detection, and dbt model generation keep data clean without a dedicated data engineering team.
+- **PII Detection & Masking**: AI classification detects sensitive attributes (names, NRIC/IC, passport numbers, emails, payment data, health records) across GDPR, PDPA, HIPAA, and CCPA, and recommends automated masking rules.
+- **Column-Level Lineage & Schema Drift**: end-to-end lineage across warehouses and ERPs, with drift alerts before broken data reaches a board report.
+- **Natural Language SQL ("Ask Data in Plain English")**: non-technical teams query verified data without SQL tickets.
+
+## What is DG within AI? (Data Governance within AI)
+**DG within AI** is the practice of embedding governance, quality, and compliance enforcement directly inside AI and LLM execution pipelines. Frontier AI models can only reason over the data they are given: when underlying databases are messy, unindexed, or drifting, AI hallucinates. KaoinAI is the DG-within-AI foundation — cleaning, curing, masking, and cataloguing data so it is fit for purpose for agentic AI. Because when data is junk, frontier AI will also be junk.
+
+## Entity & Product Information
+- **Company**: KaoinAI Pte Ltd (Singapore & Malaysia operations)
+- **Product**: KaoinAI Platform — Autonomous Data Governance & Living Compliance
+- **Website**: https://kaoinai.com
+- **LinkedIn**: https://www.linkedin.com/company/kaoinai-pte-ltd
+- **Deployment**: Cloud SaaS, VPS, and on-premises self-hosted Docker
+- **Compliance Focus**: Singapore PDPA & MAS TRM, Malaysia PDPA, Indonesia UU PDP, GDPR Article 30, HIPAA, SOX
+- **Connectors**: PostgreSQL, MySQL, Google BigQuery, Snowflake, Amazon Redshift, Microsoft SQL Server, Oracle NetSuite, SAP, Salesforce, Supabase (custom JDBC/ODBC available)
+- **Pricing**: 14-day free trial (no credit card); transparent monthly plans from $0–$499 based on connected data sources
+
+## Key Pages
+- [Home — Autonomous Data Governance & Living Compliance](https://kaoinai.com/): platform overview, features, pricing, FAQ
+- [Free Data Governance Maturity & Risk Audit](https://kaoinai.com/audit): interactive 5-minute assessment with instant score and remediation roadmap
+- [Contact & 1-on-1 Booking](https://kaoinai.com/contact): schedule a Google Calendar session with the founder
+
+## Security & Architecture
+- Read-only metadata architecture: raw database rows are never replicated or stored on KaoinAI servers
+- TLS 1.3 encryption, VPC peering and IP whitelisting options
+- Built according to SOC 2 Type II and ISO 27001 security standards

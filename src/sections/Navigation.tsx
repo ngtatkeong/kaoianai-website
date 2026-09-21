@@ -242,7 +242,7 @@ export default function Navigation() {
                   e.currentTarget.href = getWhatsAppUrl()
                   trackEvent('click_whatsapp', { number: WHATSAPP_NUMBER, location: 'mobile_nav_icon' })
                 }}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-green-50 text-[#25D366] border border-green-200/80 active:scale-95 transition-transform"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-[#1da851] border border-green-300 shadow-sm active:scale-95 transition-transform"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M12.031 2C6.494 2 2 6.494 2 12.031c0 1.996.586 3.86 1.602 5.438L2 22l4.695-1.574A9.99 9.99 0 0 0 12.031 22C17.568 22 22 17.506 22 12.031 22 6.494 17.568 2 12.031 2zm0 18.281c-1.742 0-3.375-.5-4.781-1.375l-.344-.219-3.234 1.078 1.094-3.156-.234-.375A8.253 8.253 0 0 1 3.75 12.031c0-4.562 3.719-8.281 8.281-8.281 4.562 0 8.281 3.719 8.281 8.281 0 4.563-3.719 8.281-8.281 8.281zm4.844-6.172c-.266-.14-1.578-.781-1.828-.875-.25-.094-.438-.14-.625.14-.188.281-.719.875-.875 1.062-.156.188-.328.203-.594.078-.266-.125-1.125-.406-2.14-1.312-.797-.703-1.328-1.578-1.484-1.844-.156-.266-.016-.406.125-.531.125-.125.266-.328.406-.484.14-.156.188-.266.281-.438.094-.172.047-.328-.031-.469-.078-.14-.625-1.516-.859-2.078-.234-.563-.469-.484-.641-.484h-.547c-.188 0-.484.078-.734.344-.25.266-.969.953-.969 2.328 0 1.375 1 2.703 1.141 2.891.14.188 1.969 3.016 4.781 4.219.672.297 1.188.469 1.609.609.672.219 1.281.188 1.766.109.547-.078 1.578-.641 1.812-1.266.234-.625.234-1.156.156-1.266-.078-.109-.266-.172-.531-.312z" />
@@ -251,7 +251,7 @@ export default function Navigation() {
 
               <button
                 type="button"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 transition-colors"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-900 border border-gray-300 shadow-sm transition-colors"
                 aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
@@ -263,7 +263,7 @@ export default function Navigation() {
 
         {/* Mobile Dropdown (Complete all-section directory) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 bg-white/98 backdrop-blur-xl px-4 py-4 space-y-1.5 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="lg:hidden border-t border-gray-100 bg-white/98 backdrop-blur-xl px-4 py-4 space-y-1.5 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200 max-h-[70vh] overflow-y-auto">
             {allMobileNavLinks.map((link) => (
               <a
                 key={link.href}

@@ -45,6 +45,41 @@ function ScrollToHash() {
   return null
 }
 
+function RouteSeo() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const route = (pathname === '/audit.html') ? '/audit' : pathname
+    const meta: Record<string, { title: string; desc: string }> = {
+      '/': {
+        title: 'KaoinAI — Autonomous Data Governance & Living Compliance',
+        desc: 'Autonomous Data Governance & Living Compliance. Connect PostgreSQL, Snowflake & ERPs in minutes — table-bound DPIA, PDPA & MAS TRM compliance, column lineage & MDM.',
+      },
+      '/audit': {
+        title: 'Free Data Governance Maturity & Risk Audit — KaoinAI',
+        desc: 'Audit your data governance maturity and PDPA compliance risk in minutes. Instant score, prioritized remediation roadmap, and table-bound DPIA guidance — free.',
+      },
+      '/contact': {
+        title: 'Schedule 1-on-1 with TK Ng | Contact Us — KaoinAI',
+        desc: 'Book a 1-on-1 Google Calendar session with KaoinAI. Discuss autonomous data governance, table-bound DPIA, PDPA & MAS TRM compliance for your databases.',
+      },
+    }
+    const r = meta[route] || meta['/']
+    document.title = r.title
+    const md = document.querySelector('meta[name="description"]')
+    if (md) md.setAttribute('content', r.desc)
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.rel = 'canonical'
+      document.head.appendChild(canonical)
+    }
+    canonical.href = 'https://kaoinai.com' + (route === '/' ? '/' : route)
+  }, [pathname])
+
+  return null
+}
+
 function Home() {
   return (
     <main>
@@ -72,6 +107,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-[#fcfbfe] via-[#f8f3fe]/80 to-[#fcfbfe] selection:bg-purple-100 selection:text-[#5b2d6e] flex flex-col justify-between overflow-x-hidden relative">
       <AnimatedBackground />
       <ScrollToHash />
+      <RouteSeo />
       <Navigation />
       <div className="flex-grow relative z-10">
         <Routes>
