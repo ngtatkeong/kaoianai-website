@@ -163,7 +163,7 @@ export default function Comparison() {
   }
 
   return (
-    <section id="compare" className="py-24 sm:py-32 bg-gradient-to-b from-transparent via-purple-50/20 to-transparent backdrop-blur-[2px] scroll-mt-20">
+    <section id="compare" className="py-24 sm:py-32 bg-gradient-to-b from-transparent via-purple-50/20 to-transparent scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">

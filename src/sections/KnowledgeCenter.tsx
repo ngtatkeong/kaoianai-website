@@ -166,7 +166,7 @@ export default function KnowledgeCenter() {
   }
 
   return (
-    <section id="knowledge-center" className="py-16 sm:py-24 bg-slate-50/50 backdrop-blur-[2px] border-t border-purple-100/60 scroll-mt-20">
+    <section id="knowledge-center" className="py-16 sm:py-24 bg-slate-50/70 border-t border-purple-100/60 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">

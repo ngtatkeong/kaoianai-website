@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react'
 
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const spotlightRef = useRef<HTMLDivElement | null>(null)
-  const auraRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -35,7 +33,7 @@ export default function AnimatedBackground() {
 
     const handleMouseLeave = () => {
       mouse.isActive = false
-      mouse.targetOpacity = 0.2
+      mouse.targetOpacity = 0.15
     }
 
     const handleTouchMove = (e: TouchEvent) => {
@@ -59,8 +57,8 @@ export default function AnimatedBackground() {
     }
     window.addEventListener('resize', handleResize)
 
-    // Natural drifting data nodes
-    const particleCount = Math.min(Math.floor((width * height) / 18000), 55)
+    // Natural drifting data nodes (capped for 60/120fps efficiency)
+    const particleCount = Math.min(Math.floor((width * height) / 26000), 38)
     interface Particle {
       x: number
       y: number
@@ -84,14 +82,14 @@ export default function AnimatedBackground() {
     const particles: Particle[] = []
     for (let i = 0; i < particleCount; i++) {
       const angle = Math.random() * Math.PI * 2
-      const speed = Math.random() * 0.35 + 0.15
+      const speed = Math.random() * 0.32 + 0.12
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
         baseVx: Math.cos(angle) * speed,
         baseVy: Math.sin(angle) * speed,
-        radius: Math.random() * 1.8 + 1.2,
-        baseAlpha: Math.random() * 0.35 + 0.3,
+        radius: Math.random() * 1.6 + 1.2,
+        baseAlpha: Math.random() * 0.32 + 0.28,
         colorRgb: colorPalettes[Math.floor(Math.random() * colorPalettes.length)],
         phase: Math.random() * Math.PI * 2,
         swaySpeed: Math.random() * 0.0012 + 0.0006,
@@ -99,38 +97,64 @@ export default function AnimatedBackground() {
     }
 
     let lastTime = performance.now()
+    const TWO_PI = Math.PI * 2
+    const linkDist = 110
+    const linkDistSq = linkDist * linkDist
+    const repelRadius = 140
 
-    // Smooth 60fps render loop
+    // Smooth render loop with zero layout thrashing
     const render = (time: number) => {
       const dt = Math.min((time - lastTime) / 16.66, 2)
       lastTime = time
 
-      // Fluid lerp for cursor coordinates & opacity (natural inertia)
+      // Fluid lerp for cursor coordinates & opacity
       mouse.currentX += (mouse.targetX - mouse.currentX) * 0.065
       mouse.currentY += (mouse.targetY - mouse.currentY) * 0.065
       mouse.currentOpacity += (mouse.targetOpacity - mouse.currentOpacity) * 0.05
 
-      // Update DOM cursor spotlight smoothly
-      if (spotlightRef.current) {
-        spotlightRef.current.style.transform = `translate3d(${mouse.currentX}px, ${mouse.currentY}px, 0)`
-        spotlightRef.current.style.opacity = `${mouse.currentOpacity}`
-      }
-      if (auraRef.current) {
-        auraRef.current.style.transform = `translate3d(${mouse.currentX}px, ${mouse.currentY}px, 0)`
-        auraRef.current.style.opacity = `${mouse.currentOpacity * 0.9}`
-      }
-
       ctx.clearRect(0, 0, width, height)
 
-      // Calculate temporary display positions with natural hydrodynamic deflection
+      // 1. Draw smooth cursor spotlight & luminous aura directly in Canvas (0 DOM blur cost)
+      if (mouse.currentOpacity > 0.02) {
+        const glowRadius = 260
+        const glowGrad = ctx.createRadialGradient(
+          mouse.currentX, mouse.currentY, 0,
+          mouse.currentX, mouse.currentY, glowRadius
+        )
+        glowGrad.addColorStop(0, `rgba(168, 85, 247, ${0.16 * mouse.currentOpacity})`)
+        glowGrad.addColorStop(0.35, `rgba(124, 58, 237, ${0.08 * mouse.currentOpacity})`)
+        glowGrad.addColorStop(0.65, `rgba(99, 102, 241, ${0.03 * mouse.currentOpacity})`)
+        glowGrad.addColorStop(1, 'transparent')
+        ctx.fillStyle = glowGrad
+        ctx.fillRect(
+          mouse.currentX - glowRadius, mouse.currentY - glowRadius,
+          glowRadius * 2, glowRadius * 2
+        )
+
+        const coreRadius = 85
+        const coreGrad = ctx.createRadialGradient(
+          mouse.currentX, mouse.currentY, 0,
+          mouse.currentX, mouse.currentY, coreRadius
+        )
+        coreGrad.addColorStop(0, `rgba(192, 132, 252, ${0.25 * mouse.currentOpacity})`)
+        coreGrad.addColorStop(0.5, `rgba(147, 51, 234, ${0.10 * mouse.currentOpacity})`)
+        coreGrad.addColorStop(1, 'transparent')
+        ctx.fillStyle = coreGrad
+        ctx.fillRect(
+          mouse.currentX - coreRadius, mouse.currentY - coreRadius,
+          coreRadius * 2, coreRadius * 2
+        )
+      }
+
+      // 2. Calculate temporary display positions with natural hydrodynamic deflection
       const renderCoords: { x: number; y: number; alpha: number; radius: number; colorRgb: string }[] = []
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
 
         // Organic harmonic drifting (sine wave sway)
-        const swayX = Math.cos(time * p.swaySpeed + p.phase) * 0.18
-        const swayY = Math.sin(time * p.swaySpeed + p.phase) * 0.18
+        const swayX = Math.cos(time * p.swaySpeed + p.phase) * 0.16
+        const swayY = Math.sin(time * p.swaySpeed + p.phase) * 0.16
 
         p.x += (p.baseVx + swayX) * dt
         p.y += (p.baseVy + swayY) * dt
@@ -145,25 +169,24 @@ export default function AnimatedBackground() {
         // Natural elastic deflection from cursor (never clumps permanently)
         const dx = p.x - mouse.currentX
         const dy = p.y - mouse.currentY
-        const distToMouse = Math.sqrt(dx * dx + dy * dy)
-        const repelRadius = 150
+        const distSqToMouse = dx * dx + dy * dy
 
         let dispX = 0
         let dispY = 0
         let proximityBoost = 0
 
-        if (distToMouse < repelRadius && distToMouse > 0.1) {
-          // Quadratic falloff: soft at edges, gentle spring near center
+        if (distSqToMouse < repelRadius * repelRadius && distSqToMouse > 0.01) {
+          const distToMouse = Math.sqrt(distSqToMouse)
           const factor = Math.pow(1 - distToMouse / repelRadius, 2)
-          dispX = (dx / distToMouse) * factor * 32
-          dispY = (dy / distToMouse) * factor * 32
+          dispX = (dx / distToMouse) * factor * 30
+          dispY = (dy / distToMouse) * factor * 30
           proximityBoost = factor * 0.4
         }
 
         const drawX = p.x + dispX
         const drawY = p.y + dispY
-        const drawAlpha = Math.min(p.baseAlpha + proximityBoost, 0.9)
-        const drawRadius = p.radius * (1 + proximityBoost * 0.6)
+        const drawAlpha = Math.min(p.baseAlpha + proximityBoost, 0.88)
+        const drawRadius = p.radius * (1 + proximityBoost * 0.5)
 
         renderCoords.push({
           x: drawX,
@@ -174,32 +197,33 @@ export default function AnimatedBackground() {
         })
       }
 
-      // Draw elegant particle-to-particle links
-      const linkDist = 115
+      // 3. Draw elegant particle-to-particle links (skipping Math.sqrt when out of range)
+      ctx.lineWidth = 0.8
       for (let i = 0; i < renderCoords.length; i++) {
         const c1 = renderCoords[i]
         for (let j = i + 1; j < renderCoords.length; j++) {
           const c2 = renderCoords[j]
-          const dist = Math.hypot(c1.x - c2.x, c1.y - c2.y)
+          const dx = c1.x - c2.x
+          const dy = c1.y - c2.y
+          const distSq = dx * dx + dy * dy
 
-          if (dist < linkDist) {
-            // Natural quadratic fade curve
-            const linkAlpha = Math.pow(1 - dist / linkDist, 1.8) * 0.22
+          if (distSq < linkDistSq) {
+            const dist = Math.sqrt(distSq)
+            const linkAlpha = Math.pow(1 - dist / linkDist, 1.6) * 0.20
             ctx.beginPath()
             ctx.moveTo(c1.x, c1.y)
             ctx.lineTo(c2.x, c2.y)
             ctx.strokeStyle = `rgba(139, 92, 246, ${linkAlpha})`
-            ctx.lineWidth = 0.9
             ctx.stroke()
           }
         }
       }
 
-      // Draw luminous nodes
+      // 4. Draw luminous nodes
       for (let i = 0; i < renderCoords.length; i++) {
         const c = renderCoords[i]
         ctx.beginPath()
-        ctx.arc(c.x, c.y, c.radius, 0, Math.PI * 2)
+        ctx.arc(c.x, c.y, c.radius, 0, TWO_PI)
         ctx.fillStyle = `rgba(${c.colorRgb}, ${c.alpha})`
         ctx.fill()
       }
@@ -223,58 +247,30 @@ export default function AnimatedBackground() {
       aria-hidden="true" 
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
     >
-      {/* Dynamic Animated Grid Pattern */}
+      {/* High-Performance Static Grid Pattern (cached as GPU texture) */}
       <div className="absolute inset-0 animated-grid-bg opacity-75" />
 
-      {/* Floating Animated Ambient Glows */}
-      {/* Orb 1: Violet/Purple soft glow drifting top-right */}
+      {/* Ambient Gradient Glows (Native radial gradients, zero CSS blur filter overhead) */}
       <div 
-        className="absolute -top-32 -right-32 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-purple-400/20 via-indigo-400/15 to-transparent blur-3xl animate-float-slow"
-      />
-
-      {/* Orb 2: Deep Indigo glow orbiting top-left */}
-      <div 
-        className="absolute top-1/4 -left-40 w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-indigo-400/15 via-purple-300/10 to-transparent blur-3xl animate-float-reverse"
-      />
-
-      {/* Orb 3: Emerald / Cyan security glow pulsing in mid-viewport */}
-      <div 
-        className="absolute top-1/2 right-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-teal-400/15 via-purple-400/10 to-transparent blur-3xl animate-pulse-glow"
-      />
-
-      {/* Orb 4: Warm Magenta / Violet accent drifting across lower sections */}
-      <div 
-        className="absolute top-3/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-fuchsia-400/15 via-purple-400/10 to-transparent blur-3xl animate-float-slow"
-      />
-
-      {/* Orb 5: Luminous base flare near footer */}
-      <div 
-        className="absolute -bottom-32 right-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-t from-indigo-400/15 via-purple-300/10 to-transparent blur-3xl animate-float-reverse"
-      />
-
-      {/* Fluid Cursor Spotlight (Smooth Trailing Glow) */}
-      <div
-        ref={spotlightRef}
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none transition-opacity duration-500 ease-out opacity-0"
+        className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(124, 58, 237, 0.10) 35%, rgba(79, 70, 229, 0.05) 60%, transparent 75%)',
-          filter: 'blur(28px)',
-          willChange: 'transform',
+          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(124, 58, 237, 0.05) 45%, transparent 70%)',
+        }}
+      />
+      <div 
+        className="absolute top-1/3 -left-40 w-[520px] h-[520px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(147, 51, 234, 0.04) 45%, transparent 70%)',
+        }}
+      />
+      <div 
+        className="absolute -bottom-32 right-1/4 w-[550px] h-[550px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, rgba(124, 58, 237, 0.04) 45%, transparent 70%)',
         }}
       />
 
-      {/* Tight Luminous Cursor Core */}
-      <div
-        ref={auraRef}
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full pointer-events-none transition-opacity duration-300 ease-out opacity-0"
-        style={{
-          background: 'radial-gradient(circle, rgba(192, 132, 252, 0.28) 0%, rgba(147, 51, 234, 0.12) 50%, transparent 80%)',
-          filter: 'blur(14px)',
-          willChange: 'transform',
-        }}
-      />
-
-      {/* Natural Data Constellation Canvas */}
+      {/* Natural Data Constellation & Cursor Glow Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -282,4 +278,3 @@ export default function AnimatedBackground() {
     </div>
   )
 }
-

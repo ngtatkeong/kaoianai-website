@@ -50,25 +50,34 @@ export default function Navigation() {
   const isContactPage = location.pathname === '/contact'
   const whatsappUrl = getWhatsAppUrl()
 
-  // Scroll detection for navbar background & ScrollSpy
+  // Scroll detection for navbar background & ScrollSpy (RAF throttled to avoid layout thrashing)
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false
+    let lastScrolledState = false
+
+    const updateScroll = () => {
       const scrollY = window.scrollY
-      setScrolled(scrollY > 15)
+      const isScrolledNow = scrollY > 15
+      if (isScrolledNow !== lastScrolledState) {
+        lastScrolledState = isScrolledNow
+        setScrolled(isScrolledNow)
+      }
 
       // Only perform ScrollSpy on landing page
       if (location.pathname !== '/') {
         setActiveSection('')
+        ticking = false
+        return
+      }
+
+      if (scrollY < 250) {
+        setActiveSection('')
+        ticking = false
         return
       }
 
       const header = document.querySelector('header')
-      const navHeight = header ? header.getBoundingClientRect().height : 80
-
-      if (scrollY < 250) {
-        setActiveSection('')
-        return
-      }
+      const navHeight = header ? header.clientHeight : 80
 
       const sectionIds = [
         'demo',
@@ -83,15 +92,25 @@ export default function Navigation() {
         'faq',
       ]
 
+      let current = ''
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const el = document.getElementById(sectionIds[i])
         if (el) {
           const top = el.offsetTop - navHeight - 60
           if (scrollY >= top) {
-            setActiveSection(sectionIds[i])
+            current = sectionIds[i]
             break
           }
         }
+      }
+      setActiveSection(current)
+      ticking = false
+    }
+
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true
+        window.requestAnimationFrame(updateScroll)
       }
     }
 

@@ -141,7 +141,7 @@ export default function Pricing() {
   const isOnPrem = deploymentMode === 'onprem'
 
   return (
-    <section id="pricing" className="py-24 sm:py-32 bg-slate-50/50 backdrop-blur-[2px] scroll-mt-20">
+    <section id="pricing" className="py-24 sm:py-32 bg-slate-50/70 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 sm:mb-20">

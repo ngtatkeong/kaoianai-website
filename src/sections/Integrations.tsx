@@ -17,7 +17,7 @@ const integrations = [
 
 export default function Integrations() {
   return (
-    <section className="py-20 sm:py-28 bg-white/40 backdrop-blur-[2px]">
+    <section className="py-20 sm:py-28 bg-white/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <p className="text-xs font-semibold uppercase tracking-wider text-purple-700">

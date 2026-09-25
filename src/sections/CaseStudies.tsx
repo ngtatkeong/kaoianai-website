@@ -88,7 +88,7 @@ export default function CaseStudies() {
   }
 
   return (
-    <section id="case-studies" className="py-16 sm:py-24 bg-white/50 backdrop-blur-[2px] scroll-mt-20">
+    <section id="case-studies" className="py-16 sm:py-24 bg-white/75 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">

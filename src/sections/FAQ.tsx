@@ -55,7 +55,7 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white/50 backdrop-blur-[2px] scroll-mt-20">
+    <section id="faq" className="py-16 sm:py-24 bg-white/75 scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#5b2d6e] text-sm font-medium mb-4">
