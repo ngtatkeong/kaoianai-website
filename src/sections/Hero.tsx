@@ -197,6 +197,7 @@ export default function Hero() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-36">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column: Hero Copy */}
           <div className="min-w-0 space-y-6 sm:space-y-7 text-center lg:text-left transition-opacity duration-200">
             {/* Interactive Pillar Selector Tabs */}
