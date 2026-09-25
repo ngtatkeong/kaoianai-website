@@ -31,11 +31,12 @@ function ScrollToHash() {
       const timer = setTimeout(() => {
         const el = document.getElementById(id)
         if (el) {
-          const yOffset = -76
-          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
-          window.scrollTo({ top: y, behavior: 'smooth' })
+          const header = document.querySelector('header')
+          const headerHeight = header ? header.getBoundingClientRect().height : 76
+          const y = el.getBoundingClientRect().top + window.pageYOffset - headerHeight - 14
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
         }
-      }, 120)
+      }, 100)
       return () => clearTimeout(timer)
     } else {
       window.scrollTo({ top: 0, behavior: 'instant' })

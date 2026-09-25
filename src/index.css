@@ -80,11 +80,8 @@
   0%, 100% {
     transform: translate3d(0px, 0px, 0px) scale(1);
   }
-  33% {
-    transform: translate3d(35px, -45px, 0px) scale(1.08);
-  }
-  66% {
-    transform: translate3d(-30px, 25px, 0px) scale(0.94);
+  50% {
+    transform: translate3d(24px, -36px, 0px) scale(1.05);
   }
 }
 
@@ -92,22 +89,19 @@
   0%, 100% {
     transform: translate3d(0px, 0px, 0px) scale(1);
   }
-  33% {
-    transform: translate3d(-40px, 35px, 0px) scale(1.06);
-  }
-  66% {
-    transform: translate3d(30px, -35px, 0px) scale(0.95);
+  50% {
+    transform: translate3d(-28px, 28px, 0px) scale(1.04);
   }
 }
 
 @keyframes pulseGlow {
   0%, 100% {
-    opacity: 0.45;
+    opacity: 0.35;
     transform: scale(1);
   }
   50% {
-    opacity: 0.85;
-    transform: scale(1.15);
+    opacity: 0.65;
+    transform: scale(1.08);
   }
 }
 

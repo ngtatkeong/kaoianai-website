@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { 
   ArrowRight, 
   Sparkles, 
@@ -180,31 +180,14 @@ const heroMessages: HeroMessage[] = [
 ]
 
 export default function Hero() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-  const [animating, setAnimating] = useState(false)
-
-  // Auto-cycle continuously every 6 seconds smoothly across all 4 pillars
-  useEffect(() => {
-    if (isPaused) return
-    const interval = setInterval(() => {
-      setAnimating(true)
-      setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % heroMessages.length)
-        setAnimating(false)
-      }, 250)
-    }, 6000)
-
-    return () => clearInterval(interval)
-  }, [isPaused])
+  // Randomly select one pillar when the user loads the page
+  const [activeIndex, setActiveIndex] = useState(() => Math.floor(Math.random() * heroMessages.length))
 
   const current = heroMessages[activeIndex]
 
   return (
     <section 
       className="relative min-h-screen flex items-center overflow-hidden bg-transparent"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Ambient animated background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -214,10 +197,30 @@ export default function Hero() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-36">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Column: Alternating Hero Copy */}
-          <div className={`min-w-0 space-y-6 sm:space-y-7 text-center lg:text-left transition-opacity duration-200 ${animating ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}>
-            {/* Architectural Badges + Clean Live Pillar Indicator */}
+          {/* Left Column: Hero Copy */}
+          <div className="min-w-0 space-y-6 sm:space-y-7 text-center lg:text-left transition-opacity duration-200">
+            {/* Interactive Pillar Selector Tabs */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+              {heroMessages.map((msg, idx) => (
+                <button
+                  key={msg.id}
+                  type="button"
+                  onClick={() => {
+                    setActiveIndex(idx)
+                    trackEvent('select_hero_tab', { tab: msg.id, label: msg.tabLabel })
+                  }}
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                    activeIndex === idx
+                      ? 'bg-[#5b2d6e] text-white shadow-xs'
+                      : 'bg-white/80 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 shadow-2xs'
+                  }`}
+                >
+                  {msg.tabLabel}
+                </button>
+              ))}
+            </div>
+
+            {/* Architectural Badges */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
                 <Sparkles size={14} className="text-[#7c3aed]" />
@@ -227,10 +230,6 @@ export default function Hero() {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 <span className="text-slate-300">{current.badgeSecondary}</span>
                 <span className="text-purple-300 font-semibold">{current.badgeSecondaryHighlight}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-mono font-medium border border-slate-200/60">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-ping" />
-                <span>Pillar {activeIndex + 1}/{heroMessages.length}</span>
               </div>
             </div>
 
@@ -309,7 +308,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className={`space-y-3.5 transition-opacity duration-200 ${animating ? 'opacity-0' : 'opacity-100'}`}>
+                <div className="space-y-3.5 transition-opacity duration-200 opacity-100">
                   {/* Automated Quality Score */}
                   <div className="bg-white/5 rounded-2xl p-4 border border-white/10 backdrop-blur-md">
                     <div className="flex items-center justify-between mb-2">
@@ -366,8 +365,8 @@ export default function Hero() {
                       Continuous Schema Sync Active
                     </span>
                     <span className="text-purple-300/80 text-[10px] flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping" />
-                      Auto-cycling telemetry streams
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      Pillar Telemetry Synced
                     </span>
                   </div>
                 </div>

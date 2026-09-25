@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
 import { ArrowRight, Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -42,36 +42,84 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [hasAnnouncement, setHasAnnouncement] = useState(true)
+  const [activeSection, setActiveSection] = useState<string>('')
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const location = useLocation()
   const navigate = useNavigate()
 
   const isContactPage = location.pathname === '/contact'
   const whatsappUrl = getWhatsAppUrl()
 
-  // Scroll detection for navbar background
+  // Scroll detection for navbar background & ScrollSpy
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 15)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      setScrolled(scrollY > 15)
+
+      // Only perform ScrollSpy on landing page
+      if (location.pathname !== '/') {
+        setActiveSection('')
+        return
+      }
+
+      const header = document.querySelector('header')
+      const navHeight = header ? header.getBoundingClientRect().height : 80
+
+      if (scrollY < 250) {
+        setActiveSection('')
+        return
+      }
+
+      const sectionIds = [
+        'demo',
+        'features',
+        'security',
+        'case-studies',
+        'compare',
+        'how-it-works',
+        'audit',
+        'pricing',
+        'knowledge-center',
+        'faq',
+      ]
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i])
+        if (el) {
+          const top = el.offsetTop - navHeight - 60
+          if (scrollY >= top) {
+            setActiveSection(sectionIds[i])
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [location.pathname])
 
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false)
+    setMoreOpen(false)
   }, [location.pathname])
 
   const scrollToAnchor = useCallback((id: string) => {
     const el = document.getElementById(id)
     if (el) {
-      const yOffset = -76
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
-      window.scrollTo({ top: y, behavior: 'smooth' })
+      const header = document.querySelector('header')
+      const headerHeight = header ? header.getBoundingClientRect().height : 76
+      const y = el.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
     }
   }, [])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
     e.preventDefault()
     setMobileMenuOpen(false)
+    setMoreOpen(false)
 
     if (href.startsWith('#')) {
       const id = href.replace('#', '')
@@ -85,6 +133,17 @@ export default function Navigation() {
     }
   }
 
+  const handleMoreEnter = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current)
+    setMoreOpen(true)
+  }
+
+  const handleMoreLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setMoreOpen(false)
+    }, 180)
+  }
+
   const handleStartTrial = () => {
     setMobileMenuOpen(false)
     trackEvent('click_cta', { location: 'navbar', label: 'Nav Start Free Trial' })
@@ -95,78 +154,92 @@ export default function Navigation() {
     }
   }
 
+  const isMoreActive = moreLinks.some((item) => activeSection === item.href.replace('#', ''))
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled || mobileMenuOpen
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100'
-          : 'bg-white/95 sm:bg-white/90 backdrop-blur-md border-b border-gray-100/70'
+          ? 'bg-white/90 backdrop-blur-xl shadow-xs border-b border-purple-100/60'
+          : 'bg-white/80 backdrop-blur-lg border-b border-gray-100/60'
       }`}
     >
-        {hasAnnouncement && (
-          <AnnouncementBar onDismiss={() => setHasAnnouncement(false)} />
-        )}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link 
-              to="/" 
-              onClick={() => {
-                setMobileMenuOpen(false)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
-              className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg shrink-0 mr-4"
-              aria-label="KaoinAI Home"
-            >
-              <img 
-                src="/logo.png" 
-                alt="KaoinAI Enterprise AI Data" 
-                width="160" 
-                height="36" 
-                className="h-8 sm:h-9 w-auto object-contain" 
-              />
-            </Link>
+      {hasAnnouncement && (
+        <AnnouncementBar onDismiss={() => setHasAnnouncement(false)} />
+      )}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link 
+            to="/" 
+            onClick={() => {
+              setMobileMenuOpen(false)
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg shrink-0 mr-4"
+            aria-label="KaoinAI Home"
+          >
+            <img 
+              src="/logo.png" 
+              alt="KaoinAI Enterprise AI Data" 
+              width="160" 
+              height="36" 
+              className="h-8 sm:h-9 w-auto object-contain" 
+            />
+          </Link>
 
-            {/* Desktop Horizontal Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
-              {primaryNavLinks.map((link) => {
-                const isActive = link.href.startsWith('/') && location.pathname === link.href
-                return (
-                  <a
-                    key={link.href}
-                    href={isContactPage && link.href.startsWith('#') ? '/' + link.href : link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer whitespace-nowrap ${
-                      isActive
-                        ? 'text-[#5b2d6e] font-bold underline underline-offset-8'
-                        : 'text-gray-600 hover:text-[#5b2d6e]'
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                )
-              })}
+          {/* Desktop Horizontal Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
+            {primaryNavLinks.map((link) => {
+              const linkId = link.href.replace('#', '')
+              const isActive = !isContactPage && activeSection === linkId
 
-              {/* Desktop "More" Dropdown Menu */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setMoreOpen(true)}
-                onMouseLeave={() => setMoreOpen(false)}
-              >
-                <button
-                  type="button"
-                  onClick={() => setMoreOpen(!moreOpen)}
-                  className="flex items-center gap-1 text-sm font-semibold tracking-wide text-gray-600 hover:text-[#5b2d6e] transition-colors cursor-pointer py-1"
-                  aria-expanded={moreOpen}
+              return (
+                <a
+                  key={link.href}
+                  href={isContactPage && link.href.startsWith('#') ? '/' + link.href : link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-sm font-semibold tracking-wide transition-all cursor-pointer whitespace-nowrap px-3 py-1.5 rounded-xl ${
+                    isActive
+                      ? 'text-[#5b2d6e] font-bold bg-purple-100/70 border border-purple-200/80 shadow-2xs'
+                      : 'text-gray-600 hover:text-[#5b2d6e] hover:bg-purple-50/50'
+                  }`}
                 >
-                  <span>More</span>
-                  <ChevronDown size={14} className={`transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} />
-                </button>
+                  {link.label}
+                </a>
+              )
+            })}
 
-                {moreOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                    <div className="bg-white/98 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-100 p-2 space-y-1">
-                      {moreLinks.map((item) => (
+            {/* Desktop "More" Dropdown Menu with Hover Intent */}
+            <div 
+              className="relative"
+              onMouseEnter={handleMoreEnter}
+              onMouseLeave={handleMoreLeave}
+            >
+              <button
+                type="button"
+                onClick={() => setMoreOpen(!moreOpen)}
+                className={`flex items-center gap-1 text-sm font-semibold tracking-wide transition-all cursor-pointer px-3 py-1.5 rounded-xl ${
+                  isMoreActive || moreOpen
+                    ? 'text-[#5b2d6e] font-bold bg-purple-100/70 border border-purple-200/80 shadow-2xs'
+                    : 'text-gray-600 hover:text-[#5b2d6e] hover:bg-purple-50/50'
+                }`}
+                aria-expanded={moreOpen}
+              >
+                <span>More</span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {moreOpen && (
+                <div 
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  onMouseEnter={handleMoreEnter}
+                  onMouseLeave={handleMoreLeave}
+                >
+                  <div className="bg-white/98 backdrop-blur-xl rounded-2xl shadow-xl border border-purple-100/80 p-2 space-y-1">
+                    {moreLinks.map((item) => {
+                      const isItemActive = !isContactPage && activeSection === item.href.replace('#', '')
+                      return (
                         <a
                           key={item.href}
                           href={isContactPage && item.href.startsWith('#') ? '/' + item.href : item.href}
@@ -174,33 +247,38 @@ export default function Navigation() {
                             setMoreOpen(false)
                             handleNavClick(e, item.href)
                           }}
-                          className="block p-2.5 rounded-xl hover:bg-purple-50 transition-colors group cursor-pointer"
+                          className={`block p-2.5 rounded-xl transition-colors group cursor-pointer ${
+                            isItemActive
+                              ? 'bg-purple-50 border border-purple-100'
+                              : 'hover:bg-purple-50/60'
+                          }`}
                         >
-                          <div className="text-xs font-bold text-gray-900 group-hover:text-[#5b2d6e]">
+                          <div className={`text-xs font-bold ${isItemActive ? 'text-[#5b2d6e]' : 'text-gray-900 group-hover:text-[#5b2d6e]'}`}>
                             {item.label}
                           </div>
                           <div className="text-[11px] text-gray-500 line-clamp-1">
                             {item.description}
                           </div>
                         </a>
-                      ))}
-                    </div>
+                      )
+                    })}
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
 
-              {/* Contact Link */}
-              <Link
-                to="/contact"
-                className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer ${
-                  isContactPage
-                    ? 'text-[#5b2d6e] font-bold underline underline-offset-8'
-                    : 'text-gray-600 hover:text-[#5b2d6e]'
-                }`}
-              >
-                Contact
-              </Link>
-            </nav>
+            {/* Contact Link */}
+            <Link
+              to="/contact"
+              className={`text-sm font-semibold tracking-wide transition-all cursor-pointer px-3 py-1.5 rounded-xl ${
+                isContactPage
+                  ? 'text-[#5b2d6e] font-bold bg-purple-100/70 border border-purple-200/80 shadow-2xs'
+                  : 'text-gray-600 hover:text-[#5b2d6e] hover:bg-purple-50/50'
+              }`}
+            >
+              Contact
+            </Link>
+          </nav>
 
             {/* Desktop Action Buttons */}
             <div className="hidden lg:flex items-center gap-3">
