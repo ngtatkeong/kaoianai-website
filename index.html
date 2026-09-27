@@ -21,6 +21,7 @@
     <meta property="og:title" content="KaoinAI — Autonomous Data Governance &amp; Living Compliance" />
     <meta property="og:description" content="Autonomous Data Governance and Living Compliance platform. Real-time table-bound DPIA, Singapore PDPA &amp; MAS TRM compliance, column lineage, and master data management." />
     <meta property="og:image" content="https://kaoinai.com/og-cover.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="KaoinAI Enterprise AI Data Platform" />
@@ -28,15 +29,19 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kaoinai" />
+    <meta name="twitter:creator" content="@kaoinai" />
     <meta name="twitter:url" content="https://kaoinai.com/" />
     <meta name="twitter:title" content="KaoinAI — Autonomous Data Governance &amp; Living Compliance" />
     <meta name="twitter:description" content="AI-native Data Governance, Quality, MDM, and PII scanning built for modern data-driven SMEs." />
     <meta name="twitter:image" content="https://kaoinai.com/og-cover.png" />
     <meta name="twitter:image:alt" content="KaoinAI Enterprise AI Data Platform" />
 
-    <!-- Favicon & Fonts -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -50,13 +55,27 @@
           "@type": "Organization",
           "@id": "https://kaoinai.com/#organization",
           "name": "KaoinAI",
+          "legalName": "KaoinAI Pte. Ltd.",
           "url": "https://kaoinai.com",
           "logo": "https://kaoinai.com/logo.png",
-          "description": "Enterprise AI Data Governance, Quality, MDM, and PII Detection for SMEs.",
+          "description": "Enterprise AI Data Governance, Quality, MDM, and Living Compliance for SMEs.",
+          "foundingLocation": "Singapore",
+          "areaServed": ["SG", "MY", "ID", "APAC"],
+          "knowsAbout": [
+            "Data Governance",
+            "Singapore Personal Data Protection Act (PDPA)",
+            "MAS Technology Risk Management (TRM)",
+            "Data Protection Impact Assessment (DPIA)",
+            "Records of Processing Activities (RoPA)",
+            "PII Scanning & Masking",
+            "Master Data Management (MDM)",
+            "Column-Level Data Lineage",
+            "AI Data Readiness"
+          ],
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Kuala Lumpur",
-            "addressCountry": "MY"
+            "addressLocality": "Singapore",
+            "addressCountry": "SG"
           },
           "contactPoint": {
             "@type": "ContactPoint",
@@ -74,16 +93,46 @@
           "@id": "https://kaoinai.com/#website",
           "url": "https://kaoinai.com",
           "name": "KaoinAI",
+          "inLanguage": "en-US",
           "publisher": {
             "@id": "https://kaoinai.com/#organization"
           }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://kaoinai.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://kaoinai.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Data Governance Maturity Audit",
+              "item": "https://kaoinai.com/audit"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Contact & 1-on-1 Consultation",
+              "item": "https://kaoinai.com/contact"
+            }
+          ]
         },
         {
           "@type": "SoftwareApplication",
           "@id": "https://kaoinai.com/#software",
           "name": "KaoinAI Platform",
           "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Data Governance, Quality & Living Compliance Platform",
           "operatingSystem": "All (Web-based SaaS)",
+          "screenshot": "https://kaoinai.com/og-cover.png",
+          "provider": {
+            "@id": "https://kaoinai.com/#organization"
+          },
           "offers": {
             "@type": "AggregateOffer",
             "priceCurrency": "USD",

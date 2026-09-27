@@ -50,32 +50,60 @@ function RouteSeo() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const route = (pathname === '/audit.html') ? '/audit' : pathname
-    const meta: Record<string, { title: string; desc: string }> = {
+    const cleanPath = pathname.replace(/\/+$/, '') || '/'
+    const route = cleanPath === '/audit.html' ? '/audit' : cleanPath
+
+    const meta: Record<string, { title: string; desc: string; url: string }> = {
       '/': {
         title: 'KaoinAI — Autonomous Data Governance & Living Compliance',
         desc: 'Autonomous Data Governance & Living Compliance. Connect PostgreSQL, Snowflake & ERPs in minutes — table-bound DPIA, PDPA & MAS TRM compliance, column lineage & MDM.',
+        url: 'https://kaoinai.com/',
       },
       '/audit': {
         title: 'Free Data Governance Maturity & Risk Audit — KaoinAI',
         desc: 'Audit your data governance maturity and PDPA compliance risk in minutes. Instant score, prioritized remediation roadmap, and table-bound DPIA guidance — free.',
+        url: 'https://kaoinai.com/audit',
       },
       '/contact': {
         title: 'Schedule 1-on-1 with TK Ng | Contact Us — KaoinAI',
         desc: 'Book a 1-on-1 Google Calendar session with KaoinAI. Discuss autonomous data governance, table-bound DPIA, PDPA & MAS TRM compliance for your databases.',
+        url: 'https://kaoinai.com/contact',
       },
     }
     const r = meta[route] || meta['/']
     document.title = r.title
-    const md = document.querySelector('meta[name="description"]')
-    if (md) md.setAttribute('content', r.desc)
+
+    const setMeta = (selector: string, attr: string, value: string) => {
+      let el = document.querySelector(selector)
+      if (el) {
+        el.setAttribute(attr, value)
+      } else {
+        el = document.createElement('meta')
+        const parts = selector.replace('meta[', '').replace(']', '').split('=')
+        if (parts.length === 2) {
+          el.setAttribute(parts[0], parts[1].replace(/["']/g, ''))
+          el.setAttribute(attr, value)
+          document.head.appendChild(el)
+        }
+      }
+    }
+
+    setMeta('meta[name="description"]', 'content', r.desc)
+    setMeta('meta[name="title"]', 'content', r.title)
+    setMeta('meta[property="og:title"]', 'content', r.title)
+    setMeta('meta[property="og:description"]', 'content', r.desc)
+    setMeta('meta[property="og:url"]', 'content', r.url)
+    setMeta('meta[name="twitter:title"]', 'content', r.title)
+    setMeta('meta[name="twitter:description"]', 'content', r.desc)
+    setMeta('meta[name="twitter:url"]', 'content', r.url)
+
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
     if (!canonical) {
       canonical = document.createElement('link')
       canonical.rel = 'canonical'
       document.head.appendChild(canonical)
     }
-    canonical.href = 'https://kaoinai.com' + (route === '/' ? '/' : route)
+    canonical.href = r.url
   }, [pathname])
 
   return null

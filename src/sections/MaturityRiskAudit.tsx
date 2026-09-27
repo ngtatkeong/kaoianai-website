@@ -170,7 +170,11 @@ const questions: Question[] = [
   }
 ]
 
-export default function MaturityRiskAudit() {
+interface MaturityRiskAuditProps {
+  asHeading1?: boolean
+}
+
+export default function MaturityRiskAudit({ asHeading1 = false }: MaturityRiskAuditProps = {}) {
   const [currentStep, setCurrentStep] = useState(1)
   const [answers, setAnswers] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 })
   const [isCompleted, setIsCompleted] = useState(false)
@@ -262,9 +266,15 @@ export default function MaturityRiskAudit() {
             <Sliders size={14} className="text-purple-300" />
             <span>Interactive Diagnostic • DAMA &amp; ISO/IEC 38505 Aligned</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Data Governance Maturity &amp; Risk Assessment
-          </h2>
+          {asHeading1 ? (
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+              Data Governance Maturity &amp; Risk Assessment
+            </h1>
+          ) : (
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+              Data Governance Maturity &amp; Risk Assessment
+            </h2>
+          )}
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
             Evaluate your organization's data maturity across 5 operational dimensions. Calculate your composite maturity level and associated risk profile in under 2 minutes.
           </p>

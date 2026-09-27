@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://kaoinai.com/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -13,14 +13,38 @@
   </url>
   <url>
     <loc>https://kaoinai.com/audit</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kaoinai.com/contact</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kaoinai.com/downloads/2026-Data-Governance-AI-Readiness-Handbook.pdf</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaoinai.com/downloads/2026-SME-Data-Governance-PDPA-Checklist.pdf</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaoinai.com/downloads/2026-MAS-TRM-PDPA-AI-Regulatory-Standard.pdf</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaoinai.com/downloads/2026-Enterprise-AI-Data-Readiness-Framework.pdf</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
