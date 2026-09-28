@@ -17,7 +17,9 @@ const primaryNavLinks = [
 
 // Secondary links neatly organized under the "More ▾" dropdown on desktop
 const moreLinks = [
-  { label: 'Security & Trust', href: '#security', description: 'Zero-egress, MAS TRM & PDPA blueprints' },
+  { label: 'Product Tour UI', href: '#product-tour', description: 'Interactive visual DAG & PII scanner walkthrough' },
+  { label: 'Engineering & Compliance Blog', href: '/blog', description: 'PDPA, MAS TRM & AI data governance articles' },
+  { label: 'Security & Trust Whitepaper', href: '/security', description: 'Zero-egress, MAS TRM & SOC 2 architecture' },
   { label: 'Case Studies', href: '#case-studies', description: 'Enterprise reference architectures' },
   { label: 'Compare vs Legacy', href: '#compare', description: 'KaoinAI vs Atlan, Alation, Collibra' },
   { label: 'FAQ', href: '#faq', description: 'Frequently asked technical questions' },
@@ -25,11 +27,13 @@ const moreLinks = [
 
 // Complete directory for mobile screens
 const allMobileNavLinks = [
+  { label: 'Product Tour UI', href: '#product-tour' },
   { label: 'Live Demo', href: '#demo' },
   { label: 'Features', href: '#features' },
+  { label: 'Engineering Blog', href: '/blog' },
   { label: 'Maturity Audit', href: '#audit' },
   { label: 'Knowledge Center', href: '#knowledge-center' },
-  { label: 'Security & Trust', href: '#security' },
+  { label: 'Security & Trust', href: '/security' },
   { label: 'Case Studies', href: '#case-studies' },
   { label: 'Compare vs Legacy', href: '#compare' },
   { label: 'Pricing ($0 First 3)', href: '#pricing' },
@@ -142,7 +146,7 @@ export default function Navigation() {
 
     if (href.startsWith('#')) {
       const id = href.replace('#', '')
-      if (isContactPage) {
+      if (location.pathname !== '/') {
         navigate('/' + href)
       } else {
         scrollToAnchor(id)

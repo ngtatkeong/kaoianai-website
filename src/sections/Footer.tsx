@@ -15,17 +15,18 @@ const footerLinks = {
   Solutions: [
     { label: 'Data Governance Maturity Audit', href: '/#audit' },
     { label: 'For Growing Startups & SMEs', href: '/#features' },
-    { label: 'GDPR & PDPA Compliance', href: '/#faq' },
+    { label: 'GDPR & PDPA Compliance', href: '/privacy' },
     { label: 'ERP Data Migration & Sync', href: '/#how-it-works' },
     { label: 'Automated dbt Pipelines', href: '/#features' },
     { label: 'ROI & Savings Calculator', href: '/#roi-calculator' },
   ],
   Resources: [
-    { label: 'How It Works', href: '/#how-it-works' },
+    { label: 'Interactive Product Tour', href: '/#product-tour' },
+    { label: 'Engineering & Compliance Blog', href: '/blog' },
+    { label: 'Security & Trust Whitepaper', href: '/security' },
     { label: 'Pricing & Plans', href: '/#pricing' },
     { label: 'FAQ', href: '/#faq' },
-    { label: 'Contact Us & Support', href: '/contact' },
-    { label: 'Schedule Architecture Review', href: '/#cta' },
+    { label: 'Contact Us & 1-on-1 Booking', href: '/contact' },
   ],
 }
 
@@ -100,7 +101,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((item, idx) => (
                   <li key={idx}>
-                    {item.href.startsWith('/contact') ? (
+                    {item.href.startsWith('/') && !item.href.startsWith('/#') ? (
                       <Link
                         to={item.href}
                         className="text-xs text-gray-400 hover:text-purple-300 transition-colors"
@@ -123,12 +124,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} KaoinAI. All rights reserved.</p>
-          <div className="flex gap-6">
+          <p>© {new Date().getFullYear()} KaoinAI Pte. Ltd. All rights reserved.</p>
+          <div className="flex flex-wrap gap-6">
             <Link to="/contact" className="hover:text-purple-300 transition-colors">Contact Support</Link>
-            <a href="/#faq" className="hover:text-purple-300 transition-colors">Privacy Policy</a>
-            <a href="/#faq" className="hover:text-purple-300 transition-colors">Terms of Service</a>
-            <a href="/#faq" className="hover:text-purple-300 transition-colors">Security Overview</a>
+            <Link to="/privacy" className="hover:text-purple-300 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-purple-300 transition-colors">Terms of Service</Link>
+            <Link to="/security" className="hover:text-purple-300 transition-colors">Security Overview</Link>
           </div>
         </div>
       </div>

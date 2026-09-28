@@ -221,69 +221,72 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* Architectural Badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
-                <Sparkles size={14} className="text-[#7c3aed]" />
-                <span>{current.badgeCategory}</span>
+            {/* Dynamic Content with Smooth Pillar Switch Transition */}
+            <div key={current.id} className="animate-in fade-in duration-300 space-y-5 lg:space-y-6">
+              {/* Architectural Badges */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/90 border border-purple-200/70 text-[#5b2d6e] text-xs sm:text-sm font-semibold shadow-xs">
+                  <Sparkles size={14} className="text-[#7c3aed]" />
+                  <span>{current.badgeCategory}</span>
+                </div>
+                <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs max-w-full">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <span className="text-slate-300">{current.badgeSecondary}</span>
+                  <span className="text-purple-300 font-semibold">{current.badgeSecondaryHighlight}</span>
+                </div>
               </div>
-              <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs max-w-full">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                <span className="text-slate-300">{current.badgeSecondary}</span>
-                <span className="text-purple-300 font-semibold">{current.badgeSecondaryHighlight}</span>
+
+              <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-slate-950 flex flex-col justify-center break-words">
+                <span>{current.headingMain}</span>
+                <span className="text-gradient mt-1">{current.headingGradient}</span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                {current.description}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-1">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-slate-950 text-white hover:bg-slate-800 transition-colors px-7 py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-lg"
+                  onClick={() => {
+                    trackEvent('click_cta', { location: 'hero', label: `Deploy 14-Day Pilot (${current.id})` })
+                    document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                >
+                  Deploy 14-Day Pilot
+                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto border-slate-200 text-slate-800 hover:bg-slate-50 px-7 py-6 text-sm sm:text-base font-semibold rounded-xl"
+                  onClick={() => {
+                    trackEvent('click_cta', { location: 'hero', label: 'Hero Launch Interactive Demo' })
+                    const el = document.getElementById('demo')
+                    if (el) {
+                      const yOffset = -76
+                      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
+                      window.scrollTo({ top: y, behavior: 'smooth' })
+                    }
+                  }}
+                >
+                  <Terminal size={17} className="mr-2 text-purple-600" />
+                  Launch Interactive Demo
+                </Button>
               </div>
-            </div>
 
-            <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-slate-950 flex flex-col justify-center break-words">
-              <span>{current.headingMain}</span>
-              <span className="text-gradient mt-1">{current.headingGradient}</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              {current.description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-1">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto bg-slate-950 text-white hover:bg-slate-800 transition-colors px-7 py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-lg"
-                onClick={() => {
-                  trackEvent('click_cta', { location: 'hero', label: `Deploy 14-Day Pilot (${current.id})` })
-                  document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                Deploy 14-Day Pilot
-                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto border-slate-200 text-slate-800 hover:bg-slate-50 px-7 py-6 text-sm sm:text-base font-semibold rounded-xl"
-                onClick={() => {
-                  trackEvent('click_cta', { location: 'hero', label: 'Hero Launch Interactive Demo' })
-                  const el = document.getElementById('demo')
-                  if (el) {
-                    const yOffset = -76
-                    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
-                    window.scrollTo({ top: y, behavior: 'smooth' })
-                  }
-                }}
-              >
-                <Terminal size={17} className="mr-2 text-purple-600" />
-                Launch Interactive Demo
-              </Button>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5 pt-3 text-xs sm:text-sm text-gray-500">
-              {current.trustBadges.map((badge, bIdx) => {
-                const BadgeIcon = badge.icon
-                return (
-                  <div key={bIdx} className="flex items-center gap-1.5">
-                    <BadgeIcon size={16} className="text-[#5b2d6e] shrink-0" />
-                    <span>{badge.label}</span>
-                  </div>
-                )
-              })}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5 pt-3 text-xs sm:text-sm text-gray-500">
+                {current.trustBadges.map((badge, bIdx) => {
+                  const BadgeIcon = badge.icon
+                  return (
+                    <div key={bIdx} className="flex items-center gap-1.5">
+                      <BadgeIcon size={16} className="text-[#5b2d6e] shrink-0" />
+                      <span>{badge.label}</span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </div>
 

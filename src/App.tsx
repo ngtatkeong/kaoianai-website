@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 import Navigation from './sections/Navigation'
 import Hero from './sections/Hero'
+import TrustedBy from './components/TrustedBy'
+import ProductShowcase from './sections/ProductShowcase'
 import Integrations from './sections/Integrations'
 import InteractiveDemo from './sections/InteractiveDemo'
 import ProblemSolution from './sections/ProblemSolution'
@@ -19,6 +21,12 @@ import CTA from './sections/CTA'
 import Footer from './sections/Footer'
 import Contact from './pages/Contact'
 import AuditPage from './pages/Audit'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import SecurityOverview from './pages/SecurityOverview'
+import BlogIndex from './pages/BlogIndex'
+import BlogPost from './pages/BlogPost'
+import { blogPosts } from './data/blogPosts'
 import WhatsAppButton from './components/WhatsAppButton'
 import AnimatedBackground from './components/AnimatedBackground'
 
@@ -53,7 +61,7 @@ function RouteSeo() {
     const cleanPath = pathname.replace(/\/+$/, '') || '/'
     const route = cleanPath === '/audit.html' ? '/audit' : cleanPath
 
-    const meta: Record<string, { title: string; desc: string; url: string }> = {
+    const staticMeta: Record<string, { title: string; desc: string; url: string }> = {
       '/': {
         title: 'KaoinAI — Autonomous Data Governance & Living Compliance',
         desc: 'Autonomous Data Governance & Living Compliance. Connect PostgreSQL, Snowflake & ERPs in minutes — table-bound DPIA, PDPA & MAS TRM compliance, column lineage & MDM.',
@@ -69,8 +77,47 @@ function RouteSeo() {
         desc: 'Book a 1-on-1 Google Calendar session with KaoinAI. Discuss autonomous data governance, table-bound DPIA, PDPA & MAS TRM compliance for your databases.',
         url: 'https://kaoinai.com/contact',
       },
+      '/privacy': {
+        title: 'Privacy Policy — KaoinAI Data Protection Standards',
+        desc: 'Read the KaoinAI Privacy Policy. Zero raw data replication, read-only metadata architecture, Singapore PDPA, Malaysia PDPA & GDPR compliance guarantees.',
+        url: 'https://kaoinai.com/privacy',
+      },
+      '/terms': {
+        title: 'Terms of Service — KaoinAI Enterprise Agreement',
+        desc: 'KaoinAI Terms of Service. Enterprise SaaS agreement, customer IP data ownership, 99.9% uptime SLA commitments, and Singapore commercial law governance.',
+        url: 'https://kaoinai.com/terms',
+      },
+      '/security': {
+        title: 'Security & Trust Architecture Whitepaper — KaoinAI',
+        desc: 'Enterprise security architecture at KaoinAI. Read-only metadata mesh, TLS 1.3, AES-256 encryption, SOC 2 Type II, ISO 27001, and MAS TRM cyber hygiene standards.',
+        url: 'https://kaoinai.com/security',
+      },
+      '/blog': {
+        title: 'Engineering & Compliance Blog — KaoinAI',
+        desc: 'Technical insights on Singapore PDPA, table-bound DPIAs, MAS TRM cyber hygiene, column-level data lineage, and eliminating LLM hallucinations in enterprise data.',
+        url: 'https://kaoinai.com/blog',
+      },
     }
-    const r = meta[route] || meta['/']
+
+    let r = staticMeta[route]
+
+    // Handle dynamic blog post routes: /blog/:slug
+    if (!r && route.startsWith('/blog/')) {
+      const slug = route.replace('/blog/', '')
+      const post = blogPosts.find((p) => p.slug === slug)
+      if (post) {
+        r = {
+          title: `${post.title} — KaoinAI Blog`,
+          desc: post.description,
+          url: `https://kaoinai.com/blog/${post.slug}`,
+        }
+      }
+    }
+
+    if (!r) {
+      r = staticMeta['/']
+    }
+
     document.title = r.title
 
     const setMeta = (selector: string, attr: string, value: string) => {
@@ -113,6 +160,8 @@ function Home() {
   return (
     <main>
       <Hero />
+      <TrustedBy />
+      <ProductShowcase />
       <Integrations />
       <InteractiveDemo />
       <ProblemSolution />
@@ -144,6 +193,11 @@ function App() {
           <Route path="/audit" element={<AuditPage />} />
           <Route path="/audit.html" element={<AuditPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/security" element={<SecurityOverview />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </div>
       <div className="relative z-10">
