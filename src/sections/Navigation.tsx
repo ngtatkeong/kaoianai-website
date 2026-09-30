@@ -202,13 +202,7 @@ export default function Navigation() {
             className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg shrink-0 mr-4"
             aria-label="KaoinAI Home"
           >
-            <img 
-              src="/logo.png" 
-              alt="KaoinAI Enterprise AI Data" 
-              width="160" 
-              height="36" 
-              className="h-8 sm:h-9 w-auto object-contain" 
-            />
+            <img fetchPriority="high" decoding="async" src="/logo.png" alt="KaoinAI Enterprise AI Data" width="160" height="36" className="h-8 sm:h-9 w-auto object-contain" />
           </Link>
 
           {/* Desktop Horizontal Navigation Links */}

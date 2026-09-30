@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="KaoinAI Enterprise AI Data" width="160" height="36" className="h-9 w-auto" />
+              <img loading="lazy" decoding="async" src="/logo.png" alt="KaoinAI Enterprise AI Data" width="160" height="36" className="h-9 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed max-w-sm text-gray-400">
               Autonomous Data Governance, Table-Bound DPIA &amp; RoPA, Column Lineage, and Master Data Management for regulated enterprises and agile engineering teams.
