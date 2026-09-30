@@ -477,7 +477,7 @@ export default function MaturityRiskAudit({ asHeading1 = false }: MaturityRiskAu
                   document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                Deploy KaoinAI to Remediate Vulnerabilities (14-Day Pilot)
+                Deploy KaoinAI to Remediate Vulnerabilities (14-Day On-Prem Pilot)
                 <ArrowRight size={16} className="ml-2" />
               </Button>
 

@@ -519,7 +519,7 @@ export default function InteractiveDemo() {
             Want to test your own business question?
           </h3>
           <p className="text-sm text-slate-300 max-w-xl mx-auto mb-6">
-            Type an operational inquiry below or test it on your actual database schema during our complimentary 14-day pilot.
+            Type an operational inquiry below or test it on your actual database schema during our complimentary 14-day on-premises pilot (exclusive to On-Prem / VPC).
           </p>
 
           {customSubmitted ? (
@@ -532,7 +532,7 @@ export default function InteractiveDemo() {
                 Query: <span className="text-white font-medium">&ldquo;{customPrompt}&rdquo;</span>
               </p>
               <div className="text-xs text-purple-300 bg-purple-950/50 p-3 rounded border border-purple-800/40">
-                To execute this query across your live schema with zero data retention, activate your complimentary 14-day pilot or test directly with an engineer.
+                To execute this query across your live schema with zero data retention, activate your complimentary 14-day on-premises pilot (exclusive to On-Prem / VPC) or test directly with an engineer.
               </div>
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
                 <Button
@@ -540,7 +540,7 @@ export default function InteractiveDemo() {
                   size="sm"
                   className="bg-gradient-brand text-white font-semibold text-xs"
                 >
-                  Start 14-Day Free Pilot
+                  Start 14-Day Free On-Prem Pilot
                 </Button>
                 <a
                   href={getWhatsAppUrl(`Hi KaoinAI, I want to test this query on our database: "${customPrompt}"`)}

@@ -254,7 +254,7 @@ export default function Hero() {
                     document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
                   }}
                 >
-                  Deploy 14-Day Pilot
+                  Deploy 14-Day Pilot (On-Prem)
                   <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button
@@ -274,6 +274,10 @@ export default function Hero() {
                   <Terminal size={17} className="mr-2 text-purple-600" />
                   Launch Interactive Demo
                 </Button>
+              </div>
+
+              <div className="text-[11px] text-slate-500 font-medium text-center lg:text-left pt-0.5">
+                ✨ Free 14-day trial strictly for Self-Hosted On-Prem / Private VPC deployments (Cloud is paid dedicated SaaS).
               </div>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5 pt-3 text-xs sm:text-sm text-gray-500">

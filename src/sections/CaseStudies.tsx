@@ -179,7 +179,7 @@ export default function CaseStudies() {
               Ready to achieve similar results for your company?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Get an automated data health audit and lineage map on your database schema in under 1 day during your free 14-day pilot.
+              Get an automated data health audit and lineage map on your database schema in under 1 day during your free 14-day on-premises pilot (exclusive to On-Prem / VPC).
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -188,7 +188,7 @@ export default function CaseStudies() {
               size="lg"
               className="bg-gradient-brand text-white font-semibold text-xs sm:text-sm px-6 py-5 rounded-xl shadow-lg hover:opacity-90"
             >
-              Start Free 14-Day Pilot
+              Start Free 14-Day On-Prem Pilot
               <ArrowRight size={15} className="ml-1.5" />
             </Button>
             <a

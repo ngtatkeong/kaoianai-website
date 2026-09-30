@@ -28,6 +28,7 @@ export type EventPayloads = {
     email: string;
     source: string;
     reference_id?: string;
+    deployment_mode?: string;
   };
   faq_toggle: {
     question: string;

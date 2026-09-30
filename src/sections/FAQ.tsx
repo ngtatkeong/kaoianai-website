@@ -34,9 +34,9 @@ const faqs = [
       'No! KaoinAI features natural language interfaces ("Ask Data in Plain English"), AI-suggested validation rules, and automated dbt model generators. Non-technical compliance officers, business analysts, and fractional CTOs can manage the platform with ease.',
   },
   {
-    question: 'What happens after the Free Trial ends?',
+    question: 'Is there a Free Trial, and does it apply to both Cloud and On-Premises?',
     answer:
-      'Your free trial gives you full access to all core modules for 14 days without a credit card. At the end of the trial, you can choose a transparent monthly plan based on your connected data sources or transition to custom enterprise terms.',
+      'Our 14-day free trial is available exclusively for self-hosted On-Premises or Private VPC deployments (Docker or Helm in your own AWS/GCP VPC or local server). Because On-Premises runs entirely within your infrastructure with zero external data egress and zero cloud hosting overhead for KaoinAI, you can test on your real schemas with complete security and no credit card required. Managed Cloud (SaaS) environments require dedicated cluster provisioning and compute, and therefore do not include a self-serve free trial (available via paid plans or our $0 Founding Cohort slots). At the end of your 14-day on-prem trial, you can transition smoothly to an annual on-prem software license or migrate to Managed Cloud.',
   },
 ]
 

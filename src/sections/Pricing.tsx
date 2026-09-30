@@ -198,8 +198,8 @@ export default function Pricing() {
               >
                 <Server size={16} />
                 <span>Self-Hosted On-Prem / VPC</span>
-                <span className="text-[10px] font-extrabold bg-amber-400 text-amber-950 px-1.5 py-0.5 rounded-md">
-                  Air-Gapped
+                <span className="text-[10px] font-extrabold bg-emerald-400 text-emerald-950 px-2 py-0.5 rounded-full shadow-2xs">
+                  14-Day Free Trial
                 </span>
               </button>
             </div>
@@ -235,18 +235,28 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Dynamic Sub-banner explaining selected deployment mode */}
-          <div className="mt-4 text-xs font-medium text-slate-500 max-w-2xl mx-auto">
+          {/* Dynamic Sub-banner explaining selected deployment mode & Free Trial availability */}
+          <div className="mt-5 text-xs font-medium max-w-3xl mx-auto">
             {isOnPrem ? (
-              <span className="inline-flex items-center gap-1.5 text-slate-800 bg-slate-100 px-3.5 py-1.5 rounded-lg border border-slate-200">
-                <Server size={13} className="text-slate-700" />
-                <span><strong>Self-Hosted Software License:</strong> Lower pricing because you provide your own AWS/VPC compute. Zero external data egress.</span>
-              </span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-emerald-950 bg-emerald-50 px-4 py-2.5 rounded-2xl border border-emerald-200/90 shadow-2xs text-center sm:text-left">
+                <span className="inline-flex items-center gap-1.5 font-bold text-emerald-800 shrink-0">
+                  <CheckCircle2 size={15} className="text-emerald-600" />
+                  14-Day Free Trial Available for On-Prem / VPC:
+                </span>
+                <span className="text-emerald-900">
+                  Deploy Docker/Helm in your private VPC with zero data egress. No credit card required.
+                </span>
+              </div>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-purple-900 bg-purple-50 px-3.5 py-1.5 rounded-lg border border-purple-200">
-                <Cloud size={13} className="text-purple-700" />
-                <span><strong>Fully Managed Cloud:</strong> Zero infrastructure setup. Includes KaoinAI-managed AWS Singapore compute, backups, and 99.9% SLA.</span>
-              </span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-purple-950 bg-purple-50 px-4 py-2.5 rounded-2xl border border-purple-200 shadow-2xs text-center sm:text-left">
+                <span className="inline-flex items-center gap-1.5 font-bold text-purple-900 shrink-0">
+                  <Cloud size={15} className="text-purple-700" />
+                  Managed Cloud (SaaS) — Dedicated Infrastructure:
+                </span>
+                <span className="text-purple-800">
+                  Includes AWS Singapore hosting, updates &amp; 99.9% SLA. <strong className="text-purple-950">(Free trial is available on On-Premises only; Cloud requires paid plan or $0 Founding Cohort slot.)</strong>
+                </span>
+              </div>
             )}
           </div>
         </div>
@@ -312,6 +322,18 @@ export default function Pricing() {
                     <div className="text-[10px] text-gray-500 mt-0.5">
                       {isAnnual ? `Annual equivalent value: $${(price * 12).toLocaleString()}/year` : 'Monthly equivalent value'}
                     </div>
+
+                    {isOnPrem ? (
+                      <div className="mt-2.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+                        <CheckCircle2 size={12} className="text-emerald-600 shrink-0" />
+                        <span>14-Day Free Trial Available on VPC</span>
+                      </div>
+                    ) : (
+                      <div className="mt-2.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-purple-50 border border-purple-200 text-purple-900 text-[11px] font-semibold">
+                        <Cloud size={12} className="text-purple-700 shrink-0" />
+                        <span>Paid Managed Cloud (Free Trial is On-Prem Only)</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Setup & Onboarding Fee Callout */}

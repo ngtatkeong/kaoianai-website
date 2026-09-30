@@ -253,10 +253,10 @@ export default function Comparison() {
             </div>
             <div>
               <h4 className="font-bold text-slate-900 text-sm sm:text-base">
-                Try KaoinAI risk-free for 14 days on your actual schema
+                Try KaoinAI risk-free for 14 days on your actual schema (On-Prem / Private VPC)
               </h4>
               <p className="text-xs text-slate-600">
-                No credit card required • Zero raw data stored • First health scan delivered in under 1 day
+                14-Day Free Trial available exclusively on On-Prem / VPC deployments • Zero data egress • No credit card required (Cloud is paid)
               </p>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function Comparison() {
               onClick={handleScrollToCta}
               className="bg-slate-950 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-sm transition-colors"
             >
-              Deploy 14-Day Pilot
+              Deploy 14-Day On-Prem Pilot
               <ArrowRight size={14} className="ml-1.5" />
             </Button>
             <a

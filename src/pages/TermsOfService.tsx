@@ -75,7 +75,7 @@ export default function TermsOfService() {
             3. Free Trial &amp; Subscription Terms
           </h2>
           <p className="mb-2">
-            <strong>14-Day Free Trial:</strong> We offer a 14-day risk-free trial of all core governance modules with no credit card required. Upon expiration of the trial period, continuous access requires selection of an active subscription tier (Growth, Enterprise Cloud, or On-Premises Air-Gapped).
+            <strong>14-Day Free Trial (On-Premises / Private VPC Only):</strong> We offer a 14-day risk-free evaluation trial of all core governance modules strictly for self-hosted On-Premises or Private VPC deployments (Docker or Kubernetes Helm in customer-provided infrastructure). No credit card is required. Due to dedicated infrastructure, storage, and compute provisioning overheads, Managed Cloud (SaaS) environments do not offer a self-serve free trial and are available under paid subscription terms or via our selective Founding Enterprise Cohort ($0 program). Upon expiration of the 14-day on-premises evaluation period, continuous access requires selection of an active commercial subscription tier.
           </p>
           <p>
             <strong>Billing &amp; Cancellation:</strong> Paid subscriptions are billed on a monthly or annual cadence. You may cancel your subscription at any time prior to the next billing renewal cycle through your account dashboard or by notifying your account manager.
