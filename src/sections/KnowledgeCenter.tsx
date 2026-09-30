@@ -166,7 +166,7 @@ export default function KnowledgeCenter() {
   }
 
   return (
-    <section id="knowledge-center" className="py-16 sm:py-24 bg-slate-50/70 border-t border-purple-100/60 scroll-mt-20">
+    <section id="knowledge-center" className="py-16 sm:py-24 bg-purple-50/60 border-t border-purple-100/60 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
@@ -310,19 +310,19 @@ export default function KnowledgeCenter() {
         </div>
 
         {/* Knowledge Center Advisory Callout */}
-        <div className="bg-slate-900 rounded-3xl p-6 sm:p-9 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="bg-purple-50 rounded-3xl p-6 sm:p-9 text-purple-950 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-purple-100 border border-purple-100">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-purple-600/30 text-purple-300 flex items-center justify-center shrink-0 border border-purple-500/30">
+            <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 border border-purple-200">
               <GraduationCap size={26} />
             </div>
             <div>
-              <div className="text-xs font-bold text-purple-300 uppercase tracking-wider mb-1">
+              <div className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">
                 Executive & Technical Advisory
               </div>
               <h3 className="text-xl sm:text-2xl font-bold">
                 Deploying AI in Your Organization?
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-xl mt-1">
+              <p className="text-xs sm:text-sm text-purple-900/70 max-w-xl mt-1">
                 Schedule a complimentary 15-minute AI Data Readiness & Governance Review with our systems architects. We inspect your schema topology and evaluate regulatory exposure.
               </p>
             </div>

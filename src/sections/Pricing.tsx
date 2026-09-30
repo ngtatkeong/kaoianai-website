@@ -141,7 +141,7 @@ export default function Pricing() {
   const isOnPrem = deploymentMode === 'onprem'
 
   return (
-    <section id="pricing" className="py-24 sm:py-32 bg-slate-50/70 scroll-mt-20">
+    <section id="pricing" className="py-24 sm:py-32 bg-purple-50/60 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 sm:mb-20">
@@ -346,7 +346,7 @@ export default function Pricing() {
                     className={`w-full py-6 text-sm font-semibold group ${
                       plan.highlight
                         ? 'bg-gradient-brand text-white hover:opacity-95 shadow-md'
-                        : 'bg-gray-900 text-white hover:bg-gray-800'
+                        : 'bg-purple-600 text-white hover:bg-purple-700'
                     }`}
                     onClick={() => {
                       trackEvent('click_cta', { location: 'pricing', label: `${plan.name} (${deploymentMode}) - ${plan.cta}` })
@@ -416,21 +416,21 @@ export default function Pricing() {
         </div>
 
         {/* Founding Cohort ($0 for First 3 Customers) */}
-        <div className="max-w-4xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-purple-500/30 shadow-2xl shadow-purple-950/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-4xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-purple-100 via-white to-purple-50 border border-purple-200 shadow-2xl shadow-purple-200/60 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-300/30 rounded-full blur-3xl pointer-events-none" />
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0 shadow-sm">
-              <Sparkles size={24} className="text-emerald-400" />
+            <div className="w-12 h-12 rounded-2xl bg-purple-100 border border-purple-200 text-purple-600 flex items-center justify-center shrink-0 shadow-sm">
+              <Sparkles size={24} className="text-emerald-600" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-700 text-xs font-semibold uppercase tracking-wider mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Founding Cohort • First 3 Customers Only</span>
               </div>
-              <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+              <h4 className="text-lg sm:text-xl font-bold text-purple-950 tracking-tight">
                 Get Enterprise KaoinAI at $0 (100% Free for First 3 Customers)
               </h4>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1.5 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-purple-900/70 mt-1.5 max-w-xl leading-relaxed">
                 We are admitting our initial cohort of 3 regulated enterprise teams in Singapore &amp; ASEAN at <strong>$0 platform pricing</strong>. Selected partners receive dedicated solutions architecture, custom connector prioritization, and zero software licensing costs in exchange for product feedback and collaboration.
               </p>
             </div>
@@ -438,7 +438,7 @@ export default function Pricing() {
           <div className="flex flex-col sm:flex-row gap-2.5 shrink-0 w-full md:w-auto relative z-10">
             <Button
               size="lg"
-              className="bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow transition-colors"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow transition-colors"
               onClick={() => {
                 trackEvent('click_cta', { location: 'pricing', label: `Apply $0 Cohort (${deploymentMode})` })
                 document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
@@ -451,7 +451,7 @@ export default function Pricing() {
               href={getWhatsAppUrl(`Hi KaoinAI, I would like to inquire about claiming one of the $0 founding customer slots for our team (${isOnPrem ? 'On-Prem / Private VPC' : 'Managed Cloud'}).`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-purple-100 hover:bg-purple-200 text-purple-700 border border-purple-200 font-medium text-xs transition-colors"
             >
               <span>WhatsApp Inquiries</span>
             </a>

@@ -270,7 +270,7 @@ export default function InteractiveDemo() {
   }
 
   return (
-    <section id="demo" className="py-24 sm:py-32 bg-slate-900 text-white relative overflow-hidden scroll-mt-20">
+    <section id="demo" className="py-24 sm:py-32 bg-gradient-to-b from-purple-50 via-white to-purple-100 text-purple-950 relative overflow-hidden scroll-mt-20">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 left-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl" />
@@ -280,14 +280,14 @@ export default function InteractiveDemo() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold mb-4 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold mb-4 shadow-xs">
             <Sparkles size={14} />
             <span>Interactive Live Demo</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-purple-950 tracking-tight mb-4">
             See KaoinAI in Action — Before Touching Your Database
           </h2>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="text-base sm:text-lg text-purple-900/70 leading-relaxed">
             Select an enterprise scenario below. Watch how KaoinAI autonomously understands natural language, synthesizes dialect SQL, and traces table-bound lineage in sub-second time.
           </p>
         </div>
@@ -303,21 +303,21 @@ export default function InteractiveDemo() {
                 onClick={() => handleScenarioChange(scenario)}
                 className={`flex flex-col justify-between text-left p-4 sm:p-5 rounded-2xl transition-all border cursor-pointer ${
                   isSelected
-                    ? 'bg-purple-900/40 border-purple-400 ring-2 ring-purple-500/30 shadow-xl shadow-purple-950/40'
-                    : 'bg-slate-800/60 border-slate-700/60 hover:bg-slate-800 hover:border-slate-600'
+                    ? 'bg-purple-50 border-purple-400 ring-2 ring-purple-300 shadow-xl shadow-purple-200/60'
+                    : 'bg-white border-purple-200/80 hover:bg-purple-50 hover:border-purple-300 shadow-sm'
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between w-full mb-3">
-                    <div className={`p-2.5 rounded-xl ${isSelected ? 'bg-purple-600 text-white' : 'bg-slate-700 text-slate-300'}`}>
+                    <div className={`p-2.5 rounded-xl ${isSelected ? 'bg-purple-600 text-white' : 'bg-purple-100 text-purple-600'}`}>
                       <IconComponent size={18} />
                     </div>
                     <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${scenario.badgeColor}`}>
                       {scenario.category}
                     </span>
                   </div>
-                  <h3 className="font-bold text-sm sm:text-base text-white mb-1.5 leading-snug">{scenario.title}</h3>
-                  <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">{scenario.prompt}</p>
+                  <h3 className="font-bold text-sm sm:text-base text-purple-950 mb-1.5 leading-snug">{scenario.title}</h3>
+                  <p className="text-xs text-purple-900/60 line-clamp-2 leading-relaxed">{scenario.prompt}</p>
                 </div>
               </button>
             )
@@ -514,24 +514,24 @@ export default function InteractiveDemo() {
         </div>
 
         {/* Try Your Own Prompt Interactive Box */}
-        <div className="bg-gradient-to-r from-purple-900/30 via-slate-900 to-purple-900/30 rounded-2xl p-6 sm:p-8 border border-purple-500/30 text-center max-w-4xl mx-auto">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+        <div className="bg-gradient-to-r from-purple-100 via-white to-purple-50 rounded-2xl p-6 sm:p-8 border border-purple-200 text-center max-w-4xl mx-auto shadow-lg shadow-purple-100/60">
+          <h3 className="text-xl sm:text-2xl font-bold text-purple-950 mb-2">
             Want to test your own business question?
           </h3>
-          <p className="text-sm text-slate-300 max-w-xl mx-auto mb-6">
+          <p className="text-sm text-purple-900/70 max-w-xl mx-auto mb-6">
             Type an operational inquiry below or test it on your actual database schema during our complimentary 14-day pilot.
           </p>
 
           {customSubmitted ? (
-            <div className="bg-slate-950/80 p-5 rounded-xl border border-emerald-500/40 text-left max-w-2xl mx-auto space-y-3">
-              <div className="flex items-center gap-2 text-emerald-400 font-semibold text-sm">
+            <div className="bg-white p-5 rounded-xl border border-emerald-300 text-left max-w-2xl mx-auto space-y-3 shadow-md shadow-purple-100/50">
+              <div className="flex items-center gap-2 text-emerald-600 font-semibold text-sm">
                 <CheckCircle2 size={16} />
                 <span>Query Analyzed & Schema Prepared!</span>
               </div>
-              <p className="text-xs text-slate-300">
-                Query: <span className="text-white font-medium">&ldquo;{customPrompt}&rdquo;</span>
+              <p className="text-xs text-purple-900/70">
+                Query: <span className="text-purple-950 font-medium">&ldquo;{customPrompt}&rdquo;</span>
               </p>
-              <div className="text-xs text-purple-300 bg-purple-950/50 p-3 rounded border border-purple-800/40">
+              <div className="text-xs text-purple-700 bg-purple-50 p-3 rounded border border-purple-200">
                 To execute this query across your live schema with zero data retention, activate your complimentary 14-day pilot or test directly with an engineer.
               </div>
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
@@ -559,7 +559,7 @@ export default function InteractiveDemo() {
                 value={customPrompt}
                 onChange={(e) => setCustomPrompt(e.target.value)}
                 placeholder="e.g. Find duplicate leads created between Zendesk and Salesforce..."
-                className="flex-grow px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="flex-grow px-4 py-3 rounded-xl bg-white border border-purple-200 text-purple-950 placeholder:text-purple-400/70 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
               <Button
                 type="submit"

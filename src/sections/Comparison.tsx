@@ -263,7 +263,7 @@ export default function Comparison() {
           <div className="flex items-center gap-2.5 shrink-0">
             <Button
               onClick={handleScrollToCta}
-              className="bg-slate-950 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-sm transition-colors"
+              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-sm transition-colors"
             >
               Deploy 14-Day Pilot
               <ArrowRight size={14} className="ml-1.5" />

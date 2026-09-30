@@ -229,10 +229,10 @@ export default function Hero() {
                   <Sparkles size={14} className="text-[#7c3aed]" />
                   <span>{current.badgeCategory}</span>
                 </div>
-                <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xs max-w-full">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                  <span className="text-slate-300">{current.badgeSecondary}</span>
-                  <span className="text-purple-300 font-semibold">{current.badgeSecondaryHighlight}</span>
+                <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3.5 py-1.5 rounded-full bg-purple-100/90 border border-purple-200 text-purple-800 text-xs sm:text-sm font-medium shadow-xs max-w-full">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                  <span className="text-purple-900/70">{current.badgeSecondary}</span>
+                  <span className="text-purple-600 font-semibold">{current.badgeSecondaryHighlight}</span>
                 </div>
               </div>
 
@@ -248,7 +248,7 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-1">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto bg-slate-950 text-white hover:bg-slate-800 transition-colors px-7 py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-lg"
+                  className="w-full sm:w-auto bg-purple-600 text-white hover:bg-purple-700 transition-colors px-7 py-6 text-sm sm:text-base font-semibold group rounded-xl shadow-lg shadow-purple-200"
                   onClick={() => {
                     trackEvent('click_cta', { location: 'hero', label: `Deploy 14-Day Pilot (${current.id})` })
                     document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
