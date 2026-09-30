@@ -77,15 +77,15 @@ export default function ProductShowcase() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`text-left p-4 sm:p-5 rounded-2xl border transition-all ${
                   isActive
-                    ? 'bg-purple-950 text-white border-purple-500 shadow-xl shadow-purple-950/20 ring-2 ring-purple-500/20'
+                    ? 'bg-purple-600 text-white border-purple-600 shadow-xl shadow-purple-200 ring-2 ring-purple-300'
                     : 'bg-white text-slate-800 border-slate-200 hover:border-purple-300 hover:bg-purple-50/30'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive ? 'bg-purple-800 text-purple-200' : 'bg-purple-50 text-purple-700'}`}>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive ? 'bg-white/20 text-white' : 'bg-purple-50 text-purple-700'}`}>
                     <Icon size={18} />
                   </div>
-                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full uppercase tracking-wider ${isActive ? 'bg-purple-900 text-purple-300' : 'bg-slate-100 text-slate-600'}`}>
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full uppercase tracking-wider ${isActive ? 'bg-purple-500 text-white' : 'bg-slate-100 text-slate-600'}`}>
                     {tab.badge}
                   </span>
                 </div>
