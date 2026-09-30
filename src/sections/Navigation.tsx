@@ -184,7 +184,7 @@ export default function Navigation() {
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled || mobileMenuOpen
           ? 'bg-white/90 backdrop-blur-xl shadow-xs border-b border-purple-100/60'
-          : 'bg-white/80 backdrop-blur-lg border-b border-gray-100/60'
+          : 'bg-white/80 border-b border-gray-100/60'
       }`}
     >
       {hasAnnouncement && (
@@ -202,13 +202,7 @@ export default function Navigation() {
             className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg shrink-0 mr-4"
             aria-label="KaoinAI Home"
           >
-            <img 
-              src="/logo.png" 
-              alt="KaoinAI Enterprise AI Data" 
-              width="160" 
-              height="36" 
-              className="h-8 sm:h-9 w-auto object-contain" 
-            />
+            <img fetchPriority="high" decoding="async" src="/logo.png" alt="KaoinAI Enterprise AI Data" width="160" height="36" className="h-8 sm:h-9 w-auto object-contain" />
           </Link>
 
           {/* Desktop Horizontal Navigation Links */}

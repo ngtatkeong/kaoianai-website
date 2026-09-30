@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 import Navigation from './sections/Navigation'
 import Hero from './sections/Hero'
@@ -19,8 +19,8 @@ import KnowledgeCenter from './sections/KnowledgeCenter'
 import FAQ from './sections/FAQ'
 import CTA from './sections/CTA'
 import Footer from './sections/Footer'
-import Contact from './pages/Contact'
-import AuditPage from './pages/Audit'
+const Contact = lazy(() => import('./pages/Contact'))
+const AuditPage = lazy(() => import('./pages/Audit'))
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import SecurityOverview from './pages/SecurityOverview'
@@ -190,9 +190,9 @@ function App() {
       <div className="flex-grow relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/audit" element={<AuditPage />} />
-          <Route path="/audit.html" element={<AuditPage />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/audit" element={<Suspense fallback={null}><AuditPage /></Suspense>} />
+          <Route path="/audit.html" element={<Suspense fallback={null}><AuditPage /></Suspense>} />
+          <Route path="/contact" element={<Suspense fallback={null}><Contact /></Suspense>} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/security" element={<SecurityOverview />} />

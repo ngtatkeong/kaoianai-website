@@ -172,13 +172,13 @@ export default function CaseStudies() {
         </div>
 
         {/* Bottom CTA Banner */}
-        <div className="bg-gradient-to-r from-slate-950 via-purple-950/90 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-purple-950/30 border border-purple-500/25 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-gradient-to-r from-purple-100 via-purple-50 to-purple-100 rounded-3xl p-6 sm:p-10 text-purple-950 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-purple-200/50 border border-purple-200 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-300/30 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10">
             <h3 className="text-xl sm:text-2xl font-bold mb-2">
               Ready to achieve similar results for your company?
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+            <p className="text-xs sm:text-sm text-purple-900/70 max-w-xl">
               Get an automated data health audit and lineage map on your database schema in under 1 day during your free 14-day on-premises pilot (exclusive to On-Prem / VPC).
             </p>
           </div>

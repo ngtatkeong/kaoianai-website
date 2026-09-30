@@ -66,21 +66,21 @@ export default function ProblemSolution() {
           </div>
 
           {/* KaoinAI Modern Solution Card */}
-          <div className="rounded-3xl p-7 sm:p-10 bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 text-white border border-purple-500/25 shadow-xl shadow-purple-950/20 flex flex-col justify-between relative overflow-hidden group">
+          <div className="rounded-3xl p-7 sm:p-10 bg-gradient-to-br from-purple-100 via-purple-50 to-white text-purple-950 border border-purple-300/60 shadow-xl shadow-purple-200/50 flex flex-col justify-between relative overflow-hidden group">
             {/* Luminous ambient gradient glows */}
-            <div className="absolute -top-10 -right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-10 -right-10 w-72 h-72 bg-purple-400/30 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-purple-300/30 rounded-full blur-3xl pointer-events-none" />
             
             <div className="relative z-10">
-              <div className="flex items-center gap-3.5 mb-8 pb-5 border-b border-purple-800/40">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-purple-900/40">
+              <div className="flex items-center gap-3.5 mb-8 pb-5 border-b border-purple-200">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-purple-300/60">
                   <CheckCircle size={22} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-purple-950 tracking-tight flex items-center gap-2">
                     <span>KaoinAI Autonomous Governance</span>
                   </h3>
-                  <p className="text-xs text-purple-300 font-medium">Continuous, schema-bound, and operational in under 1 day</p>
+                  <p className="text-xs text-purple-600 font-medium">Continuous, schema-bound, and operational in under 1 day</p>
                 </div>
               </div>
               <ul className="space-y-4 sm:space-y-5">
@@ -88,12 +88,12 @@ export default function ProblemSolution() {
                   const [title, ...desc] = item.split(': ')
                   return (
                     <li key={i} className="flex items-start gap-3.5">
-                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                      <div className="w-5 h-5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                         <CheckCircle size={13} />
                       </div>
                       <div className="text-sm leading-relaxed">
-                        <strong className="text-white block font-semibold">{title}</strong>
-                        <span className="text-slate-300">{desc.join(': ')}</span>
+                        <strong className="text-purple-950 block font-semibold">{title}</strong>
+                        <span className="text-purple-900/70">{desc.join(': ')}</span>
                       </div>
                     </li>
                   )
