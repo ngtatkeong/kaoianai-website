@@ -62,6 +62,7 @@ export default function CTA() {
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-purple-950 mb-4 sm:mb-6 tracking-tight">
           Ready to Automate Your Data Governance?
+        </h2>
         <p className="text-sm sm:text-lg text-purple-900/70 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
           Join engineering and compliance leaders who trust KaoinAI to automate table-bound DPIAs, detect schema drift, and eliminate PII exposure in under 48 hours.
         </p>
