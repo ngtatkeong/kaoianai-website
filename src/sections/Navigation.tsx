@@ -184,7 +184,7 @@ export default function Navigation() {
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled || mobileMenuOpen
           ? 'bg-white/90 backdrop-blur-xl shadow-xs border-b border-purple-100/60'
-          : 'bg-white/80 backdrop-blur-lg border-b border-gray-100/60'
+          : 'bg-white/80 border-b border-gray-100/60'
       }`}
     >
       {hasAnnouncement && (
