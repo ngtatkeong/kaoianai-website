@@ -10,7 +10,7 @@ export default function BlogIndex() {
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const categories = useMemo(() => {
-    return ['All', 'PDPA & Compliance', 'Data Architecture', 'AI & LLM Data', 'Industry Comparisons']
+    return ['All', 'AI Safety & Research', 'PDPA & Compliance', 'Data Architecture', 'AI & LLM Data', 'Industry Comparisons']
   }, [])
 
   const filteredPosts = useMemo(() => {

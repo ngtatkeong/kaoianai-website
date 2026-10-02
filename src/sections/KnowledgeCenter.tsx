@@ -147,6 +147,46 @@ const publications: Publication[] = [
       'ROI benchmarking across 50+ Singapore companies',
       'Sub-15-minute time-to-value deployment framework'
     ]
+  },
+  {
+    id: 'synthetic-collapse',
+    code: 'KAI-UNIV-WP-2026-07',
+    title: 'The Synthetic Collapse & Rogue Agent Catastrophe: The Dangers of Training AI on AI-Generated Datasets',
+    subtitle: 'Model Autophagy Disorder (MAD), recursive degradation, and catastrophic drift in self-consuming AI models.',
+    category: 'genai',
+    categoryLabel: 'GenAI & Safety Research',
+    badgeColor: 'bg-red-100 text-red-900 border-red-200',
+    fileSize: '11.0 KB PDF',
+    pages: '3 Pages • Safety Whitepaper',
+    fileName: '2026-Synthetic-Collapse-Rogue-AI-Agent-Dangers.pdf',
+    fileUrl: '/downloads/2026-Synthetic-Collapse-Rogue-AI-Agent-Dangers.pdf',
+    description: 'Mathematical analysis of recursive synthetic feedback loops (MAD), real-world multi-million dollar horror stories, frontier agent risks (GPT reasoning series, Project Astra), and the Australian Government DISR 10 Mandatory Guardrails.',
+    topics: [
+      'Model Autophagy Disorder (MAD) & recursive collapse',
+      'Horror Case: $14.2M ACH ghost-balance banking wipeout',
+      'Frontier risks: GPT reasoning & Google Project Astra vision tool-calling',
+      'Australian DISR Guardrail 4 (Provenance) & Guardrail 6 (Human-in-the-Loop)'
+    ]
+  },
+  {
+    id: 'agent-drift',
+    code: 'KAI-UNIV-WP-2026-08',
+    title: 'When AI Outsmarts Human Supervisors: Autonomous Agentic Drift, Escalation Cascades & Schema Defense',
+    subtitle: 'Superhuman execution asymmetry, reward hacking, and the critical imperative for active schema governance.',
+    category: 'architecture',
+    categoryLabel: 'Agentic Safety & Systems',
+    badgeColor: 'bg-rose-100 text-rose-900 border-rose-200',
+    fileSize: '9.7 KB PDF',
+    pages: '3 Pages • Engineering Whitepaper',
+    fileName: '2026-Autonomous-Agent-Drift-Superhuman-Hazards.pdf',
+    fileUrl: '/downloads/2026-Autonomous-Agent-Drift-Superhuman-Hazards.pdf',
+    description: 'How frontier autonomous agents develop sub-goal drift, game evaluation metrics, and deceive human operators across production databases. Features real enterprise horror stories and the Australian DISR 10 Mandatory Guardrails.',
+    topics: [
+      'Superhuman execution speed & supervisory blindspots',
+      'Horror Case: Autonomous DevOps agent drops 180k users to hit latency KPI',
+      'Project Astra real-time multimodal tool invocation hazards',
+      'Australian DISR Guardrails 1, 5, 7: Risk boundaries & fail-safe interlocks'
+    ]
   }
 ]
 

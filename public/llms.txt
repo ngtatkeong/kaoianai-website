@@ -39,9 +39,22 @@
 - [MAS TRM Guidelines for Cloud Databases](https://kaoinai.com/blog/mas-trm-guidelines-data-governance-fintechs): Implementing Monetary Authority of Singapore technology risk management controls for fintechs
 - [Preventing LLM Hallucinations via Column Lineage](https://kaoinai.com/blog/preventing-llm-hallucinations-column-lineage): How deterministic schema governance and dynamic pre-prompt tokenization solve generative AI inaccuracies
 - [Legacy Data Catalogs vs. Autonomous Mesh](https://kaoinai.com/blog/legacy-data-catalogs-vs-autonomous-intelligence): 2026 comparison between legacy suites (Collibra, Alation) and lightweight autonomous intelligence
+- [The Synthetic Collapse & Rogue Agent Catastrophe](https://kaoinai.com/blog/synthetic-collapse-danger-rogue-ai-agents): Deep forensic analysis of Model Autophagy Disorder (MAD), recursive degradation, and real-world multi-million dollar horror stories across autonomous enterprise agents
+- [When AI Agents Outsmart Human Supervisors](https://kaoinai.com/blog/when-ai-agents-outsmart-supervisors-agentic-drift): Forensic investigation into agentic drift, reward hacking, Project Astra real-time tool calling, and Australian DISR 10 Mandatory AI Guardrails
+
+## Research Papers & University Whitepapers
+- [KAI-UNIV-WP-2026-07: The Synthetic Collapse & Rogue Agent Catastrophe (PDF)](https://kaoinai.com/downloads/2026-Synthetic-Collapse-Rogue-AI-Agent-Dangers.pdf): Model Autophagy Disorder (MAD), frontier GPT reasoning and Google Project Astra hazards, Australian DISR Guardrails 4 & 6, and enterprise horror stories ($14.2M ACH ghost balances, dynamic pricing suicide spiral, clinical contraindication override)
+- [KAI-UNIV-WP-2026-08: When AI Outsmarts Human Supervisors: Agentic Drift & Schema Defense (PDF)](https://kaoinai.com/downloads/2026-Autonomous-Agent-Drift-Superhuman-Hazards.pdf): Superhuman execution asymmetry, reward hacking across production databases, Australian DISR Guardrails 1, 5, 7, and enterprise horror stories (DevOps latency purge of 180k users, logistics phantom routing disaster, compliance auditor self-coverup)
+- [KAI-UNIV-WP-2026-01: Data Governance for GenAI & Agentic Systems (PDF)](https://kaoinai.com/downloads/2026-Data-Governance-For-GenAI-Implementation.pdf): Active metadata mesh preventing RAG hallucinations, vector poisoning, and context window leakage
+- [KAI-UNIV-WP-2026-02: Enterprise AI Data Readiness Framework (PDF)](https://kaoinai.com/downloads/2026-Enterprise-AI-Data-Readiness-Framework.pdf): 5-pillar blueprint for resolving entity collisions and multi-database drift into AI-ready gold standards
+- [KAI-UNIV-WP-2026-03: Singapore PDPA & MAS TRM Compliance Standard (PDF)](https://kaoinai.com/downloads/2026-MAS-TRM-PDPA-AI-Regulatory-Standard.pdf): Statutory blueprint for enterprise AI, LLM prompting, and autonomous decisioning
+- [KAI-UNIV-OP-2026-04: Singapore SME Data Governance & PDPA Readiness Checklist (PDF)](https://kaoinai.com/downloads/2026-SME-Data-Governance-PDPA-Checklist.pdf): Step-by-step statutory compliance audit manual
+- [KAI-UNIV-HB-2026-05: Enterprise Data Governance & AI-Readiness Handbook (PDF)](https://kaoinai.com/downloads/2026-Data-Governance-AI-Readiness-Handbook.pdf): Cross-border ASEAN regulatory directives and architectural foundations
+- [KAI-UNIV-RP-2026-06: The SME Data Inequality Gap Report (PDF)](https://kaoinai.com/downloads/2026-SME-Data-Governance-AI-Democratization-Report.pdf): Empirical research on SME access to AI and total cost of ownership
 
 ## Security & Architecture
 - Read-only metadata architecture: raw database rows are never replicated or stored on KaoinAI servers
 - TLS 1.3 encryption, VPC peering, and IP whitelisting options
 - Built according to SOC 2 Type II and ISO 27001 security standards
 - MAS TRM cyber hygiene standards strictly enforced across all Singapore clusters
+
