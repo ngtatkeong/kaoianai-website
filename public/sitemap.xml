@@ -98,8 +98,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://kaoinai.com/blog/ai-2027-ghost-ledger-catastrophe-rogue-agent</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <!-- Downloadable Research Papers, Compliance Manuals & Guides -->
+  <url>
+    <loc>https://kaoinai.com/downloads/2027-AI-Ghost-Ledger-Rogue-Agent-Catastrophe.pdf</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://kaoinai.com/downloads/2026-KaoinAI-Data-Foundations-For-Autonomous-Agents.pdf</loc>
     <lastmod>2026-10-02</lastmod>
