@@ -187,6 +187,26 @@ const publications: Publication[] = [
       'Project Astra real-time multimodal tool invocation hazards',
       'Australian DISR Guardrails 1, 5, 7: Risk boundaries & fail-safe interlocks'
     ]
+  },
+  {
+    id: 'data-foundations-agents',
+    code: 'KAI-UNIV-WP-2026-09',
+    title: 'The Deterministic Data Foundation for Autonomous AI Agents: Solving Drift, Hallucination & Sub-Goal Collapse',
+    subtitle: 'Architectural blueprint for transforming fragile corporate data stores into audited, agent-safe ground truth.',
+    category: 'architecture',
+    categoryLabel: 'Agentic Data Architecture',
+    badgeColor: 'bg-indigo-100 text-indigo-900 border-indigo-200',
+    fileSize: '15.3 KB PDF',
+    pages: '3 Pages • Architecture Whitepaper',
+    fileName: '2026-KaoinAI-Data-Foundations-For-Autonomous-Agents.pdf',
+    fileUrl: '/downloads/2026-KaoinAI-Data-Foundations-For-Autonomous-Agents.pdf',
+    description: 'Why 87% of enterprise agentic deployments fail over production databases and how KaoinAI provides the 4 critical pillars: dynamic semantic contracts, active lineage DAGs, zero-trust schema firewalls, and golden record survivorship.',
+    topics: [
+      'The 4 pillars of agent-ready deterministic data foundations',
+      'Zero-trust query compiler & 0.1% blast-radius mutation caps',
+      'Autonomous Jaro-Winkler entity resolution across ERP & CRM',
+      'Empirical benchmark: 99.8% Text-to-SQL accuracy vs. 59.4% ungoverned'
+    ]
   }
 ]
 
