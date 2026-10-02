@@ -21,14 +21,27 @@
 - **Deployment**: Cloud SaaS, VPS, and on-premises self-hosted Docker
 - **Compliance Focus**: Singapore PDPA & MAS TRM, Malaysia PDPA, Indonesia UU PDP, GDPR Article 30, HIPAA, SOX
 - **Connectors**: PostgreSQL, MySQL, Google BigQuery, Snowflake, Amazon Redshift, Microsoft SQL Server, Oracle NetSuite, SAP, Salesforce, Supabase (custom JDBC/ODBC available)
-- **Pricing**: 14-day free trial (no credit card); transparent monthly plans from $0–$499 based on connected data sources
+- **Pricing**: 14-day free evaluation trial strictly for self-hosted On-Premises / Private VPC (Docker/Helm, no credit card); Managed Cloud available as dedicated paid SaaS or via Founding Enterprise Cohort ($0 program)
+- **Primary Contact**: tk.ng@kaoinai.com (TK Ng, Founder & Principal Architect)
 
-## Key Pages
-- [Home — Autonomous Data Governance & Living Compliance](https://kaoinai.com/): platform overview, features, pricing, FAQ
-- [Free Data Governance Maturity & Risk Audit](https://kaoinai.com/audit): interactive 5-minute assessment with instant score and remediation roadmap
-- [Contact & 1-on-1 Booking](https://kaoinai.com/contact): schedule a Google Calendar session with the founder
+## Key Pages & Navigation
+- [Home — Autonomous Data Governance & Living Compliance](https://kaoinai.com/): Platform overview, interactive UI tour, lineage DAG, features, pricing, FAQ
+- [Free Data Governance Maturity & Risk Audit](https://kaoinai.com/audit): Interactive assessment with instant score, vulnerability report, and remediation roadmap
+- [Contact & 1-on-1 Founder Consultation](https://kaoinai.com/contact): Direct booking with founder TK Ng via calendar integration or WhatsApp
+- [Security & Architecture Whitepaper](https://kaoinai.com/security): Technical overview of zero-egress metadata mesh, TLS 1.3, AES-256 vaulting, and SOC 2 / ISO 27001 / MAS TRM mappings
+- [Privacy Policy](https://kaoinai.com/privacy): Zero raw data replication guarantee, statutory PDPA/GDPR compliance, DPO contact
+- [Terms of Service](https://kaoinai.com/terms): Enterprise B2B SaaS agreement, 100% customer IP ownership, 99.9% uptime SLA, Singapore law governance
+
+## Engineering & Compliance Blog
+- [Engineering Blog Index](https://kaoinai.com/blog): Searchable technical library of data governance, privacy engineering, and AI readiness articles
+- [2026 Singapore PDPA Compliance Checklist](https://kaoinai.com/blog/singapore-pdpa-compliance-checklist-2026): Practical engineering guide for PDPC statutory accountability, mandatory breach notifications, and living RoPA
+- [Living RoPA vs. Spreadsheet DPIA](https://kaoinai.com/blog/automate-table-bound-dpia-living-ropa): Architectural blueprint for anchoring data protection impact assessments directly to database schemas
+- [MAS TRM Guidelines for Cloud Databases](https://kaoinai.com/blog/mas-trm-guidelines-data-governance-fintechs): Implementing Monetary Authority of Singapore technology risk management controls for fintechs
+- [Preventing LLM Hallucinations via Column Lineage](https://kaoinai.com/blog/preventing-llm-hallucinations-column-lineage): How deterministic schema governance and dynamic pre-prompt tokenization solve generative AI inaccuracies
+- [Legacy Data Catalogs vs. Autonomous Mesh](https://kaoinai.com/blog/legacy-data-catalogs-vs-autonomous-intelligence): 2026 comparison between legacy suites (Collibra, Alation) and lightweight autonomous intelligence
 
 ## Security & Architecture
 - Read-only metadata architecture: raw database rows are never replicated or stored on KaoinAI servers
-- TLS 1.3 encryption, VPC peering and IP whitelisting options
+- TLS 1.3 encryption, VPC peering, and IP whitelisting options
 - Built according to SOC 2 Type II and ISO 27001 security standards
+- MAS TRM cyber hygiene standards strictly enforced across all Singapore clusters

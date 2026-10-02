@@ -27,8 +27,47 @@ export default function BlogPost() {
     return blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2)
   }, [post.slug])
 
+  const schemaData = useMemo(() => {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      '@id': `https://kaoinai.com/blog/${post.slug}#article`,
+      'headline': post.title,
+      'alternativeHeadline': post.subtitle,
+      'description': post.description,
+      'image': 'https://kaoinai.com/og-cover.png',
+      'author': {
+        '@type': 'Person',
+        'name': post.author.name,
+        'jobTitle': post.author.role,
+        'url': 'https://kaoinai.com/contact'
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'KaoinAI',
+        'url': 'https://kaoinai.com',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://kaoinai.com/logo.png'
+        }
+      },
+      'datePublished': '2026-09-26T08:00:00+08:00',
+      'dateModified': '2026-10-02T12:00:00+08:00',
+      'mainEntityOfPage': {
+        '@type': 'WebPage',
+        '@id': `https://kaoinai.com/blog/${post.slug}`
+      },
+      'articleSection': post.category,
+      'keywords': post.tags.join(', ')
+    }
+  }, [post])
+
   return (
     <div className="pt-24 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
       {/* Back to Blog */}
       <div className="mb-8 flex items-center justify-between">
         <Link 

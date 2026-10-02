@@ -26,6 +26,7 @@ import TermsOfService from './pages/TermsOfService'
 import SecurityOverview from './pages/SecurityOverview'
 import BlogIndex from './pages/BlogIndex'
 import BlogPost from './pages/BlogPost'
+import NotFound from './pages/NotFound'
 import { blogPosts } from './data/blogPosts'
 import WhatsAppButton from './components/WhatsAppButton'
 import AnimatedBackground from './components/AnimatedBackground'
@@ -100,12 +101,16 @@ function RouteSeo() {
     }
 
     let r = staticMeta[route]
+    let isBlogArticle = false
+    let currentPost = undefined
 
     // Handle dynamic blog post routes: /blog/:slug
     if (!r && route.startsWith('/blog/')) {
       const slug = route.replace('/blog/', '')
       const post = blogPosts.find((p) => p.slug === slug)
       if (post) {
+        isBlogArticle = true
+        currentPost = post
         r = {
           title: `${post.title} — KaoinAI Blog`,
           desc: post.description,
@@ -114,8 +119,13 @@ function RouteSeo() {
       }
     }
 
+    const isNotFound = !r
     if (!r) {
-      r = staticMeta['/']
+      r = {
+        title: 'Page Not Found — KaoinAI',
+        desc: 'The page you are looking for does not exist or has been relocated.',
+        url: `https://kaoinai.com${pathname}`,
+      }
     }
 
     document.title = r.title
@@ -135,14 +145,21 @@ function RouteSeo() {
       }
     }
 
+    setMeta('meta[name="robots"]', 'content', isNotFound ? 'noindex, follow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')
     setMeta('meta[name="description"]', 'content', r.desc)
     setMeta('meta[name="title"]', 'content', r.title)
     setMeta('meta[property="og:title"]', 'content', r.title)
     setMeta('meta[property="og:description"]', 'content', r.desc)
     setMeta('meta[property="og:url"]', 'content', r.url)
+    setMeta('meta[property="og:type"]', 'content', isBlogArticle ? 'article' : 'website')
     setMeta('meta[name="twitter:title"]', 'content', r.title)
     setMeta('meta[name="twitter:description"]', 'content', r.desc)
     setMeta('meta[name="twitter:url"]', 'content', r.url)
+
+    if (isBlogArticle && currentPost) {
+      setMeta('meta[property="article:author"]', 'content', currentPost.author.name)
+      setMeta('meta[property="article:section"]', 'content', currentPost.category)
+    }
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
     if (!canonical) {
@@ -198,6 +215,7 @@ function App() {
           <Route path="/security" element={<SecurityOverview />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <div className="relative z-10">
